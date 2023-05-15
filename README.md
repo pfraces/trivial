@@ -1,3 +1,3 @@
-# Trivial
+# Quiz.IO
 
-A trivial app
+Quiz generator

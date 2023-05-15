@@ -2,13 +2,12 @@ import { initializeApp } from 'firebase/app';
 import { getDatabase } from 'firebase/database';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyAGY453Oh_7oMO89pICPgfdAnxzj4RPs44',
-  authDomain: 'trivial-puessi.firebaseapp.com',
-  databaseURL: 'https://trivial-puessi-default-rtdb.firebaseio.com',
-  projectId: 'trivial-puessi',
-  storageBucket: 'trivial-puessi.appspot.com',
-  messagingSenderId: '716992599411',
-  appId: '1:716992599411:web:ae9af93bd2c9f5bb9de106',
+  apiKey: 'AIzaSyCmKVDx1mprzpSowa1kBOL9Wp4TWZd2g_w',
+  authDomain: 'quiz-io-9b3c8.firebaseapp.com',
+  projectId: 'quiz-io-9b3c8',
+  storageBucket: 'quiz-io-9b3c8.appspot.com',
+  messagingSenderId: '609365470195',
+  appId: '1:609365470195:web:8ca2c5f6cc1701caf88086',
 };
 
 const app = initializeApp(firebaseConfig);
