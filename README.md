@@ -1,3 +1,3 @@
-# Quiz.IO
+# quiz.io
 
 Quiz generator
