@@ -8,59 +8,72 @@ const statusMap = {
   feedback: 1,
 };
 
-function QuestionCard({ label, options, isLast, onRight, onNext, onDone }) {
+function QuestionCard({
+  index,
+  label,
+  options,
+  isLast,
+  onRight,
+  onNext,
+  onDone,
+}) {
   const [answer, setAnswer] = useState();
   const [status, setStatus] = useState(statusMap.pending);
 
   return (
     <div className="QuestionCard">
-      <div className="question">
-        <p>{label}</p>
+      <div className="title">
+        <div className="index">#{index + 1}</div>
+        <div className="label">{label}</div>
       </div>
 
-      <div
-        className={clsx('options', { feedback: status === statusMap.feedback })}
-      >
-        {options.map((option, index) => (
-          <Option
-            key={index}
-            label={option.label}
-            right={option.right}
-            selected={index === answer}
-            onClick={() => {
-              if (status !== statusMap.pending) {
-                return;
-              }
+      <div className="body">
+        <div
+          className={clsx('options', {
+            feedback: status === statusMap.feedback,
+          })}
+        >
+          {options.map((option, index) => (
+            <Option
+              key={index}
+              label={option.label}
+              right={option.right}
+              selected={index === answer}
+              onClick={() => {
+                if (status !== statusMap.pending) {
+                  return;
+                }
 
-              setAnswer(index);
-            }}
-          />
-        ))}
-      </div>
+                setAnswer(index);
+              }}
+            />
+          ))}
+        </div>
 
-      <div className="actions">
-        {status === statusMap.pending && (
-          <button
-            disabled={answer == null}
-            onClick={() => {
-              setStatus(statusMap.feedback);
+        <div className="actions">
+          {status === statusMap.pending && (
+            <button
+              disabled={answer == null}
+              onClick={() => {
+                setStatus(statusMap.feedback);
 
-              if (answer === options.findIndex((option) => option.right)) {
-                onRight();
-              }
-            }}
-          >
-            Send
-          </button>
-        )}
+                if (answer === options.findIndex((option) => option.right)) {
+                  onRight();
+                }
+              }}
+            >
+              Seleccionar
+            </button>
+          )}
 
-        {status === statusMap.feedback && !isLast && (
-          <button onClick={onNext}>Next</button>
-        )}
+          {status === statusMap.feedback && !isLast && (
+            <button onClick={onNext}>Siguiente</button>
+          )}
 
-        {status === statusMap.feedback && isLast && (
-          <button onClick={onDone}>Done</button>
-        )}
+          {status === statusMap.feedback && isLast && (
+            <button onClick={onDone}>Finalizar</button>
+          )}
+        </div>
       </div>
     </div>
   );

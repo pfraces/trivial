@@ -11,7 +11,7 @@ function App() {
         <div className="title">
           <h1>Trivial Puessi</h1>
         </div>
-        <div className="score">Score: {score}</div>
+        <div className="score">Puntuación: {score}</div>
       </div>
       <Game
         onRight={() => {

@@ -1,20 +1,38 @@
 .QuestionCard {
-  box-sizing: border-box;
   max-width: 800px;
   margin: 20px auto;
   background-color: white;
   color: var(--primary);
-  padding: 10px;
+  padding: 20px;
   border-radius: 5px;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
 /* Options */
 
+.QuestionCard .title {
+  display: flex;
+  align-items: baseline;
+  font-size: 1.4rem;
+}
+
+.QuestionCard .title .index {
+  color: var(--disabled);
+  width: 50px;
+  text-align: right;
+  padding-right: 10px;
+  font-size: 1.2rem;
+}
+
+.QuestionCard .body {
+  margin-left: 50px;
+}
+
 .QuestionCard .options {
   display: flex;
   flex-direction: column;
   max-width: 150px;
+  margin-top: 20px;
 }
 
 .QuestionCard .options:not(.feedback) button:not(.selected):hover {

@@ -37,6 +37,7 @@ function Game({ onRight }) {
     <div className="Game">
       <QuestionCard
         key={questionIndex}
+        index={questionIndex}
         label={label}
         options={options}
         isLast={questionIndex === questions.length - 1}
