@@ -1,0 +1,58 @@
+.QuestionCard {
+  box-sizing: border-box;
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: white;
+  color: var(--primary);
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+/* Options */
+
+.QuestionCard .options {
+  display: flex;
+  flex-direction: column;
+  max-width: 150px;
+}
+
+.QuestionCard .options:not(.feedback) button:not(.selected):hover {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+.QuestionCard .options button.selected {
+  border-color: var(--blue);
+  color: white;
+  background-color: var(--blue);
+}
+
+.QuestionCard .options.feedback button.selected.right {
+  border-color: var(--green);
+  color: white;
+  background-color: var(--green);
+}
+
+.QuestionCard .options.feedback button.selected:not(.right) {
+  border-color: var(--red);
+  color: white;
+  background-color: var(--red);
+}
+
+/* Actions */
+
+.QuestionCard .actions {
+  margin-top: 20px;
+}
+
+.QuestionCard .actions button {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+.QuestionCard .actions button:hover {
+  border-color: var(--blue);
+  color: white;
+  background-color: var(--blue);
+}
