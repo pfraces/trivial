@@ -8,8 +8,6 @@
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
-/* Options */
-
 .QuestionCard .title {
   display: flex;
   align-items: baseline;
@@ -27,6 +25,8 @@
 .QuestionCard .body {
   margin-left: 50px;
 }
+
+/* Options */
 
 .QuestionCard .options {
   display: flex;
