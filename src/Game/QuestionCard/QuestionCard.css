@@ -67,6 +67,8 @@
 .QuestionCard .actions button {
   border-color: var(--blue);
   color: var(--blue);
+  font-size: 1rem;
+  padding: 10px;
 }
 
 .QuestionCard .actions button:hover {
