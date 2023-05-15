@@ -22,7 +22,7 @@ const questions = [
   },
 ];
 
-function Game() {
+function Game({ onRight }) {
   const [isDone, setIsDone] = useState(false);
   const [questionIndex, setQuestionIndex] = useState(0);
   const { label, options } = questions[questionIndex];
@@ -43,6 +43,7 @@ function Game() {
           label={label}
           options={options}
           isLast={questionIndex === questions.length - 1}
+          onRight={onRight}
           onNext={onNext}
           onDone={onDone}
         />

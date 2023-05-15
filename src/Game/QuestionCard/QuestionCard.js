@@ -8,7 +8,7 @@ const statusMap = {
   feedback: 1,
 };
 
-function QuestionCard({ label, options, isLast, onNext, onDone }) {
+function QuestionCard({ label, options, isLast, onRight, onNext, onDone }) {
   const [answer, setAnswer] = useState();
   const [status, setStatus] = useState(statusMap.pending);
 
@@ -44,6 +44,10 @@ function QuestionCard({ label, options, isLast, onNext, onDone }) {
             disabled={answer == null}
             onClick={() => {
               setStatus(statusMap.feedback);
+
+              if (answer === options.findIndex((option) => option.right)) {
+                onRight();
+              }
             }}
           >
             Send
