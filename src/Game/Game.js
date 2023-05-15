@@ -1,31 +1,19 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { ref, onValue } from 'firebase/database';
+import { db } from '../db';
 import QuestionCard from './QuestionCard/QuestionCard';
 
-const questions = [
-  {
-    label: '¿De qué color era el caballo blanco de santiago?',
-    options: [
-      { label: 'Blanco', right: true },
-      { label: 'Negro' },
-      { label: 'Azul' },
-      { label: '42' },
-    ],
-  },
-  {
-    label: '¿Quien era el cantante de Queen?',
-    options: [
-      { label: 'Brayan May' },
-      { label: 'John Deacon' },
-      { label: 'Freddie Mercury', right: true },
-      { label: 'Roger Taylor' },
-    ],
-  },
-];
-
 function Game({ onRight }) {
+  const [questions, setQuestions] = useState([]);
   const [isDone, setIsDone] = useState(false);
   const [questionIndex, setQuestionIndex] = useState(0);
-  const { label, options } = questions[questionIndex];
+
+  useEffect(() => {
+    onValue(ref(db, 'questions'), (data) => {
+      const snapshot = data.val();
+      setQuestions(snapshot);
+    });
+  }, []);
 
   const onNext = () => {
     setQuestionIndex((prev) => prev + 1);
@@ -35,19 +23,27 @@ function Game({ onRight }) {
     setIsDone(true);
   };
 
+  if (!questions.length) {
+    return;
+  }
+
+  if (isDone) {
+    return null;
+  }
+
+  const { label, options } = questions[questionIndex];
+
   return (
     <div className="Game">
-      {!isDone && (
-        <QuestionCard
-          key={questionIndex}
-          label={label}
-          options={options}
-          isLast={questionIndex === questions.length - 1}
-          onRight={onRight}
-          onNext={onNext}
-          onDone={onDone}
-        />
-      )}
+      <QuestionCard
+        key={questionIndex}
+        label={label}
+        options={options}
+        isLast={questionIndex === questions.length - 1}
+        onRight={onRight}
+        onNext={onNext}
+        onDone={onDone}
+      />
     </div>
   );
 }
