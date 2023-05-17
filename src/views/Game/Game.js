@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { ref, onValue } from 'firebase/database';
-import { db } from '../db';
+import { db } from '../../db';
 import QuestionCard from './QuestionCard/QuestionCard';
+import './Game.css';
 
-function Game({ onRight }) {
+function Game() {
+  const [score, setScore] = useState(0);
   const [questions, setQuestions] = useState([]);
   const [isDone, setIsDone] = useState(false);
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -14,6 +16,10 @@ function Game({ onRight }) {
       setQuestions(snapshot);
     });
   }, []);
+
+  const onRight = () => {
+    setScore((prev) => prev + 1);
+  };
 
   const onNext = () => {
     setQuestionIndex((prev) => prev + 1);
@@ -35,16 +41,24 @@ function Game({ onRight }) {
 
   return (
     <div className="Game">
-      <QuestionCard
-        key={questionIndex}
-        index={questionIndex}
-        label={label}
-        options={options}
-        isLast={questionIndex === questions.length - 1}
-        onRight={onRight}
-        onNext={onNext}
-        onDone={onDone}
-      />
+      <div className="banner">
+        <div className="page-container">
+          <div className="score">Puntuación: {score}</div>
+        </div>
+      </div>
+
+      <article className="page-container">
+        <QuestionCard
+          key={questionIndex}
+          index={questionIndex}
+          label={label}
+          options={options}
+          isLast={questionIndex === questions.length - 1}
+          onRight={onRight}
+          onNext={onNext}
+          onDone={onDone}
+        />
+      </article>
     </div>
   );
 }

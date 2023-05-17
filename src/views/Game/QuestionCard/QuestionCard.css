@@ -1,13 +1,3 @@
-.QuestionCard {
-  max-width: 800px;
-  margin: 20px auto;
-  background-color: white;
-  color: var(--primary);
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-}
-
 .QuestionCard .title {
   display: flex;
   align-items: baseline;
@@ -62,17 +52,4 @@
 
 .QuestionCard .actions {
   margin-top: 20px;
-}
-
-.QuestionCard .actions button {
-  border-color: var(--blue);
-  color: var(--blue);
-  font-size: 1rem;
-  padding: 10px;
-}
-
-.QuestionCard .actions button:hover {
-  border-color: var(--blue);
-  color: white;
-  background-color: var(--blue);
 }

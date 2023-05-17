@@ -1,0 +1,77 @@
+.AppLayout {
+  background-color: #eee;
+  height: 100%;
+}
+
+.AppLayout .page-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.AppLayout article {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.AppLayout .card {
+  background-color: white;
+  color: var(--primary);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.AppLayout .card h1 {
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.AppLayout button {
+  background-color: white;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  margin: 2px 0;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.AppLayout button.large {
+  font-size: 1rem;
+  padding: 10px;
+}
+
+.AppLayout button.blue {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+.AppLayout button.blue:hover {
+  border-color: var(--blue);
+  color: white;
+  background-color: var(--blue);
+}
+
+.AppLayout button[disabled],
+.AppLayout button[disabled]:hover {
+  background-color: white !important;
+  color: var(--disabled) !important;
+  border-color: var(--disabled) !important;
+}
+
+.AppLayout ul {
+  list-style: none;
+}
+
+.AppLayout a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.AppLayout a:hover {
+  text-decoration: underline;
+}
+
+.AppLayout input {
+  color: inherit;
+}

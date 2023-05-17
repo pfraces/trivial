@@ -1,0 +1,9 @@
+.Question .label {
+  width: 100%;
+  padding: 10px;
+  font-size: 1.4rem;
+}
+
+.Question .actions {
+  margin-top: 20px;
+}

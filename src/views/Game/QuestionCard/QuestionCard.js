@@ -21,7 +21,7 @@ function QuestionCard({
   const [status, setStatus] = useState(statusMap.pending);
 
   return (
-    <div className="QuestionCard">
+    <div className="QuestionCard card">
       <div className="title">
         <div className="index">#{index + 1}</div>
         <div className="label">{label}</div>
@@ -53,6 +53,7 @@ function QuestionCard({
         <div className="actions">
           {status === statusMap.pending && (
             <button
+              className="large blue"
               disabled={answer == null}
               onClick={() => {
                 setStatus(statusMap.feedback);
@@ -67,11 +68,15 @@ function QuestionCard({
           )}
 
           {status === statusMap.feedback && !isLast && (
-            <button onClick={onNext}>Siguiente</button>
+            <button className="large blue" onClick={onNext}>
+              Siguiente
+            </button>
           )}
 
           {status === statusMap.feedback && isLast && (
-            <button onClick={onDone}>Finalizar</button>
+            <button className="large blue" onClick={onDone}>
+              Finalizar
+            </button>
           )}
         </div>
       </div>

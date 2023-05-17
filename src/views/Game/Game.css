@@ -1,0 +1,16 @@
+.Game .banner {
+  background-color: #0079bf;
+  height: 48px;
+  color: white;
+  font-size: 1.4rem;
+}
+
+.Game .banner .page-container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.Game .banner .score {
+  margin-left: auto;
+}

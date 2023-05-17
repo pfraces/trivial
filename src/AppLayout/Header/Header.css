@@ -1,0 +1,13 @@
+.Header {
+  display: flex;
+  align-items: center;
+  background-color: #005c91;
+  height: 48px;
+  color: white;
+  padding: 10px;
+}
+
+.Header h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
