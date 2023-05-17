@@ -9,6 +9,39 @@ function Question() {
   const [question, setQuestion] = useState(null);
   const questionRef = ref(db, `questions/${id}`);
 
+  const onQuestionLabelChange = (event) => {
+    setQuestion((question) => ({
+      ...question,
+      label: event.target.value,
+    }));
+  };
+
+  const onRightAnswerChange = (event) => {
+    setQuestion((question) => ({
+      ...question,
+      options: question.options.map((option, index) => ({
+        ...option,
+        right: event.target.value === `${index}`,
+      })),
+    }));
+  };
+
+  const onOptionLabelChangeHandler = (optionId) => (event) => {
+    setQuestion((question) => ({
+      ...question,
+      options: question.options.map((option, index) => {
+        if (optionId !== index) {
+          return option;
+        }
+
+        return {
+          ...option,
+          label: event.target.value,
+        };
+      }),
+    }));
+  };
+
   useEffect(() => {
     onValue(questionRef, (data) => {
       setQuestion(data.val());
@@ -27,15 +60,31 @@ function Question() {
 
           <form>
             <input
+              type="text"
               className="label"
               value={question.label}
-              onChange={(event) => {
-                setQuestion((question) => ({
-                  ...question,
-                  label: event.target.value,
-                }));
-              }}
+              onChange={onQuestionLabelChange}
             />
+
+            <div className="options">
+              {question.options.map((option, index) => (
+                <label key={index} className="option">
+                  <input
+                    type="radio"
+                    name="right-answer"
+                    value={index}
+                    checked={option.right}
+                    onChange={onRightAnswerChange}
+                  />
+                  <input
+                    type="text"
+                    className="option-label"
+                    value={option.label}
+                    onChange={onOptionLabelChangeHandler(index)}
+                  />
+                </label>
+              ))}
+            </div>
 
             <div className="actions">
               <button
