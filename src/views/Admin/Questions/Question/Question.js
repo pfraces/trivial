@@ -27,6 +27,10 @@ function Question() {
     id === 'new' ? initQuestion() : null
   );
 
+  const navigateBack = () => {
+    navigate(-1);
+  };
+
   const onQuestionLabelChange = (event) => {
     setQuestion((question) => ({
       ...question,
@@ -60,17 +64,19 @@ function Question() {
     }));
   };
 
-  const onSave = (event) => {
-    event.preventDefault();
-
+  const onSave = () => {
     if (!questionRef) {
       const newQuestionRef = push(ref(db, 'questions'));
       set(newQuestionRef, { ...question, id: newQuestionRef.key });
-      navigate(`../${newQuestionRef.key}`, { relative: 'path' });
-      return;
+    } else {
+      set(questionRef, question);
     }
 
-    set(questionRef, question);
+    navigateBack();
+  };
+
+  const onCancel = () => {
+    navigateBack();
   };
 
   useEffect(() => {
@@ -120,8 +126,12 @@ function Question() {
             </div>
 
             <div className="actions">
-              <button className="large blue" onClick={onSave}>
+              <button type="button" className="large blue" onClick={onSave}>
                 Save
+              </button>
+
+              <button type="button" className="large" onClick={onCancel}>
+                Cancel
               </button>
             </div>
           </form>

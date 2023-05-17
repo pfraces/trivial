@@ -43,6 +43,12 @@
   border-radius: 5px;
 }
 
+.AppLayout button:hover {
+  border-color: var(--primary);
+  color: white;
+  background-color: var(--primary);
+}
+
 .AppLayout button.large {
   height: 40px;
   font-size: 1rem;
@@ -58,6 +64,17 @@
   border-color: var(--blue);
   color: white;
   background-color: var(--blue);
+}
+
+.AppLayout button.red {
+  border-color: var(--red);
+  color: var(--red);
+}
+
+.AppLayout button.red:hover {
+  border-color: var(--red);
+  color: white;
+  background-color: var(--red);
 }
 
 .AppLayout button[disabled],

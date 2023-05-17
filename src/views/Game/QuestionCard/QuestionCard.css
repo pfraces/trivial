@@ -27,12 +27,19 @@
 .QuestionCard .options:not(.feedback) button:not(.selected):hover {
   border-color: var(--blue);
   color: var(--blue);
+  background-color: white;
 }
 
 .QuestionCard .options button.selected {
   border-color: var(--blue);
   color: white;
   background-color: var(--blue);
+}
+
+.QuestionCard .options.feedback button {
+  border-color: var(--primary);
+  color: var(--primary);
+  background-color: white;
 }
 
 .QuestionCard .options.feedback button.selected.right {
