@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ref, onValue } from 'firebase/database';
 import { db } from '../../db';
+import { mapObject } from '../../lib';
 import QuestionCard from './QuestionCard/QuestionCard';
 import './Game.css';
 
@@ -13,7 +14,12 @@ function Game() {
   useEffect(() => {
     onValue(ref(db, 'questions'), (data) => {
       const snapshot = data.val();
-      setQuestions(snapshot);
+
+      if (snapshot == null) {
+        return;
+      }
+
+      setQuestions(mapObject(snapshot, (value) => value));
     });
   }, []);
 
@@ -30,14 +36,14 @@ function Game() {
   };
 
   if (!questions.length) {
-    return;
+    return null;
   }
 
   if (isDone) {
     return null;
   }
 
-  const { label, options } = questions[questionIndex];
+  const { id, label, options } = questions[questionIndex];
 
   return (
     <div className="Game">
@@ -49,7 +55,7 @@ function Game() {
 
       <article className="page-container">
         <QuestionCard
-          key={questionIndex}
+          key={id}
           index={questionIndex}
           label={label}
           options={options}

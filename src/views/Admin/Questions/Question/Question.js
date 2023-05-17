@@ -1,13 +1,31 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { ref, set, onValue } from 'firebase/database';
+import { useMemo, useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { ref, push, set, onValue } from 'firebase/database';
 import { db } from '../../../../db';
 import './Question.css';
 
+const initQuestion = () => ({
+  label: '',
+  options: [
+    { label: '', right: false },
+    { label: '', right: false },
+    { label: '', right: false },
+    { label: '', right: false },
+  ],
+});
+
 function Question() {
+  const navigate = useNavigate();
   const { id } = useParams();
-  const [question, setQuestion] = useState(null);
-  const questionRef = ref(db, `questions/${id}`);
+
+  const questionRef = useMemo(
+    () => (id === 'new' ? null : ref(db, `questions/${id}`)),
+    [id]
+  );
+
+  const [question, setQuestion] = useState(
+    id === 'new' ? initQuestion() : null
+  );
 
   const onQuestionLabelChange = (event) => {
     setQuestion((question) => ({
@@ -26,7 +44,7 @@ function Question() {
     }));
   };
 
-  const onOptionLabelChangeHandler = (optionId) => (event) => {
+  const optionLabelChangeHandler = (optionId) => (event) => {
     setQuestion((question) => ({
       ...question,
       options: question.options.map((option, index) => {
@@ -42,22 +60,37 @@ function Question() {
     }));
   };
 
+  const onSave = (event) => {
+    event.preventDefault();
+
+    if (!questionRef) {
+      const newQuestionRef = push(ref(db, 'questions'));
+      set(newQuestionRef, { ...question, id: newQuestionRef.key });
+      navigate(`../${newQuestionRef.key}`, { relative: 'path' });
+      return;
+    }
+
+    set(questionRef, question);
+  };
+
   useEffect(() => {
+    if (!questionRef) {
+      return;
+    }
+
     onValue(questionRef, (data) => {
       setQuestion(data.val());
     });
-  }, []);
+  }, [questionRef]);
 
-  if (!question) {
-    return;
+  if (questionRef && !question) {
+    return; // loading...
   }
 
   return (
     <div className="Question">
       <article className="page-container">
         <div className="card">
-          <h1>Edit question</h1>
-
           <form>
             <input
               type="text"
@@ -80,20 +113,14 @@ function Question() {
                     type="text"
                     className="option-label"
                     value={option.label}
-                    onChange={onOptionLabelChangeHandler(index)}
+                    onChange={optionLabelChangeHandler(index)}
                   />
                 </label>
               ))}
             </div>
 
             <div className="actions">
-              <button
-                className="large blue"
-                onClick={(event) => {
-                  event.preventDefault();
-                  set(questionRef, question);
-                }}
-              >
+              <button className="large blue" onClick={onSave}>
                 Save
               </button>
             </div>

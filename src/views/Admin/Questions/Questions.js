@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { ref, onValue } from 'firebase/database';
 import { db } from '../../../db';
+import { mapObject } from '../../../lib';
 import QuestionLink from './QuestionLink/QuestionLink';
 import './Questions.css';
 
@@ -9,23 +11,35 @@ function Questions() {
 
   useEffect(() => {
     onValue(ref(db, 'questions'), (data) => {
-      setQuestions(data.val());
+      const snapshot = data.val();
+
+      if (snapshot == null) {
+        return;
+      }
+
+      setQuestions(mapObject(snapshot, (value) => value));
     });
   }, []);
-
-  if (!questions.length) {
-    return;
-  }
 
   return (
     <div className="Questions">
       <article className="page-container">
         <div className="card">
-          <h1>Questions</h1>
+          <div className="card-header">
+            <h1>Questions</h1>
+            <Link to="new">
+              <button className="large blue">Add</button>
+            </Link>
+          </div>
 
-          {questions.map((question, index) => {
-            const id = `${index}`;
-            return <QuestionLink key={id} id={id} label={question.label} />;
+          {questions.map((question) => {
+            return (
+              <QuestionLink
+                key={question.id}
+                id={question.id}
+                label={question.label}
+              />
+            );
           })}
         </div>
       </article>

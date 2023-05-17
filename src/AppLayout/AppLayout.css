@@ -21,22 +21,30 @@
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
-.AppLayout .card h1 {
+.AppLayout .card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.AppLayout .card-header h1 {
+  flex: 1;
   font-size: 1.8rem;
   font-weight: 400;
-  margin-bottom: 20px;
 }
 
 .AppLayout button {
   background-color: white;
   color: var(--primary);
   border: 1px solid var(--primary);
+  height: 27px;
   margin: 2px 0;
   padding: 5px;
   border-radius: 5px;
 }
 
 .AppLayout button.large {
+  height: 40px;
   font-size: 1rem;
   padding: 10px;
 }

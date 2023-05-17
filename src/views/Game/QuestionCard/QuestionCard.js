@@ -22,12 +22,14 @@ function QuestionCard({
 
   return (
     <div className="QuestionCard card">
-      <div className="title">
-        <div className="index">#{index + 1}</div>
-        <div className="label">{label}</div>
+      <div className="card-header">
+        <div className="title">
+          <div className="index">#{index + 1}</div>
+          <div className="label">{label}</div>
+        </div>
       </div>
 
-      <div className="body">
+      <div className="card-body">
         <div
           className={clsx('options', {
             feedback: status === statusMap.feedback,

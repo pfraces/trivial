@@ -12,7 +12,7 @@
   font-size: 1.2rem;
 }
 
-.QuestionCard .body {
+.QuestionCard .card-body {
   margin-left: 50px;
 }
 
@@ -22,7 +22,6 @@
   display: flex;
   flex-direction: column;
   max-width: 150px;
-  margin-top: 20px;
 }
 
 .QuestionCard .options:not(.feedback) button:not(.selected):hover {
