@@ -5,7 +5,9 @@ function Admin() {
     <div className="Admin">
       <article className="page-container">
         <div className="card">
-          <h1>Admin</h1>
+          <div className="card-header">
+            <h1>Admin</h1>
+          </div>
 
           <ul>
             <li>

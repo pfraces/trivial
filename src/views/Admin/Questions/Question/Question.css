@@ -26,9 +26,14 @@
 }
 
 .Question .actions {
+  display: flex;
   margin-top: 20px;
 }
 
 .Question .actions button + button {
   margin-left: 10px;
+}
+
+.Question .actions .red {
+  margin-left: auto;
 }

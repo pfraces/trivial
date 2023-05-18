@@ -27,6 +27,7 @@ function Questions() {
         <div className="card">
           <div className="card-header">
             <h1>Questions</h1>
+
             <Link to="new">
               <button className="large blue">Add</button>
             </Link>

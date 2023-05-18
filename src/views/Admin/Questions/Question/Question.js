@@ -1,6 +1,6 @@
 import { useMemo, useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { ref, push, set, onValue } from 'firebase/database';
+import { ref, push, set, remove, onValue } from 'firebase/database';
 import { db } from '../../../../db';
 import './Question.css';
 
@@ -79,6 +79,11 @@ function Question() {
     navigateBack();
   };
 
+  const onDelete = () => {
+    remove(questionRef);
+    navigateBack();
+  };
+
   useEffect(() => {
     if (!questionRef) {
       return;
@@ -133,6 +138,12 @@ function Question() {
               <button type="button" className="large" onClick={onCancel}>
                 Cancel
               </button>
+
+              {questionRef && (
+                <button type="button" className="large red" onClick={onDelete}>
+                  Delete
+                </button>
+              )}
             </div>
           </form>
         </div>
