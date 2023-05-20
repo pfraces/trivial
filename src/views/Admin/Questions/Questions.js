@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ref, onValue } from 'firebase/database';
 import { db } from '../../../db';
 import { mapObject } from '../../../lib';
+import Breadcrumbs from '../../../AppLayout/Breadcrumbs/Breadcrumbs';
 import QuestionLink from './QuestionLink/QuestionLink';
 import './Questions.css';
 
@@ -25,6 +26,10 @@ function Questions() {
     <div className="Questions">
       <article className="page-container">
         <div className="card">
+          <div className="card-breadcrumbs">
+            <Breadcrumbs />
+          </div>
+
           <div className="card-header">
             <h1>Questions</h1>
 

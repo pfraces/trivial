@@ -2,6 +2,7 @@ import { useMemo, useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ref, push, set, remove, onValue } from 'firebase/database';
 import { db } from '../../../../db';
+import Breadcrumbs from '../../../../AppLayout/Breadcrumbs/Breadcrumbs';
 import './Question.css';
 
 const initQuestion = () => ({
@@ -102,6 +103,10 @@ function Question() {
     <div className="Question">
       <article className="page-container">
         <div className="card">
+          <div className="card-breadcrumbs">
+            <Breadcrumbs />
+          </div>
+
           <form>
             <input
               type="text"
