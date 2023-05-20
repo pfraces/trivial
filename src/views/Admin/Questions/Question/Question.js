@@ -111,6 +111,7 @@ function Question() {
             <input
               type="text"
               className="label"
+              placeholder="Title"
               value={question.label}
               onChange={onQuestionLabelChange}
             />
@@ -128,6 +129,7 @@ function Question() {
                   <input
                     type="text"
                     className="option-label"
+                    placeholder={`Option ${index + 1}`}
                     value={option.label}
                     onChange={optionLabelChangeHandler(index)}
                   />

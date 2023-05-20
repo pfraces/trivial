@@ -3,38 +3,9 @@
   height: 100%;
 }
 
-.AppLayout .page-container {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
 .AppLayout article {
   padding-top: 20px;
   padding-bottom: 20px;
-}
-
-.AppLayout .card {
-  background-color: white;
-  color: var(--primary);
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 3px 5px rgb(0 0 0 / 0.2);
-}
-
-.AppLayout .card-breadcrumbs {
-  margin-bottom: 20px;
-}
-
-.AppLayout .card-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.AppLayout .card-header h1 {
-  flex: 1;
-  font-size: 1.8rem;
-  font-weight: 400;
 }
 
 .AppLayout button {
@@ -103,4 +74,37 @@
 
 .AppLayout input {
   color: inherit;
+}
+
+.AppLayout input:placeholder-shown {
+  font-style: italic;
+}
+
+.AppLayout .page-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.AppLayout .card {
+  background-color: white;
+  color: var(--primary);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 3px 5px rgb(0 0 0 / 0.2);
+}
+
+.AppLayout .card-breadcrumbs {
+  margin-bottom: 20px;
+}
+
+.AppLayout .card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.AppLayout .card-header h1 {
+  flex: 1;
+  font-size: 1.8rem;
+  font-weight: 400;
 }
