@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import useBreadcrumbs from 'use-react-router-breadcrumbs';
-import { routes } from '../../routes';
+import { routes } from 'src/routes';
 import './Breadcrumbs.css';
 
 function Breadcrumbs() {

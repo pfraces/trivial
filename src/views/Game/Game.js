@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ref, onValue } from 'firebase/database';
-import { db } from '../../db';
+import { db } from 'src/db';
 import map from 'lodash/map';
 import shuffle from 'lodash/shuffle';
 import QuestionCard from './QuestionCard/QuestionCard';

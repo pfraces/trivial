@@ -1,8 +1,8 @@
 import { useMemo, useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ref, push, set, remove, onValue } from 'firebase/database';
-import { db } from '../../../../db';
-import Breadcrumbs from '../../../../AppLayout/Breadcrumbs/Breadcrumbs';
+import { db } from 'src/db';
+import Breadcrumbs from 'src/AppLayout/Breadcrumbs/Breadcrumbs';
 import './Question.css';
 
 const initQuestion = () => ({
