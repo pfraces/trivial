@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { ref, onValue } from 'firebase/database';
 import { db } from '../../db';
-import { mapObject } from '../../lib';
+import map from 'lodash/map';
+import shuffle from 'lodash/shuffle';
 import QuestionCard from './QuestionCard/QuestionCard';
 import './Game.css';
 
@@ -19,7 +20,7 @@ function Game() {
         return;
       }
 
-      setQuestions(mapObject(snapshot, (value) => value));
+      setQuestions(shuffle(map(snapshot)));
     });
   }, []);
 

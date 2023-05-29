@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ref, onValue } from 'firebase/database';
 import { db } from '../../../db';
-import { mapObject } from '../../../lib';
+import map from 'lodash/map';
 import Breadcrumbs from '../../../AppLayout/Breadcrumbs/Breadcrumbs';
 import QuestionLink from './QuestionLink/QuestionLink';
 import './Questions.css';
@@ -18,7 +18,7 @@ function Questions() {
         return;
       }
 
-      setQuestions(mapObject(snapshot, (value) => value));
+      setQuestions(map(snapshot));
     });
   }, []);
 
