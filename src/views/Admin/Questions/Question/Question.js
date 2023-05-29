@@ -85,6 +85,7 @@ function Question() {
 
   const onDelete = () => {
     remove(questionRef);
+    notify({ severity: 'error', message: 'Question deleted' });
     navigateBack();
   };
 

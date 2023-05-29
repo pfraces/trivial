@@ -4,7 +4,7 @@ import { Alert, Snackbar } from '@mui/material';
 const SnackbarContext = createContext({});
 
 export const SnackbarProvider = ({ children }) => {
-  const [snackbar, setSnackbar] = useState({ open: false });
+  const [snackbar, setSnackbar] = useState(null);
 
   return (
     <SnackbarContext.Provider value={{ snackbar, setSnackbar }}>
@@ -16,15 +16,7 @@ export const SnackbarProvider = ({ children }) => {
 export const useSnackbar = () => {
   const { setSnackbar } = useContext(SnackbarContext);
 
-  const notify = ({ message }) => {
-    setSnackbar((snackbar) => ({
-      ...snackbar,
-      open: true,
-      message: message,
-    }));
-  };
-
-  return { notify };
+  return { notify: setSnackbar };
 };
 
 export const SnackbarContainer = () => {
@@ -35,30 +27,28 @@ export const SnackbarContainer = () => {
       return;
     }
 
-    setSnackbar((snackbar) => ({
-      ...snackbar,
-      open: false,
-      message: null,
-    }));
+    setSnackbar(null);
   };
 
   return (
     <div className="SnackbarContainer">
-      <Snackbar
-        autoHideDuration={3000}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-        open={snackbar.open}
-        onClose={onSnackbarClose}
-      >
-        <Alert
-          elevation={6}
-          variant="filled"
+      {snackbar !== null && (
+        <Snackbar
+          autoHideDuration={3000}
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+          open={true}
           onClose={onSnackbarClose}
-          severity="success"
         >
-          {snackbar.message}
-        </Alert>
-      </Snackbar>
+          <Alert
+            elevation={6}
+            variant="filled"
+            onClose={onSnackbarClose}
+            severity={snackbar.severity}
+          >
+            {snackbar.message}
+          </Alert>
+        </Snackbar>
+      )}
     </div>
   );
 };
