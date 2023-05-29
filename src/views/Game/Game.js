@@ -20,7 +20,14 @@ function Game() {
         return;
       }
 
-      setQuestions(shuffle(map(snapshot)));
+      setQuestions(
+        shuffle(
+          map(snapshot, (question) => ({
+            ...question,
+            options: shuffle(question.options),
+          }))
+        )
+      );
     });
   }, []);
 
