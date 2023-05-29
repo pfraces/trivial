@@ -5,7 +5,7 @@ function Option({ label, right, selected, onClick }) {
   return (
     <div className="Option">
       <button
-        className={clsx({ right: right, selected: selected })}
+        className={clsx('button', { right: right, selected: selected })}
         onClick={onClick}
       >
         {label}

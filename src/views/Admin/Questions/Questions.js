@@ -34,7 +34,7 @@ function Questions() {
             <h1>Questions</h1>
 
             <Link to="new">
-              <button className="large blue">Add</button>
+              <button className="button large blue">Add</button>
             </Link>
           </div>
 

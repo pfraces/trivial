@@ -55,7 +55,7 @@ function QuestionCard({
         <div className="actions">
           {status === statusMap.pending && (
             <button
-              className="large blue"
+              className="button large blue"
               disabled={answer == null}
               onClick={() => {
                 setStatus(statusMap.feedback);
@@ -70,13 +70,13 @@ function QuestionCard({
           )}
 
           {status === statusMap.feedback && !isLast && (
-            <button className="large blue" onClick={onNext}>
+            <button className="button large blue" onClick={onNext}>
               Siguiente
             </button>
           )}
 
           {status === statusMap.feedback && isLast && (
-            <button className="large blue" onClick={onDone}>
+            <button className="button large blue" onClick={onDone}>
               Finalizar
             </button>
           )}

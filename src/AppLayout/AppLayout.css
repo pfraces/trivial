@@ -8,7 +8,7 @@
   padding-bottom: 20px;
 }
 
-.AppLayout button {
+.AppLayout .button {
   background-color: white;
   color: var(--primary);
   border: 1px solid var(--primary);
@@ -18,42 +18,42 @@
   border-radius: 5px;
 }
 
-.AppLayout button:hover {
+.AppLayout .button:hover {
   border-color: var(--primary);
   color: white;
   background-color: var(--primary);
 }
 
-.AppLayout button.large {
+.AppLayout .button.large {
   height: 40px;
   font-size: 1rem;
   padding: 10px;
 }
 
-.AppLayout button.blue {
+.AppLayout .button.blue {
   border-color: var(--blue);
   color: var(--blue);
 }
 
-.AppLayout button.blue:hover {
+.AppLayout .button.blue:hover {
   border-color: var(--blue);
   color: white;
   background-color: var(--blue);
 }
 
-.AppLayout button.red {
+.AppLayout .button.red {
   border-color: var(--red);
   color: var(--red);
 }
 
-.AppLayout button.red:hover {
+.AppLayout .button.red:hover {
   border-color: var(--red);
   color: white;
   background-color: var(--red);
 }
 
-.AppLayout button[disabled],
-.AppLayout button[disabled]:hover {
+.AppLayout .button[disabled],
+.AppLayout .button[disabled]:hover {
   background-color: white !important;
   color: var(--disabled) !important;
   border-color: var(--disabled) !important;

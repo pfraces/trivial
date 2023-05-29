@@ -2,6 +2,7 @@ import { useMemo, useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ref, push, set, remove, onValue } from 'firebase/database';
 import { db } from 'src/db';
+import { useSnackbar } from 'src/AppLayout/snackbar/snackbar';
 import Breadcrumbs from 'src/AppLayout/Breadcrumbs/Breadcrumbs';
 import './Question.css';
 
@@ -18,6 +19,7 @@ const initQuestion = () => ({
 function Question() {
   const navigate = useNavigate();
   const { id } = useParams();
+  const { notify } = useSnackbar();
 
   const questionRef = useMemo(
     () => (id === 'new' ? null : ref(db, `questions/${id}`)),
@@ -73,6 +75,7 @@ function Question() {
       set(questionRef, question);
     }
 
+    notify({ message: 'Question saved' });
     navigateBack();
   };
 
@@ -138,16 +141,24 @@ function Question() {
             </div>
 
             <div className="actions">
-              <button type="button" className="large blue" onClick={onSave}>
+              <button
+                type="button"
+                className="button large blue"
+                onClick={onSave}
+              >
                 Save
               </button>
 
-              <button type="button" className="large" onClick={onCancel}>
+              <button type="button" className="button large" onClick={onCancel}>
                 Cancel
               </button>
 
               {questionRef && (
-                <button type="button" className="large red" onClick={onDelete}>
+                <button
+                  type="button"
+                  className="button large red"
+                  onClick={onDelete}
+                >
                   Delete
                 </button>
               )}
