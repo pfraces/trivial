@@ -4,7 +4,7 @@ import { routes } from '../../routes';
 import './Breadcrumbs.css';
 
 function Breadcrumbs() {
-  const breadcrumbs = useBreadcrumbs(routes);
+  const breadcrumbs = useBreadcrumbs(routes, { disableDefaults: true });
 
   return (
     <div className="Breadcrumbs">

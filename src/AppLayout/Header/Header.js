@@ -9,8 +9,8 @@ function Header() {
       </div>
 
       <div className="nav">
-        <a href="/">Quiz</a>
-        <a href="admin">Admin</a>
+        <Link to="/">Quiz</Link>
+        <Link to="admin">Admin</Link>
       </div>
     </div>
   );
