@@ -1,17 +1,15 @@
-.QuestionLink {
+.QuestionLink a {
   display: block;
   padding: 20px;
+  color: var(--primary);
   border: 1px solid var(--primary);
   border-radius: 5px;
   cursor: pointer;
 }
 
-.QuestionLink:hover {
+.QuestionLink a:hover {
+  color: white;
   border-color: var(--blue);
   background-color: var(--blue);
-}
-
-.QuestionLink:hover {
-  color: white;
-  text-decoration: none !important;
+  text-decoration: none;
 }

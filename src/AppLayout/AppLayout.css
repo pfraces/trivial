@@ -8,6 +8,27 @@
   padding-bottom: 20px;
 }
 
+.AppLayout ul {
+  list-style: none;
+}
+
+.AppLayout a {
+  color: var(--darkblue);
+  text-decoration: none;
+}
+
+.AppLayout a:hover {
+  text-decoration: underline;
+}
+
+.AppLayout input {
+  color: inherit;
+}
+
+.AppLayout input:placeholder-shown {
+  font-style: italic;
+}
+
 .AppLayout .button {
   background-color: white;
   color: var(--primary);
@@ -59,27 +80,6 @@
   border-color: var(--disabled) !important;
 }
 
-.AppLayout ul {
-  list-style: none;
-}
-
-.AppLayout a {
-  color: var(--primary);
-  text-decoration: none;
-}
-
-.AppLayout a:hover {
-  text-decoration: underline;
-}
-
-.AppLayout input {
-  color: inherit;
-}
-
-.AppLayout input:placeholder-shown {
-  font-style: italic;
-}
-
 .AppLayout .page-container {
   max-width: 800px;
   margin: 0 auto;
@@ -89,6 +89,7 @@
   background-color: white;
   color: var(--primary);
   padding: 20px;
+  padding-bottom: 40px;
   border-radius: 5px;
   box-shadow: 0 3px 5px rgb(0 0 0 / 0.2);
 }

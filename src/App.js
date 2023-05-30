@@ -1,16 +1,17 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { AuthProvider } from './firebase/auth';
+import { SnackbarProvider } from './AppLayout/snackbar/snackbar';
 import { routes } from './routes';
 import './App.css';
-import { SnackbarProvider } from './AppLayout/snackbar/snackbar';
-
-const router = createBrowserRouter(routes);
 
 function App() {
   return (
     <div className="App">
-      <SnackbarProvider>
-        <RouterProvider router={router} />
-      </SnackbarProvider>
+      <AuthProvider>
+        <SnackbarProvider>
+          <RouterProvider router={createBrowserRouter(routes)} />
+        </SnackbarProvider>
+      </AuthProvider>
     </div>
   );
 }

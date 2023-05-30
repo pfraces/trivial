@@ -1,6 +1,6 @@
 .Header {
   display: flex;
-  background-color: #005c91;
+  background-color: var(--darkblue);
   height: 48px;
   color: white;
 }

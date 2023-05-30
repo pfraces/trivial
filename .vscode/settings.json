@@ -2,5 +2,8 @@
   "editor.rulers": [80],
   "window.zoomLevel": 0,
   "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  }
 }

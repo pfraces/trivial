@@ -14,9 +14,7 @@ function Breadcrumbs() {
             {index !== 0 && <span className="separator">›</span>}
 
             {index < breadcrumbs.length - 1 && (
-              <Link className="breadcrumb-link" to={match.pathname}>
-                {breadcrumb}
-              </Link>
+              <Link to={match.pathname}>{breadcrumb}</Link>
             )}
 
             {index === breadcrumbs.length - 1 && (

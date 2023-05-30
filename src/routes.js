@@ -1,4 +1,7 @@
 import AppLayout from './AppLayout/AppLayout';
+import Signup from './views/Signup/Signup';
+import Login from './views/Login/Login';
+import Home from './views/Home/Home';
 import Game from './views/Game/Game';
 import Admin from './views/Admin/Admin';
 import Questions from './views/Admin/Questions/Questions';
@@ -12,6 +15,18 @@ export const routes = [
       {
         index: true,
         element: <Game />,
+      },
+      {
+        path: '/login',
+        element: <Login />,
+      },
+      {
+        path: '/signup',
+        element: <Signup />,
+      },
+      {
+        path: '/home',
+        element: <Home />,
       },
       {
         path: '/admin',

@@ -14,6 +14,7 @@
 .Question .options .option {
   display: flex;
   align-items: center;
+  margin: 2px 0;
 }
 
 .Question .options .option input[type='radio'] {
@@ -21,7 +22,6 @@
 }
 
 .Question .options .option .option-label {
-  margin: 2px 0;
   padding: 5px;
 }
 

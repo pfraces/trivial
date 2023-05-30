@@ -1,7 +1,7 @@
 import { useMemo, useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ref, push, set, remove, onValue } from 'firebase/database';
-import { db } from 'src/db';
+import { db } from 'src/firebase/firebase';
 import { useSnackbar } from 'src/AppLayout/snackbar/snackbar';
 import Breadcrumbs from 'src/AppLayout/Breadcrumbs/Breadcrumbs';
 import './Question.css';
@@ -122,7 +122,7 @@ function Question() {
 
             <div className="options">
               {question.options.map((option, index) => (
-                <label key={index} className="option">
+                <div key={index} className="option">
                   <input
                     type="radio"
                     name="right-answer"
@@ -130,6 +130,7 @@ function Question() {
                     checked={option.right}
                     onChange={onRightAnswerChange}
                   />
+
                   <input
                     type="text"
                     className="option-label"
@@ -137,7 +138,7 @@ function Question() {
                     value={option.label}
                     onChange={optionLabelChangeHandler(index)}
                   />
-                </label>
+                </div>
               ))}
             </div>
 
