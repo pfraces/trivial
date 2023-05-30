@@ -3,32 +3,43 @@
   background-color: var(--darkblue);
   height: 48px;
   color: white;
+  padding: 0 20px;
 }
 
 .Header h1 {
   font-size: 1.8rem;
   font-weight: 600;
-  padding: 5px 20px;
-  margin-right: 30px;
+  padding: 5px 0;
+  margin-right: 50px;
 }
 
 .Header .nav {
   display: flex;
-  font-size: 1.4rem;
+  flex: 1;
 }
 
-.Header .nav a {
+.Header .link {
   display: flex;
   align-items: center;
   color: inherit;
+  font-size: 1.4rem;
 }
 
-.Header .nav a:hover {
+.Header button.link {
+  background-color: transparent;
+  border: none;
+}
+
+.Header .link:hover {
   text-decoration: none;
   border-top: 3px solid transparent;
   border-bottom: 3px solid white;
 }
 
-.Header .nav a + a {
+.Header .nav .link + .link {
   margin-left: 30px;
+}
+
+.Header .session {
+  display: flex;
 }

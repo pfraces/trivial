@@ -12,13 +12,25 @@ function Header() {
       </div>
 
       <div className="nav">
-        <Link to="/">Quiz</Link>
-        <Link to="admin">Admin</Link>
+        <Link to="/" className="link">
+          Quiz
+        </Link>
 
-        {!user && <Link to="login">Login</Link>}
+        <Link to="admin" className="link">
+          Admin
+        </Link>
+      </div>
+
+      <div className="session">
+        {!user && (
+          <Link to="login" className="link">
+            Log in
+          </Link>
+        )}
 
         {user && (
           <button
+            className="link"
             onClick={() => {
               logout();
             }}
