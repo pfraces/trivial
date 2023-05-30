@@ -23,6 +23,7 @@
 
 .Question .options .option .option-label {
   padding: 5px;
+  flex: 1;
 }
 
 .Question .actions {

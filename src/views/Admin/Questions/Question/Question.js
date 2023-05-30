@@ -68,15 +68,23 @@ function Question() {
   };
 
   const onSave = () => {
+    let doSave;
+
     if (!questionRef) {
       const newQuestionRef = push(ref(db, 'questions'));
-      set(newQuestionRef, { ...question, id: newQuestionRef.key });
+      doSave = set(newQuestionRef, { ...question, id: newQuestionRef.key });
     } else {
-      set(questionRef, question);
+      doSave = set(questionRef, question);
     }
 
-    notify({ message: 'Question saved' });
-    navigateBack();
+    doSave
+      .then(() => {
+        notify({ message: 'Question saved' });
+        navigateBack();
+      })
+      .catch((err) => {
+        notify({ severity: 'error', message: err.message });
+      });
   };
 
   const onCancel = () => {
@@ -84,9 +92,14 @@ function Question() {
   };
 
   const onDelete = () => {
-    remove(questionRef);
-    notify({ severity: 'error', message: 'Question deleted' });
-    navigateBack();
+    remove(questionRef)
+      .then(() => {
+        notify({ message: 'Question deleted' });
+        navigateBack();
+      })
+      .catch((err) => {
+        notify({ severity: 'error', message: err.message });
+      });
   };
 
   useEffect(() => {
