@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {
+  Avatar,
   Divider,
   Drawer,
   IconButton,
@@ -14,12 +15,13 @@ import {
   MenuItem,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import HomeIcon from '@mui/icons-material/Home';
 import SchoolIcon from '@mui/icons-material/School';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import QuizIcon from '@mui/icons-material/Quiz';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import LogoutIcon from '@mui/icons-material/Logout';
 import { useAuth } from 'src/firebase/auth';
 import './Header.css';
 
@@ -103,16 +105,30 @@ function Header() {
               onClick={onAccountMenuOpen}
               color="inherit"
             >
-              <AccountCircleIcon />
+              <Avatar className="avatar" />
             </IconButton>
 
             <Menu
               anchorEl={accountMenuAnchor}
               open={Boolean(accountMenuAnchor)}
               onClose={closeAccountMenu}
+              PaperProps={{ className: 'account-menu' }}
             >
-              <MenuItem onClick={onProfile}>Profile</MenuItem>
-              <MenuItem onClick={onLogout}>Logout</MenuItem>
+              <MenuItem onClick={onProfile}>
+                <ListItemIcon>
+                  <AccountCircleIcon fontSize="small" />
+                </ListItemIcon>
+                Profile
+              </MenuItem>
+
+              <Divider />
+
+              <MenuItem onClick={onLogout}>
+                <ListItemIcon>
+                  <LogoutIcon fontSize="small" />
+                </ListItemIcon>
+                Logout
+              </MenuItem>
             </Menu>
           </>
         )}

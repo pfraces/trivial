@@ -64,3 +64,10 @@
 .Header .session .account-menu-toggler {
   margin-right: -12px;
 }
+
+.Header .session .avatar {
+  width: 24px;
+  height: 24px;
+  background-color: white;
+  color: var(--darkblue);
+}
