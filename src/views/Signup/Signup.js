@@ -44,6 +44,8 @@ function Signup() {
             <div className="form-fields">
               <input
                 type="email"
+                name="email"
+                autoComplete="email"
                 className="form-field"
                 placeholder="Email"
                 value={email}
@@ -52,6 +54,8 @@ function Signup() {
 
               <input
                 type="password"
+                name="password"
+                autoComplete="new-password"
                 className="form-field"
                 placeholder="Password"
                 value={password}
