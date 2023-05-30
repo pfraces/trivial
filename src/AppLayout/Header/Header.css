@@ -6,6 +6,10 @@
   padding: 0 20px;
 }
 
+.Header .app-menu-toggler {
+  display: none;
+}
+
 .Header h1 {
   font-size: 1.8rem;
   font-weight: 600;
@@ -15,14 +19,24 @@
 
 .Header .nav {
   display: flex;
-  flex: 1;
+}
+
+@media (max-width: 600px) {
+  .Header .app-menu-toggler {
+    display: initial;
+    padding-right: 6px;
+  }
+
+  .Header .nav {
+    display: none;
+  }
 }
 
 .Header .link {
   display: flex;
   align-items: center;
   color: inherit;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
 }
 
 .Header .link:hover {
@@ -42,4 +56,9 @@
 
 .Header .session {
   display: flex;
+  margin-left: auto;
+}
+
+.Header .session .account-menu-toggler {
+  margin-right: -12px;
 }

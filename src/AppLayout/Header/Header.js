@@ -1,35 +1,73 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { IconButton, Menu, MenuItem } from '@mui/material';
-import AccountCircle from '@mui/icons-material/AccountCircle';
+import {
+  Divider,
+  Drawer,
+  IconButton,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  ListSubheader,
+  Menu,
+  MenuItem,
+} from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import HomeIcon from '@mui/icons-material/Home';
+import SchoolIcon from '@mui/icons-material/School';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import QuizIcon from '@mui/icons-material/Quiz';
 import { useAuth } from 'src/firebase/auth';
 import './Header.css';
 
 function Header() {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [appMenuOpen, setAppMenuOpen] = useState(false);
+  const [accountMenuAnchor, setAccountMenuAnchor] = useState(null);
 
-  const onMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
+  const onAppMenuOpen = () => {
+    setAppMenuOpen(true);
   };
 
-  const closeMenu = () => {
-    setAnchorEl(null);
+  const closeAppMenu = () => {
+    setAppMenuOpen(false);
+  };
+
+  const onAccountMenuOpen = (event) => {
+    setAccountMenuAnchor(event.currentTarget);
+  };
+
+  const closeAccountMenu = () => {
+    setAccountMenuAnchor(null);
   };
 
   const onProfile = () => {
     navigate('profile');
-    closeMenu();
+    closeAccountMenu();
   };
 
   const onLogout = () => {
-    closeMenu();
+    closeAccountMenu();
     logout();
   };
 
   return (
     <div className="Header">
+      <div className="app-menu-toggler">
+        <IconButton
+          size="large"
+          edge="start"
+          color="inherit"
+          onClick={onAppMenuOpen}
+        >
+          <MenuIcon />
+        </IconButton>
+      </div>
+
       <div className="title">
         <h1>Trivial Puessi</h1>
       </div>
@@ -57,14 +95,19 @@ function Header() {
 
         {user && (
           <>
-            <IconButton size="large" onClick={onMenuOpen} color="inherit">
-              <AccountCircle />
+            <IconButton
+              size="large"
+              className="account-menu-toggler"
+              onClick={onAccountMenuOpen}
+              color="inherit"
+            >
+              <AccountCircleIcon />
             </IconButton>
 
             <Menu
-              anchorEl={anchorEl}
-              open={Boolean(anchorEl)}
-              onClose={closeMenu}
+              anchorEl={accountMenuAnchor}
+              open={Boolean(accountMenuAnchor)}
+              onClose={closeAccountMenu}
             >
               <MenuItem onClick={onProfile}>Profile</MenuItem>
               <MenuItem onClick={onLogout}>Logout</MenuItem>
@@ -72,6 +115,65 @@ function Header() {
           </>
         )}
       </div>
+
+      <Drawer
+        anchor="left"
+        open={appMenuOpen}
+        onClose={closeAppMenu}
+        PaperProps={{ className: 'app-menu' }}
+      >
+        <div className="app-menu-header">
+          <IconButton onClick={closeAppMenu}>
+            <ChevronLeftIcon />
+          </IconButton>
+        </div>
+
+        <Divider />
+
+        <List>
+          <ListItem disablePadding>
+            <ListItemButton component={Link} to="home" onClick={closeAppMenu}>
+              <ListItemIcon>
+                <HomeIcon />
+              </ListItemIcon>
+              <ListItemText primary="Home" />
+            </ListItemButton>
+          </ListItem>
+
+          <ListItem disablePadding>
+            <ListItemButton component={Link} to="quiz" onClick={closeAppMenu}>
+              <ListItemIcon>
+                <SchoolIcon />
+              </ListItemIcon>
+              <ListItemText primary="Quiz" />
+            </ListItemButton>
+          </ListItem>
+        </List>
+
+        <List subheader={<ListSubheader>Admin</ListSubheader>}>
+          <ListItem disablePadding>
+            <ListItemButton component={Link} to="admin" onClick={closeAppMenu}>
+              <ListItemIcon>
+                <DashboardIcon />
+              </ListItemIcon>
+              <ListItemText primary="Dashboard" />
+            </ListItemButton>
+          </ListItem>
+
+          <ListItem disablePadding>
+            <ListItemButton
+              component={Link}
+              to="admin/questions"
+              onClick={closeAppMenu}
+            >
+              <ListItemIcon>
+                <QuizIcon />
+              </ListItemIcon>
+              <ListItemText primary="Questions" />
+            </ListItemButton>
+          </ListItem>
+        </List>
+      </Drawer>
     </div>
   );
 }
