@@ -81,9 +81,11 @@ function Header() {
           Quiz
         </Link>
 
-        <Link to="admin" className="link">
-          Admin
-        </Link>
+        {user?.role === 'admin' && (
+          <Link to="admin" className="link">
+            Admin
+          </Link>
+        )}
       </div>
 
       <div className="session">
@@ -150,29 +152,35 @@ function Header() {
           </ListItem>
         </List>
 
-        <List subheader={<ListSubheader>Admin</ListSubheader>}>
-          <ListItem disablePadding>
-            <ListItemButton component={Link} to="admin" onClick={closeAppMenu}>
-              <ListItemIcon>
-                <DashboardIcon />
-              </ListItemIcon>
-              <ListItemText primary="Dashboard" />
-            </ListItemButton>
-          </ListItem>
+        {user?.role === 'admin' && (
+          <List subheader={<ListSubheader>Admin</ListSubheader>}>
+            <ListItem disablePadding>
+              <ListItemButton
+                component={Link}
+                to="admin"
+                onClick={closeAppMenu}
+              >
+                <ListItemIcon>
+                  <DashboardIcon />
+                </ListItemIcon>
+                <ListItemText primary="Dashboard" />
+              </ListItemButton>
+            </ListItem>
 
-          <ListItem disablePadding>
-            <ListItemButton
-              component={Link}
-              to="admin/questions"
-              onClick={closeAppMenu}
-            >
-              <ListItemIcon>
-                <QuizIcon />
-              </ListItemIcon>
-              <ListItemText primary="Questions" />
-            </ListItemButton>
-          </ListItem>
-        </List>
+            <ListItem disablePadding>
+              <ListItemButton
+                component={Link}
+                to="admin/questions"
+                onClick={closeAppMenu}
+              >
+                <ListItemIcon>
+                  <QuizIcon />
+                </ListItemIcon>
+                <ListItemText primary="Questions" />
+              </ListItemButton>
+            </ListItem>
+          </List>
+        )}
       </Drawer>
     </div>
   );
