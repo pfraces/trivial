@@ -1,9 +1,32 @@
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { IconButton, Menu, MenuItem } from '@mui/material';
+import AccountCircle from '@mui/icons-material/AccountCircle';
 import { useAuth } from 'src/firebase/auth';
 import './Header.css';
 
 function Header() {
+  const navigate = useNavigate();
   const { user, logout } = useAuth();
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const onMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const closeMenu = () => {
+    setAnchorEl(null);
+  };
+
+  const onProfile = () => {
+    navigate('profile');
+    closeMenu();
+  };
+
+  const onLogout = () => {
+    closeMenu();
+    logout();
+  };
 
   return (
     <div className="Header">
@@ -12,7 +35,11 @@ function Header() {
       </div>
 
       <div className="nav">
-        <Link to="/" className="link">
+        <Link to="home" className="link">
+          Home
+        </Link>
+
+        <Link to="quiz" className="link">
           Quiz
         </Link>
 
@@ -29,14 +56,20 @@ function Header() {
         )}
 
         {user && (
-          <button
-            className="link"
-            onClick={() => {
-              logout();
-            }}
-          >
-            Log out
-          </button>
+          <>
+            <IconButton size="large" onClick={onMenuOpen} color="inherit">
+              <AccountCircle />
+            </IconButton>
+
+            <Menu
+              anchorEl={anchorEl}
+              open={Boolean(anchorEl)}
+              onClose={closeMenu}
+            >
+              <MenuItem onClick={onProfile}>Profile</MenuItem>
+              <MenuItem onClick={onLogout}>Logout</MenuItem>
+            </Menu>
+          </>
         )}
       </div>
     </div>

@@ -1,16 +1,16 @@
-.Game .banner {
+.Quiz .banner {
   background-color: #0079bf;
   height: 48px;
   color: white;
   font-size: 1.4rem;
 }
 
-.Game .banner .page-container {
+.Quiz .banner .page-container {
   display: flex;
   align-items: center;
   height: 100%;
 }
 
-.Game .banner .score {
+.Quiz .banner .score {
   margin-left: auto;
 }

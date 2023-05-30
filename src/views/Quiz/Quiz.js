@@ -4,9 +4,9 @@ import { db } from 'src/firebase/firebase';
 import map from 'lodash/map';
 import shuffle from 'lodash/shuffle';
 import QuestionCard from './QuestionCard/QuestionCard';
-import './Game.css';
+import './Quiz.css';
 
-function Game() {
+function Quiz() {
   const [score, setScore] = useState(0);
   const [questions, setQuestions] = useState([]);
   const [isDone, setIsDone] = useState(false);
@@ -54,7 +54,7 @@ function Game() {
   const { id, label, options } = questions[questionIndex];
 
   return (
-    <div className="Game">
+    <div className="Quiz">
       <div className="banner">
         <div className="page-container">
           <div className="score">Puntuación: {score}</div>
@@ -77,4 +77,4 @@ function Game() {
   );
 }
 
-export default Game;
+export default Quiz;

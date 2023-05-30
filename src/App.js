@@ -1,7 +1,7 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { RouterProvider } from 'react-router-dom';
 import { AuthProvider } from './firebase/auth';
 import { SnackbarProvider } from './AppLayout/snackbar/snackbar';
-import { routes } from './routes';
+import { router } from './router/router';
 import './App.css';
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <AuthProvider>
         <SnackbarProvider>
-          <RouterProvider router={createBrowserRouter(routes)} />
+          <RouterProvider router={router} />
         </SnackbarProvider>
       </AuthProvider>
     </div>

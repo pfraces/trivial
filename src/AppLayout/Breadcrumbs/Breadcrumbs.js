@@ -1,10 +1,9 @@
 import { Link } from 'react-router-dom';
-import useBreadcrumbs from 'use-react-router-breadcrumbs';
-import { routes } from 'src/routes';
+import { useBreadcrumbs } from 'src/router/router';
 import './Breadcrumbs.css';
 
 function Breadcrumbs() {
-  const breadcrumbs = useBreadcrumbs(routes, { disableDefaults: true });
+  const breadcrumbs = useBreadcrumbs();
 
   return (
     <div className="Breadcrumbs">
