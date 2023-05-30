@@ -3,7 +3,9 @@
   background-color: var(--darkblue);
   height: 48px;
   color: white;
-  padding: 0 20px;
+  padding: 0;
+  padding-left: 30px;
+  padding-right: calc(30px - 100vw + 100%);
 }
 
 .Header .app-menu-toggler {

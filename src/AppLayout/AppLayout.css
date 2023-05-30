@@ -1,11 +1,12 @@
 .AppLayout {
   background-color: #eee;
   height: 100%;
+  overflow: auto;
 }
 
 .AppLayout article {
   padding-top: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 40px;
 }
 
 .AppLayout ul {
@@ -81,13 +82,15 @@
 }
 
 .AppLayout .page-container {
+  box-sizing: content-box;
+  padding-left: calc(100vw - 100%);
   max-width: 800px;
   margin: 0 auto;
 }
 
 @media (max-width: 870px) {
   .AppLayout .page-container {
-    max-width: calc(100vw - 40px);
+    max-width: calc(100vw - 60px);
   }
 }
 
