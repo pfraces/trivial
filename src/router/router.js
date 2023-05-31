@@ -57,7 +57,6 @@ const routes = [
         ],
       },
       {
-        // TODO: Only allow users with admin role
         element: (
           <ProtectedRoute isAllowed={(user) => user?.role === 'admin'} />
         ),

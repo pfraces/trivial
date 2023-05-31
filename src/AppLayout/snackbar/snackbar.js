@@ -34,7 +34,7 @@ export const SnackbarContainer = () => {
     <div className="SnackbarContainer">
       {snackbar !== null && (
         <Snackbar
-          autoHideDuration={3000}
+          autoHideDuration={5000}
           anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
           open={true}
           onClose={onSnackbarClose}

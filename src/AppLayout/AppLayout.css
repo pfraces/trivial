@@ -79,6 +79,7 @@
   background-color: white !important;
   color: var(--disabled) !important;
   border-color: var(--disabled) !important;
+  cursor: not-allowed;
 }
 
 .AppLayout .page-container {

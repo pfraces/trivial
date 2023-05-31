@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ref, onValue } from 'firebase/database';
+import { ref, get } from 'firebase/database';
 import { db } from 'src/firebase/firebase';
 import map from 'lodash/map';
 import shuffle from 'lodash/shuffle';
@@ -13,16 +13,16 @@ function Quiz() {
   const [questionIndex, setQuestionIndex] = useState(0);
 
   useEffect(() => {
-    onValue(ref(db, 'questions'), (data) => {
-      const snapshot = data.val();
+    get(ref(db, 'questions')).then((snapshot) => {
+      const data = snapshot.val();
 
-      if (snapshot == null) {
+      if (data == null) {
         return;
       }
 
       setQuestions(
         shuffle(
-          map(snapshot, (question) => ({
+          map(data, (question) => ({
             ...question,
             options: shuffle(question.options),
           }))
