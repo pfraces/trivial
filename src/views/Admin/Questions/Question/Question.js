@@ -17,6 +17,7 @@ const initQuestion = () => ({
     { label: '', right: false },
     { label: '', right: false },
   ],
+  rightAnswer: '',
 });
 
 function Question() {
@@ -156,7 +157,9 @@ function Question() {
                 onChange={onQuestionLabelChange}
               />
 
-              {form?.errors.label.required && <p role="alert">Required</p>}
+              {form?.errors.label.required && (
+                <p role="alert">Question title is required.</p>
+              )}
             </div>
 
             <div className="options field">
@@ -181,13 +184,13 @@ function Question() {
                   </div>
 
                   {form?.errors.options[index].label.required && (
-                    <p role="alert">Required</p>
+                    <p role="alert">Option label is required.</p>
                   )}
                 </div>
               ))}
 
               {form?.errors.rightAnswer.required && (
-                <p role="alert">Choose a right answer</p>
+                <p role="alert">Right answer is required.</p>
               )}
             </div>
 
