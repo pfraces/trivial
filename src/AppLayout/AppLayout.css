@@ -82,6 +82,11 @@
   cursor: not-allowed;
 }
 
+.AppLayout .form .field p[role='alert'] {
+  color: var(--red);
+  margin-bottom: 20px;
+}
+
 .AppLayout .page-container {
   box-sizing: content-box;
   padding-left: calc(100vw - 100%);

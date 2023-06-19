@@ -11,6 +11,10 @@
   margin-top: 20px;
 }
 
+.Question .options.field p[role='alert'] {
+  margin-top: 10px;
+}
+
 .Question .options .option {
   display: flex;
   align-items: center;
@@ -24,6 +28,10 @@
 .Question .options .option .option-label {
   padding: 5px;
   flex: 1;
+}
+
+.Question .options .field p[role='alert'] {
+  margin-left: 23px;
 }
 
 .Question .actions {

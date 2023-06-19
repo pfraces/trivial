@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ref, onValue } from 'firebase/database';
+import { map } from 'lodash';
 import { db } from 'src/firebase/firebase';
-import map from 'lodash/map';
 import Breadcrumbs from 'src/AppLayout/Breadcrumbs/Breadcrumbs';
 import QuestionLink from './QuestionLink/QuestionLink';
 import './Questions.css';

@@ -2,6 +2,9 @@ import { useMemo, useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ref, push, set, remove, onValue } from 'firebase/database';
 import { db } from 'src/firebase/firebase';
+import { clsx } from 'clsx';
+import { useForm } from 'src/form/form';
+import { required } from 'src/form/rules';
 import { useSnackbar } from 'src/AppLayout/snackbar/snackbar';
 import Breadcrumbs from 'src/AppLayout/Breadcrumbs/Breadcrumbs';
 import './Question.css';
@@ -20,6 +23,12 @@ function Question() {
   const navigate = useNavigate();
   const { id } = useParams();
   const { notify } = useSnackbar();
+
+  const { form, validate } = useForm({
+    label: required(),
+    options: { label: required() },
+    rightAnswer: required(),
+  });
 
   const questionRef = useMemo(
     () => (id === 'new' ? null : ref(db, `questions/${id}`)),
@@ -48,6 +57,7 @@ function Question() {
         ...option,
         right: event.target.value === `${index}`,
       })),
+      rightAnswer: event.target.value,
     }));
   };
 
@@ -67,17 +77,25 @@ function Question() {
     }));
   };
 
-  const onSave = () => {
-    let doSave;
+  const onSubmit = (event) => {
+    event.preventDefault();
+    const { isValid } = validate(question);
+
+    if (!isValid) {
+      notify({ severity: 'error', message: 'Form validation failed' });
+      return;
+    }
+
+    let req;
 
     if (!questionRef) {
       const newQuestionRef = push(ref(db, 'questions'));
-      doSave = set(newQuestionRef, { ...question, id: newQuestionRef.key });
+      req = set(newQuestionRef, { ...question, id: newQuestionRef.key });
     } else {
-      doSave = set(questionRef, question);
+      req = set(questionRef, question);
     }
 
-    doSave
+    req
       .then(() => {
         notify({ message: 'Question saved' });
         navigateBack();
@@ -112,8 +130,9 @@ function Question() {
     });
   }, [questionRef]);
 
-  if (questionRef && !question) {
-    return; // loading...
+  if (!question) {
+    // TODO: Show loader
+    return null;
   }
 
   return (
@@ -124,43 +143,56 @@ function Question() {
             <Breadcrumbs />
           </div>
 
-          <form>
-            <input
-              type="text"
-              className="label"
-              placeholder="Title"
-              value={question.label}
-              onChange={onQuestionLabelChange}
-            />
+          <form
+            className={clsx('form', { error: form && !form.isValid })}
+            onSubmit={onSubmit}
+          >
+            <div className="field">
+              <input
+                type="text"
+                className="label"
+                placeholder="Title"
+                value={question.label}
+                onChange={onQuestionLabelChange}
+              />
 
-            <div className="options">
+              {form?.errors.label.required && <p role="alert">Required</p>}
+            </div>
+
+            <div className="options field">
               {question.options.map((option, index) => (
-                <div key={index} className="option">
-                  <input
-                    type="radio"
-                    name="right-answer"
-                    value={index}
-                    checked={option.right}
-                    onChange={onRightAnswerChange}
-                  />
+                <div key={index} className="field">
+                  <div className="option">
+                    <input
+                      type="radio"
+                      name="right-answer"
+                      value={index}
+                      checked={option.right}
+                      onChange={onRightAnswerChange}
+                    />
 
-                  <input
-                    type="text"
-                    className="option-label"
-                    placeholder={`Option ${index + 1}`}
-                    value={option.label}
-                    onChange={optionLabelChangeHandler(index)}
-                  />
+                    <input
+                      type="text"
+                      className="option-label"
+                      placeholder={`Option ${index + 1}`}
+                      value={option.label}
+                      onChange={optionLabelChangeHandler(index)}
+                    />
+                  </div>
+
+                  {form?.errors.options[index].label.required && (
+                    <p role="alert">Required</p>
+                  )}
                 </div>
               ))}
+
+              {form?.errors.rightAnswer.required && (
+                <p role="alert">Choose a right answer</p>
+              )}
             </div>
 
             <div className="actions">
-              <button
-                type="button"
-                className="button large blue"
-                onClick={onSave}
-              >
+              <button type="submit" className="button large blue">
                 Save
               </button>
 

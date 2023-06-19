@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ref, get } from 'firebase/database';
+import { map, shuffle } from 'lodash';
 import { db } from 'src/firebase/firebase';
-import map from 'lodash/map';
-import shuffle from 'lodash/shuffle';
 import QuestionCard from './QuestionCard/QuestionCard';
 import './Quiz.css';
 
