@@ -1,12 +1,12 @@
 .Login .form-fields {
   display: flex;
   flex-direction: column;
-  max-width: 210px;
 }
 
 .Login .form-field {
   margin: 2px 0;
   padding: 5px;
+  width: 200px;
 }
 
 .Login .actions {

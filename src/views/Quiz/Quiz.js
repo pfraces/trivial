@@ -65,7 +65,7 @@ function Quiz() {
         init();
       })
       .catch(() => {
-        navigate('/home');
+        navigate('/');
       });
   };
 

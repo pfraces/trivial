@@ -152,6 +152,7 @@ function Question() {
           </div>
 
           <form
+            noValidate
             className={clsx('form', { error: form && !form.isValid })}
             onSubmit={onSubmit}
           >
@@ -165,7 +166,7 @@ function Question() {
               />
 
               {form?.errors.label.required && (
-                <p role="alert">Question title is required.</p>
+                <p role="alert">Question title is required</p>
               )}
             </div>
 
@@ -191,13 +192,13 @@ function Question() {
                   </div>
 
                   {form?.errors.options[index].label.required && (
-                    <p role="alert">Option label is required.</p>
+                    <p role="alert">Option label is required</p>
                   )}
                 </div>
               ))}
 
               {form?.errors.rightAnswer.required && (
-                <p role="alert">Right answer is required.</p>
+                <p role="alert">Right answer is required</p>
               )}
             </div>
 

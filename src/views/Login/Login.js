@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import clsx from 'clsx';
 import { useAuth } from 'src/firebase/auth';
 import { useSnackbar } from 'src/AppLayout/snackbar/snackbar';
+import { useForm } from 'src/form/form';
+import { email, minLength, required } from 'src/form/rules';
 import './Login.css';
 
 function Login() {
@@ -9,23 +12,39 @@ function Login() {
   const { login } = useAuth();
   const snackbar = useSnackbar();
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const { form, validate } = useForm({
+    email: [required(), email()],
+    password: [required(), minLength(6)],
+  });
+
+  const [user, setUser] = useState({
+    email: '',
+    password: '',
+  });
 
   const onEmailChange = (event) => {
-    setEmail(event.target.value);
+    setUser((user) => ({ ...user, email: event.target.value }));
   };
 
   const onPasswordChange = (event) => {
-    setPassword(event.target.value);
+    setUser((user) => ({ ...user, password: event.target.value }));
   };
 
   const onSubmit = (event) => {
     event.preventDefault();
+    const { isValid } = validate(user);
+
+    if (!isValid) {
+      snackbar({ severity: 'error', message: 'Form validation failed' });
+      return;
+    }
+
+    const { email, password } = user;
 
     login(email, password)
       .then(() => {
-        navigate('/home');
+        snackbar({ message: 'Access granted' });
+        navigate('/');
       })
       .catch((err) => {
         snackbar({ severity: 'error', message: err.message });
@@ -40,27 +59,51 @@ function Login() {
             <h1>Log in</h1>
           </div>
 
-          <form onSubmit={onSubmit}>
+          <form
+            noValidate
+            className={clsx('form', { error: form && !form.isValid })}
+            onSubmit={onSubmit}
+          >
             <div className="form-fields">
-              <input
-                type="email"
-                name="email"
-                autoComplete="email"
-                className="form-field"
-                placeholder="Email"
-                value={email}
-                onChange={onEmailChange}
-              />
+              <div className="field">
+                <input
+                  type="email"
+                  name="email"
+                  autoComplete="email"
+                  className="form-field"
+                  placeholder="Email"
+                  value={user.email}
+                  onChange={onEmailChange}
+                />
 
-              <input
-                type="password"
-                name="password"
-                autoComplete="current-password"
-                className="form-field"
-                placeholder="Password"
-                value={password}
-                onChange={onPasswordChange}
-              />
+                {form?.errors.email.required && (
+                  <p role="alert">Email is required</p>
+                )}
+
+                {form?.errors.email.email && (
+                  <p role="alert">Invalid email format</p>
+                )}
+              </div>
+
+              <div className="field">
+                <input
+                  type="password"
+                  name="password"
+                  autoComplete="current-password"
+                  className="form-field"
+                  placeholder="Password"
+                  value={user.password}
+                  onChange={onPasswordChange}
+                />
+
+                {form?.errors.password.required && (
+                  <p role="alert">Password is required</p>
+                )}
+
+                {form?.errors.password.minLength && (
+                  <p role="alert">Password should be at least 6 characters</p>
+                )}
+              </div>
 
               <div className="actions">
                 <button type="submit" className="button large blue">

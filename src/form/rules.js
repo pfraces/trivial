@@ -29,3 +29,17 @@ export const maxLength = createRule(
   'maxLength',
   (limit) => (value) => value.length <= limit
 );
+
+export const regex = createRule(
+  'regex',
+  (regex) => (value) => value.match(regex)
+);
+
+// https://stackoverflow.com/a/1373724/1815446
+const EMAIL_REGEX =
+  /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i;
+
+export const email = createRule(
+  'email',
+  () => (value) => value.match(EMAIL_REGEX)
+);
