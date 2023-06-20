@@ -16,7 +16,7 @@ export const SnackbarProvider = ({ children }) => {
 export const useSnackbar = () => {
   const { setSnackbar } = useContext(SnackbarContext);
 
-  return { notify: setSnackbar };
+  return { snackbar: setSnackbar };
 };
 
 export const SnackbarContainer = () => {

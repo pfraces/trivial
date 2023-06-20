@@ -7,7 +7,7 @@ import './Signup.css';
 function Signup() {
   const navigate = useNavigate();
   const { signup } = useAuth();
-  const { notify } = useSnackbar();
+  const { snackbar } = useSnackbar();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -28,7 +28,7 @@ function Signup() {
         navigate('/');
       })
       .catch((err) => {
-        notify({ severity: 'error', message: err.message });
+        snackbar({ severity: 'error', message: err.message });
       });
   };
 

@@ -1,6 +1,7 @@
 import { RouterProvider } from 'react-router-dom';
 import { AuthProvider } from './firebase/auth';
 import { SnackbarProvider } from './AppLayout/snackbar/snackbar';
+import { DialogProvider } from './AppLayout/dialog/dialog';
 import { router } from './router/router';
 import './App.css';
 
@@ -9,7 +10,9 @@ function App() {
     <div className="App">
       <AuthProvider>
         <SnackbarProvider>
-          <RouterProvider router={router} />
+          <DialogProvider>
+            <RouterProvider router={router} />
+          </DialogProvider>
         </SnackbarProvider>
       </AuthProvider>
     </div>

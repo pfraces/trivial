@@ -6,6 +6,7 @@ import { clsx } from 'clsx';
 import { useForm } from 'src/form/form';
 import { required } from 'src/form/rules';
 import { useSnackbar } from 'src/AppLayout/snackbar/snackbar';
+import { useDialog } from 'src/AppLayout/dialog/dialog';
 import Breadcrumbs from 'src/AppLayout/Breadcrumbs/Breadcrumbs';
 import './Question.css';
 
@@ -23,7 +24,8 @@ const initQuestion = () => ({
 function Question() {
   const navigate = useNavigate();
   const { id } = useParams();
-  const { notify } = useSnackbar();
+  const { snackbar } = useSnackbar();
+  const { dialog } = useDialog();
 
   const { form, validate } = useForm({
     label: required(),
@@ -83,7 +85,7 @@ function Question() {
     const { isValid } = validate(question);
 
     if (!isValid) {
-      notify({ severity: 'error', message: 'Form validation failed' });
+      snackbar({ severity: 'error', message: 'Form validation failed' });
       return;
     }
 
@@ -98,11 +100,11 @@ function Question() {
 
     req
       .then(() => {
-        notify({ message: 'Question saved' });
+        snackbar({ message: 'Question saved' });
         navigateBack();
       })
       .catch((err) => {
-        notify({ severity: 'error', message: err.message });
+        snackbar({ severity: 'error', message: err.message });
       });
   };
 
@@ -111,13 +113,17 @@ function Question() {
   };
 
   const onDelete = () => {
-    remove(questionRef)
+    dialog({
+      title: 'Delete question?',
+      message: 'Data will be lost',
+    })
+      .then(() => remove(questionRef))
       .then(() => {
-        notify({ message: 'Question deleted' });
+        snackbar({ message: 'Question deleted' });
         navigateBack();
       })
       .catch((err) => {
-        notify({ severity: 'error', message: err.message });
+        snackbar({ severity: 'error', message: err.message });
       });
   };
 
