@@ -13,14 +13,20 @@ function Signup() {
   const snackbar = useSnackbar();
 
   const { form, validate } = useForm({
+    username: required(),
     email: [required(), email()],
     password: [required(), minLength(6)],
   });
 
   const [user, setUser] = useState({
+    username: '',
     email: '',
     password: '',
   });
+
+  const onUsernameChange = (event) => {
+    setUser((user) => ({ ...user, username: event.target.value }));
+  };
 
   const onEmailChange = (event) => {
     setUser((user) => ({ ...user, email: event.target.value }));
@@ -39,9 +45,7 @@ function Signup() {
       return;
     }
 
-    const { email, password } = user;
-
-    signup(email, password)
+    signup(user)
       .then(() => {
         snackbar({ message: 'Account created' });
         navigate('/');
@@ -65,6 +69,22 @@ function Signup() {
             onSubmit={onSubmit}
           >
             <div className="form-fields">
+              <div className="field">
+                <input
+                  type="text"
+                  name="username"
+                  autoComplete="username"
+                  className="form-field"
+                  placeholder="Username"
+                  value={user.username}
+                  onChange={onUsernameChange}
+                />
+
+                {form?.errors.username.required && (
+                  <p role="alert">Username is required</p>
+                )}
+              </div>
+
               <div className="field">
                 <input
                   type="email"

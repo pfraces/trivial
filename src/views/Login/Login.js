@@ -39,9 +39,7 @@ function Login() {
       return;
     }
 
-    const { email, password } = user;
-
-    login(email, password)
+    login(user)
       .then(() => {
         snackbar({ message: 'Access granted' });
         navigate('/');

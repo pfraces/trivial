@@ -4,8 +4,10 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
+  updateProfile,
+  sendEmailVerification,
 } from 'firebase/auth';
-import { ref, onValue, off } from 'firebase/database';
+import { ref, onValue, off, set } from 'firebase/database';
 import { db, auth } from './firebase';
 
 const AuthContext = createContext();
@@ -13,12 +15,24 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
-  const login = (email, password) => {
+  const login = ({ email, password }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  const signup = (email, password) => {
-    return createUserWithEmailAndPassword(auth, email, password);
+  const signup = ({ username, email, password }) => {
+    return createUserWithEmailAndPassword(auth, email, password).then(
+      ({ user }) => {
+        return sendEmailVerification(user)
+          .then(() => updateProfile(user, { displayName: username }))
+          .then(() => {
+            return set(ref(db, `/users/${user.uid}`), {
+              username,
+              email,
+              role: 'user',
+            });
+          });
+      }
+    );
   };
 
   const logout = () => {
