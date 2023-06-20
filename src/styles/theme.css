@@ -57,6 +57,28 @@ input:placeholder-shown {
   background-color: var(--blue);
 }
 
+.button.green {
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.button.green:hover {
+  border-color: var(--green);
+  color: white;
+  background-color: var(--green);
+}
+
+.button.yellow {
+  border-color: var(--yellow);
+  color: var(--yellow);
+}
+
+.button.yellow:hover {
+  border-color: var(--yellow);
+  color: white;
+  background-color: var(--yellow);
+}
+
 .button.red {
   border-color: var(--red);
   color: var(--red);

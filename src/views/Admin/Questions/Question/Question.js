@@ -22,10 +22,10 @@ const initQuestion = () => ({
 });
 
 function Question() {
-  const navigate = useNavigate();
   const { id } = useParams();
-  const { snackbar } = useSnackbar();
-  const { dialog } = useDialog();
+  const navigate = useNavigate();
+  const snackbar = useSnackbar();
+  const dialog = useDialog();
 
   const { form, validate } = useForm({
     label: required(),
@@ -114,6 +114,7 @@ function Question() {
 
   const onDelete = () => {
     dialog({
+      severity: 'error',
       title: 'Delete question?',
       message: 'Data will be lost',
     })

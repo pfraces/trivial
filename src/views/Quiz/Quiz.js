@@ -1,17 +1,27 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ref, get } from 'firebase/database';
-import { map, shuffle } from 'lodash';
+import { map, shuffle, take } from 'lodash';
 import { db } from 'src/firebase/firebase';
+import { useDialog } from 'src/AppLayout/dialog/dialog';
 import QuestionCard from './QuestionCard/QuestionCard';
 import './Quiz.css';
 
 function Quiz() {
+  const navigate = useNavigate();
+  const dialog = useDialog();
   const [score, setScore] = useState(0);
   const [questions, setQuestions] = useState([]);
-  const [isDone, setIsDone] = useState(false);
   const [questionIndex, setQuestionIndex] = useState(0);
 
-  useEffect(() => {
+  // TODO: Configurable quiz length
+  const QUIZ_LENGTH = 10;
+
+  const init = () => {
+    setScore(0);
+    setQuestions([]);
+    setQuestionIndex(0);
+
     get(ref(db, 'questions')).then((snapshot) => {
       const data = snapshot.val();
 
@@ -19,16 +29,19 @@ function Quiz() {
         return;
       }
 
-      setQuestions(
-        shuffle(
-          map(data, (question) => ({
-            ...question,
-            options: shuffle(question.options),
-          }))
-        )
-      );
+      const questionsShuffled = shuffle(data);
+      const questionsSubset = take(questionsShuffled, QUIZ_LENGTH);
+
+      const questionsWithOptionsShuffled = map(questionsSubset, (question) => ({
+        ...question,
+        options: shuffle(question.options),
+      }));
+
+      setQuestions(questionsWithOptionsShuffled);
     });
-  }, []);
+  };
+
+  useEffect(init, []);
 
   const onRight = () => {
     setScore((prev) => prev + 1);
@@ -39,14 +52,24 @@ function Quiz() {
   };
 
   const onDone = () => {
-    setIsDone(true);
+    dialog({
+      severity: 'success',
+      title: '¡Enhorabuena!',
+      message: `Has obtenido ${score} puntos`,
+      actions: [
+        { type: 'cancel', label: 'Salir' },
+        { type: 'confirm', label: 'Volver a jugar' },
+      ],
+    })
+      .then(() => {
+        init();
+      })
+      .catch(() => {
+        navigate('/home');
+      });
   };
 
   if (!questions.length) {
-    return null;
-  }
-
-  if (isDone) {
     return null;
   }
 

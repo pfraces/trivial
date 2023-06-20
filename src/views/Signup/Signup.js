@@ -7,7 +7,7 @@ import './Signup.css';
 function Signup() {
   const navigate = useNavigate();
   const { signup } = useAuth();
-  const { snackbar } = useSnackbar();
+  const snackbar = useSnackbar();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

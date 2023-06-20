@@ -1,13 +1,16 @@
 import { createContext, forwardRef, useContext, useState } from 'react';
 import { isFunction } from 'lodash';
+import clsx from 'clsx';
 import {
   Dialog,
   DialogActions,
   DialogContent,
   DialogContentText,
   DialogTitle,
+  IconButton,
   Slide,
 } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 
 const DialogContext = createContext({});
 
@@ -24,7 +27,12 @@ export const DialogProvider = ({ children }) => {
 export const useDialog = () => {
   const { setDialog } = useContext(DialogContext);
 
-  const dialog = (settings) => {
+  const defaultActions = [
+    { type: 'cancel', label: 'Cancel' },
+    { type: 'confirm', label: 'Confirm' },
+  ];
+
+  const dialog = ({ severity, title, message, actions = defaultActions }) => {
     let resolvePromiseInProgress = null;
     let rejectPromiseInProgress = null;
 
@@ -50,12 +58,12 @@ export const useDialog = () => {
       rejectPromiseInProgress = null;
     });
 
-    setDialog({ ...settings, confirm, cancel });
+    setDialog({ severity, title, message, actions, confirm, cancel });
 
     return promise;
   };
 
-  return { dialog };
+  return dialog;
 };
 
 const Transition = forwardRef((props, ref) => {
@@ -69,15 +77,25 @@ export const DialogContainer = () => {
     setDialog(null);
   };
 
+  const confirm = () => {
+    closeDialog();
+    dialog.confirm();
+  };
+
   const cancel = (reason) => {
     closeDialog();
     dialog.cancel(reason);
   };
 
-  const confirm = () => {
-    closeDialog();
-    dialog.confirm();
+  const actionClickHandler = (type) => () => {
+    if (type === 'confirm') {
+      confirm();
+    } else {
+      cancel('cancelButtonClick');
+    }
   };
+
+  // TODO: Replace `sx` prop with CSS
 
   return (
     <div className="DialogContainer">
@@ -89,33 +107,49 @@ export const DialogContainer = () => {
           cancel(reason);
         }}
       >
-        <DialogTitle>{dialog?.title}</DialogTitle>
+        <DialogTitle>
+          {dialog?.title}
+
+          <IconButton
+            onClick={() => {
+              cancel('closeButtonClick');
+            }}
+            sx={{
+              position: 'absolute',
+              right: 8,
+              top: 8,
+              color: (theme) => theme.palette.grey[500],
+            }}
+          >
+            <CloseIcon />
+          </IconButton>
+        </DialogTitle>
 
         <DialogContent>
           <DialogContentText>{dialog?.message}</DialogContentText>
         </DialogContent>
 
         <DialogActions>
-          <button
-            type="button"
-            className="button large"
-            onClick={() => {
-              cancel('cancelButtonClick');
-            }}
-          >
-            Cancel
-          </button>
-
-          <button
-            type="button"
-            className="button large red"
-            onClick={() => {
-              confirm();
-            }}
-            autoFocus
-          >
-            Confirm
-          </button>
+          {dialog?.actions.map(({ type, label }) => {
+            return (
+              <button
+                type="button"
+                className={clsx(
+                  'button large',
+                  type === 'confirm' && {
+                    blue: dialog?.severity === 'info',
+                    green: dialog?.severity === 'success',
+                    yellow: dialog?.severity === 'warning',
+                    red: dialog?.severity === 'error',
+                  }
+                )}
+                autoFocus={type === 'confirm'}
+                onClick={actionClickHandler(type)}
+              >
+                {label}
+              </button>
+            );
+          })}
         </DialogActions>
       </Dialog>
     </div>
