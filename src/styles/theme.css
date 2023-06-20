@@ -1,0 +1,120 @@
+article {
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: var(--darkblue);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+input {
+  color: inherit;
+}
+
+input:placeholder-shown {
+  font-style: italic;
+}
+
+.button {
+  background-color: white;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  height: 27px;
+  margin: 2px 0;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.button:hover {
+  border-color: var(--primary);
+  color: white;
+  background-color: var(--primary);
+}
+
+.button.large {
+  height: 40px;
+  font-size: 1rem;
+  padding: 10px;
+}
+
+.button.blue {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+.button.blue:hover {
+  border-color: var(--blue);
+  color: white;
+  background-color: var(--blue);
+}
+
+.button.red {
+  border-color: var(--red);
+  color: var(--red);
+}
+
+.button.red:hover {
+  border-color: var(--red);
+  color: white;
+  background-color: var(--red);
+}
+
+.button[disabled],
+.button[disabled]:hover {
+  background-color: white !important;
+  color: var(--disabled) !important;
+  border-color: var(--disabled) !important;
+  cursor: not-allowed;
+}
+
+.form .field p[role='alert'] {
+  color: var(--red);
+  margin-bottom: 20px;
+}
+
+.page-container {
+  box-sizing: content-box;
+  padding-left: calc(100vw - 100%);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+@media (max-width: 870px) {
+  .page-container {
+    max-width: calc(100vw - 60px);
+  }
+}
+
+.card {
+  background-color: white;
+  color: var(--primary);
+  padding: 20px;
+  padding-bottom: 40px;
+  border-radius: 5px;
+  box-shadow: 0 3px 5px rgb(0 0 0 / 0.2);
+}
+
+.card-breadcrumbs {
+  margin-bottom: 20px;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.card-header h1 {
+  flex: 1;
+  font-size: 1.8rem;
+  font-weight: 400;
+}
