@@ -22,8 +22,8 @@ export const AuthProvider = ({ children }) => {
   const signup = ({ username, email, password }) => {
     return createUserWithEmailAndPassword(auth, email, password).then(
       ({ user }) => {
-        return sendEmailVerification(user)
-          .then(() => updateProfile(user, { displayName: username }))
+        return updateProfile(user, { displayName: username })
+          .then(() => sendEmailVerification(user))
           .then(() => {
             return set(ref(db, `/users/${user.uid}`), {
               username,
