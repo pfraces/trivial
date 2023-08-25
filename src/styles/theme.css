@@ -3,10 +3,6 @@ article {
   padding-bottom: 40px;
 }
 
-ul {
-  list-style: none;
-}
-
 a {
   color: var(--darkblue);
   text-decoration: none;
@@ -14,14 +10,6 @@ a {
 
 a:hover {
   text-decoration: underline;
-}
-
-input {
-  color: inherit;
-}
-
-input:placeholder-shown {
-  font-style: italic;
 }
 
 .button {
@@ -98,22 +86,27 @@ input:placeholder-shown {
   cursor: not-allowed;
 }
 
-.form .field p[role='alert'] {
+.form .field {
+  margin-bottom: 10px;
+}
+
+.form .field .label {
+  margin-bottom: 3px;
+}
+
+.form .field .helper {
   color: var(--red);
-  margin-bottom: 20px;
 }
 
-.page-container {
-  box-sizing: content-box;
-  padding-left: calc(100vw - 100%);
-  max-width: 800px;
-  margin: 0 auto;
+.form .field input {
+  color: inherit;
+  margin: 2px 0;
+  padding: 5px;
+  width: 250px;
 }
 
-@media (max-width: 870px) {
-  .page-container {
-    max-width: calc(100vw - 60px);
-  }
+.form .field input:placeholder-shown {
+  font-style: italic;
 }
 
 .card {

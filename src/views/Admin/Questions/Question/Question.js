@@ -159,14 +159,16 @@ function Question() {
             <div className="field">
               <input
                 type="text"
-                className="label"
+                className="question-label"
                 placeholder="Title"
                 value={question.label}
                 onChange={onQuestionLabelChange}
               />
 
               {form?.errors.label.required && (
-                <p role="alert">Question title is required</p>
+                <p role="alert" className="helper">
+                  Question title is required
+                </p>
               )}
             </div>
 
@@ -192,13 +194,17 @@ function Question() {
                   </div>
 
                   {form?.errors.options[index].label.required && (
-                    <p role="alert">Option label is required</p>
+                    <p role="alert" className="helper">
+                      Option label is required
+                    </p>
                   )}
                 </div>
               ))}
 
               {form?.errors.rightAnswer.required && (
-                <p role="alert">Right answer is required</p>
+                <p role="alert" className="helper">
+                  Right answer is required
+                </p>
               )}
             </div>
 

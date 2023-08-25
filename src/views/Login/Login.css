@@ -1,16 +1,16 @@
-.Login .form-fields {
+.Login .password.field .label {
   display: flex;
-  flex-direction: column;
+  align-items: baseline;
+  width: 250px;
 }
 
-.Login .form-field {
-  margin: 2px 0;
-  padding: 5px;
-  width: 200px;
+.Login .password.field .label .forgot-password {
+  font-size: 0.8rem;
+  margin-left: auto;
 }
 
 .Login .actions {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .Login .footer {

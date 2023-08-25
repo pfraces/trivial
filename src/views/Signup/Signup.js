@@ -68,62 +68,73 @@ function Signup() {
             className={clsx('form', { error: form && !form.isValid })}
             onSubmit={onSubmit}
           >
-            <div className="form-fields">
-              <div className="field">
-                <input
-                  type="text"
-                  name="username"
-                  autoComplete="username"
-                  className="form-field"
-                  placeholder="Username"
-                  value={user.username}
-                  onChange={onUsernameChange}
-                />
+            <div className="field">
+              <p className="label">Username</p>
 
-                {form?.errors.username.required && (
-                  <p role="alert">Username is required</p>
-                )}
-              </div>
+              <input
+                type="text"
+                name="username"
+                autoComplete="username"
+                placeholder="Username"
+                value={user.username}
+                onChange={onUsernameChange}
+              />
 
-              <div className="field">
-                <input
-                  type="email"
-                  name="email"
-                  autoComplete="email"
-                  className="form-field"
-                  placeholder="Email"
-                  value={user.email}
-                  onChange={onEmailChange}
-                />
+              {form?.errors.username.required && (
+                <p role="alert" className="helper">
+                  Username is required
+                </p>
+              )}
+            </div>
 
-                {form?.errors.email.required && (
-                  <p role="alert">Email is required</p>
-                )}
+            <div className="field">
+              <p className="label">Email</p>
 
-                {form?.errors.email.email && (
-                  <p role="alert">Invalid email format</p>
-                )}
-              </div>
+              <input
+                type="email"
+                name="email"
+                autoComplete="email"
+                placeholder="Email"
+                value={user.email}
+                onChange={onEmailChange}
+              />
 
-              <div className="field">
-                <input
-                  type="password"
-                  name="password"
-                  autoComplete="new-password"
-                  className="form-field"
-                  placeholder="Password"
-                  value={user.password}
-                  onChange={onPasswordChange}
-                />
+              {form?.errors.email.required && (
+                <p role="alert" className="helper">
+                  Email is required
+                </p>
+              )}
 
-                {form?.errors.password.required && (
-                  <p role="alert">Password is required</p>
-                )}
+              {form?.errors.email.email && (
+                <p role="alert" className="helper">
+                  Invalid email format
+                </p>
+              )}
+            </div>
 
-                {form?.errors.password.minLength && (
-                  <p role="alert">Password should be at least 6 characters</p>
-                )}
-              </div>
+            <div className="field">
+              <p className="label">Password</p>
+
+              <input
+                type="password"
+                name="password"
+                autoComplete="new-password"
+                placeholder="Password"
+                value={user.password}
+                onChange={onPasswordChange}
+              />
+
+              {form?.errors.password.required && (
+                <p role="alert" className="helper">
+                  Password is required
+                </p>
+              )}
+
+              {form?.errors.password.minLength && (
+                <p role="alert" className="helper">
+                  Password should be at least 6 characters
+                </p>
+              )}
             </div>
 
             <div className="actions">

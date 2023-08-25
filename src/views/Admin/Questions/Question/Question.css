@@ -1,4 +1,4 @@
-.Question .label {
+.Question .field input.question-label {
   width: 100%;
   padding: 10px;
   font-size: 1.4rem;
@@ -9,10 +9,6 @@
   flex-direction: column;
   max-width: 210px;
   margin-top: 20px;
-}
-
-.Question .options.field p[role='alert'] {
-  margin-top: 10px;
 }
 
 .Question .options .option {
@@ -30,7 +26,7 @@
   flex: 1;
 }
 
-.Question .options .field p[role='alert'] {
+.Question .options .field .helper {
   margin-left: 23px;
 }
 

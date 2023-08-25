@@ -62,52 +62,66 @@ function Login() {
             className={clsx('form', { error: form && !form.isValid })}
             onSubmit={onSubmit}
           >
-            <div className="form-fields">
-              <div className="field">
-                <input
-                  type="email"
-                  name="email"
-                  autoComplete="email"
-                  className="form-field"
-                  placeholder="Email"
-                  value={user.email}
-                  onChange={onEmailChange}
-                />
+            <div className="field">
+              <p className="label">Email</p>
 
-                {form?.errors.email.required && (
-                  <p role="alert">Email is required</p>
-                )}
+              <input
+                type="email"
+                name="email"
+                autoComplete="email"
+                placeholder="Email"
+                value={user.email}
+                onChange={onEmailChange}
+              />
 
-                {form?.errors.email.email && (
-                  <p role="alert">Invalid email format</p>
-                )}
+              {form?.errors.email.required && (
+                <p role="alert" className="helper">
+                  Email is required
+                </p>
+              )}
+
+              {form?.errors.email.email && (
+                <p role="alert" className="helper">
+                  Invalid email format
+                </p>
+              )}
+            </div>
+
+            <div className="password field">
+              <div className="label">
+                <p>Password</p>
+
+                <Link to="/reset-password" className="forgot-password">
+                  Forgot password?
+                </Link>
               </div>
 
-              <div className="field">
-                <input
-                  type="password"
-                  name="password"
-                  autoComplete="current-password"
-                  className="form-field"
-                  placeholder="Password"
-                  value={user.password}
-                  onChange={onPasswordChange}
-                />
+              <input
+                type="password"
+                name="password"
+                autoComplete="current-password"
+                placeholder="Password"
+                value={user.password}
+                onChange={onPasswordChange}
+              />
 
-                {form?.errors.password.required && (
-                  <p role="alert">Password is required</p>
-                )}
+              {form?.errors.password.required && (
+                <p role="alert" className="helper">
+                  Password is required
+                </p>
+              )}
 
-                {form?.errors.password.minLength && (
-                  <p role="alert">Password should be at least 6 characters</p>
-                )}
-              </div>
+              {form?.errors.password.minLength && (
+                <p role="alert" className="helper">
+                  Password should be at least 6 characters
+                </p>
+              )}
+            </div>
 
-              <div className="actions">
-                <button type="submit" className="button large blue">
-                  Log in
-                </button>
-              </div>
+            <div className="actions">
+              <button type="submit" className="button large blue">
+                Log in
+              </button>
             </div>
           </form>
 
