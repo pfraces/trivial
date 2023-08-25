@@ -92,7 +92,7 @@ function Header() {
 
       <div className="session">
         {!user && (
-          <Link to="login" className="link">
+          <Link to="login" className="link nowrap">
             Log in
           </Link>
         )}
