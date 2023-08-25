@@ -11,7 +11,7 @@ Having `quiz.io` and `quiz-io.github.io` in the same folder, go to the
 npm run build
 cd ../quiz-io.github.io/
 rm -rf static
-cp -r ../quiz.io/build/ .
+cp -r ../quiz.io/build/. .
 ```
 
 Once the new build is in place, commit and push the changes to production.
