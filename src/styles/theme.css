@@ -98,7 +98,8 @@ a:hover {
   color: var(--red);
 }
 
-.form .field input {
+.Login .form .field input,
+.Signup .form .field input {
   color: inherit;
   margin: 2px 0;
   padding: 5px;
