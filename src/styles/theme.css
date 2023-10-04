@@ -16,7 +16,7 @@ a:hover {
   background-color: white;
   color: var(--primary);
   border: 1px solid var(--primary);
-  height: 27px;
+  min-height: 27px;
   margin: 2px 0;
   padding: 5px;
   border-radius: 5px;
