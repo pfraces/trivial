@@ -156,7 +156,9 @@ function Question() {
             className={clsx('form', { error: form && !form.isValid })}
             onSubmit={onSubmit}
           >
-            <div className="field">
+            <div
+              className={clsx('field', { error: form?.errors.label.required })}
+            >
               <input
                 type="text"
                 className="question-label"
@@ -174,7 +176,12 @@ function Question() {
 
             <div className="options field">
               {question.options.map((option, index) => (
-                <div key={index} className="field">
+                <div
+                  key={index}
+                  className={clsx('field', {
+                    error: form?.errors.options[index].label.required,
+                  })}
+                >
                   <div className="option">
                     <input
                       type="radio"

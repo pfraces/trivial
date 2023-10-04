@@ -1,3 +1,8 @@
+.Question .field.error input[type='text'] {
+  border: 1px solid var(--red);
+  border-radius: 2px;
+}
+
 .Question .field input.question-label {
   width: 100%;
   padding: 10px;
