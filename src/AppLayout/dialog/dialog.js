@@ -98,60 +98,59 @@ export const DialogContainer = () => {
   // TODO: Replace `sx` prop with CSS
 
   return (
-    <div className="DialogContainer">
-      <Dialog
-        fullWidth
-        TransitionComponent={Transition}
-        open={dialog}
-        onClose={(event, reason) => {
-          cancel(reason);
-        }}
-      >
-        <DialogTitle>
-          {dialog?.title}
+    <Dialog
+      className="DialogContainer"
+      fullWidth
+      TransitionComponent={Transition}
+      open={dialog}
+      onClose={(event, reason) => {
+        cancel(reason);
+      }}
+    >
+      <DialogTitle>
+        {dialog?.title}
 
-          <IconButton
-            onClick={() => {
-              cancel('closeButtonClick');
-            }}
-            sx={{
-              position: 'absolute',
-              right: 8,
-              top: 8,
-              color: (theme) => theme.palette.grey[500],
-            }}
-          >
-            <CloseIcon />
-          </IconButton>
-        </DialogTitle>
+        <IconButton
+          onClick={() => {
+            cancel('closeButtonClick');
+          }}
+          sx={{
+            position: 'absolute',
+            right: 8,
+            top: 8,
+            color: (theme) => theme.palette.grey[500],
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
+      </DialogTitle>
 
-        <DialogContent>
-          <DialogContentText>{dialog?.message}</DialogContentText>
-        </DialogContent>
+      <DialogContent>
+        <DialogContentText>{dialog?.message}</DialogContentText>
+      </DialogContent>
 
-        <DialogActions>
-          {dialog?.actions.map(({ type, label }) => {
-            return (
-              <button
-                type="button"
-                className={clsx(
-                  'button large',
-                  type === 'confirm' && {
-                    blue: dialog?.severity === 'info',
-                    green: dialog?.severity === 'success',
-                    yellow: dialog?.severity === 'warning',
-                    red: dialog?.severity === 'error',
-                  }
-                )}
-                autoFocus={type === 'confirm'}
-                onClick={actionClickHandler(type)}
-              >
-                {label}
-              </button>
-            );
-          })}
-        </DialogActions>
-      </Dialog>
-    </div>
+      <DialogActions>
+        {dialog?.actions.map(({ type, label }) => {
+          return (
+            <button
+              type="button"
+              className={clsx(
+                'button large',
+                type === 'confirm' && {
+                  blue: dialog?.severity === 'info',
+                  green: dialog?.severity === 'success',
+                  yellow: dialog?.severity === 'warning',
+                  red: dialog?.severity === 'error',
+                }
+              )}
+              autoFocus={type === 'confirm'}
+              onClick={actionClickHandler(type)}
+            >
+              {label}
+            </button>
+          );
+        })}
+      </DialogActions>
+    </Dialog>
   );
 };
