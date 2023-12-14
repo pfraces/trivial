@@ -131,6 +131,7 @@ function Header() {
       </div>
 
       <Drawer
+        className="app-menu-drawer"
         anchor="left"
         open={appMenuOpen}
         onClose={closeAppMenu}
