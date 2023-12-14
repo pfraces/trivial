@@ -72,6 +72,8 @@ export default function Create() {
             </button>
           </div>
 
+          {!quizzes.length && <em>No quizzes found</em>}
+
           {map(quizzes, (quiz) => (
             <QuizLink key={quiz.id} id={quiz.id} label={quiz.label} />
           ))}

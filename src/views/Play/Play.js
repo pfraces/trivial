@@ -31,6 +31,8 @@ export default function Play() {
             <h1>Play</h1>
           </div>
 
+          {!quizzes.length && <em>No quizzes found</em>}
+
           {map(quizzes, (quiz) => {
             return <QuizLink key={quiz.id} id={quiz.id} label={quiz.label} />;
           })}

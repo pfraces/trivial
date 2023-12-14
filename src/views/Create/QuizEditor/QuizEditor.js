@@ -161,6 +161,8 @@ export default function QuizEditor() {
             </Link>
           </div>
 
+          {!quiz.questions && <em>No questions found</em>}
+
           {map(quiz.questions, (question) => {
             return (
               <QuestionLink
