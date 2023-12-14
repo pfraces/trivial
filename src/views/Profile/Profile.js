@@ -1,4 +1,4 @@
-function Profile() {
+export default function Profile() {
   return (
     <div className="Profile">
       <article className="page-container">
@@ -11,5 +11,3 @@ function Profile() {
     </div>
   );
 }
-
-export default Profile;

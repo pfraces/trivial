@@ -7,7 +7,7 @@ import { useDialog } from 'src/AppLayout/dialog/dialog';
 import QuestionCard from './QuestionCard/QuestionCard';
 import './Quiz.css';
 
-function Quiz() {
+export default function Quiz() {
   const { quizId } = useParams();
   const navigate = useNavigate();
   const dialog = useDialog();
@@ -101,5 +101,3 @@ function Quiz() {
     </div>
   );
 }
-
-export default Quiz;

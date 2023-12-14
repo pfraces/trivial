@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import './Option.css';
 
-function Option({ label, right, selected, onClick }) {
+export default function Option({ label, right, selected, onClick }) {
   return (
     <div className="Option">
       <button
@@ -13,5 +13,3 @@ function Option({ label, right, selected, onClick }) {
     </div>
   );
 }
-
-export default Option;

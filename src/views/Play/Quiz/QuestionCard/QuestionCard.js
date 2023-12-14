@@ -8,7 +8,7 @@ const statusMap = {
   feedback: 1,
 };
 
-function QuestionCard({
+export default function QuestionCard({
   index,
   label,
   options,
@@ -85,5 +85,3 @@ function QuestionCard({
     </div>
   );
 }
-
-export default QuestionCard;

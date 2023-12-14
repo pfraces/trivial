@@ -6,7 +6,7 @@ import { PromptProvider } from './AppLayout/dialog/prompt';
 import { router } from './router/router';
 import './App.css';
 
-function App() {
+export default function App() {
   return (
     <div className="App">
       <AuthProvider>
@@ -21,5 +21,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useBreadcrumbs } from 'src/router/router';
 import './Breadcrumbs.css';
 
-function Breadcrumbs() {
+export default function Breadcrumbs() {
   const breadcrumbs = useBreadcrumbs();
 
   return (
@@ -25,5 +25,3 @@ function Breadcrumbs() {
     </div>
   );
 }
-
-export default Breadcrumbs;

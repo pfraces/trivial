@@ -1,4 +1,4 @@
-function Home() {
+export default function Home() {
   return (
     <div className="Home">
       <article className="page-container">
@@ -11,5 +11,3 @@ function Home() {
     </div>
   );
 }
-
-export default Home;

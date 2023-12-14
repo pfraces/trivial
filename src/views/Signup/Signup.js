@@ -7,7 +7,7 @@ import { useForm } from 'src/form/form';
 import { email, minLength, required } from 'src/form/rules';
 import './Signup.css';
 
-function Signup() {
+export default function Signup() {
   const navigate = useNavigate();
   const { signup } = useAuth();
   const snackbar = useSnackbar();
@@ -152,5 +152,3 @@ function Signup() {
     </div>
   );
 }
-
-export default Signup;

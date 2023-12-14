@@ -21,7 +21,7 @@ const initQuestion = () => ({
   rightAnswer: '',
 });
 
-function Question() {
+export default function Question() {
   const { quizId, questionId } = useParams();
   const navigate = useNavigate();
   const snackbar = useSnackbar();
@@ -251,5 +251,3 @@ function Question() {
     </div>
   );
 }
-
-export default Question;

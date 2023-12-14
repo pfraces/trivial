@@ -1,4 +1,4 @@
-function Landing() {
+export default function Landing() {
   return (
     <div className="Landing">
       <article className="page-container">
@@ -11,5 +11,3 @@ function Landing() {
     </div>
   );
 }
-
-export default Landing;

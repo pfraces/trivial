@@ -23,7 +23,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { useAuth } from 'src/firebase/auth';
 import './Header.css';
 
-function Header() {
+export default function Header() {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
   const [appMenuOpen, setAppMenuOpen] = useState(false);
@@ -183,5 +183,3 @@ function Header() {
     </div>
   );
 }
-
-export default Header;
