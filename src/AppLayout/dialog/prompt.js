@@ -5,50 +5,48 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  DialogContentText,
   DialogTitle,
   IconButton,
   Slide,
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import { useForm } from 'src/form/form';
+import { required } from 'src/form/rules';
+import { useSnackbar } from 'src/AppLayout/snackbar/snackbar';
+import './PromptContainer.css';
 
-const DialogContext = createContext({});
+const PromptContext = createContext({});
 
-export const DialogProvider = ({ children }) => {
-  const [dialog, setDialog] = useState(null);
+export const PromptProvider = ({ children }) => {
+  const [prompt, setPrompt] = useState(null);
 
   return (
-    <DialogContext.Provider value={{ dialog, setDialog }}>
+    <PromptContext.Provider value={{ prompt, setPrompt }}>
       {children}
-    </DialogContext.Provider>
+    </PromptContext.Provider>
   );
 };
 
-export const useDialog = () => {
-  const { setDialog } = useContext(DialogContext);
+export const usePrompt = () => {
+  const { setPrompt } = useContext(PromptContext);
 
   const defaultActions = [
     { type: 'cancel', label: 'Cancel' },
     { type: 'confirm', label: 'Confirm' },
   ];
 
-  const dialog = ({
+  const prompt = ({
     severity = 'success',
     title,
-    description = '',
-    content = null,
+    inputLabel = '',
     actions = defaultActions,
   }) => {
     let resolvePromiseInProgress = null;
     let rejectPromiseInProgress = null;
 
-    const dialogContent = content || (
-      <DialogContentText>{description}</DialogContentText>
-    );
-
-    const confirm = () => {
+    const confirm = (message) => {
       if (isFunction(resolvePromiseInProgress)) {
-        resolvePromiseInProgress();
+        resolvePromiseInProgress(message);
       }
     };
 
@@ -68,10 +66,10 @@ export const useDialog = () => {
       rejectPromiseInProgress = null;
     });
 
-    setDialog({
+    setPrompt({
       severity,
       title,
-      content: dialogContent,
+      inputLabel,
       actions,
       confirm,
       cancel,
@@ -80,28 +78,44 @@ export const useDialog = () => {
     return promise;
   };
 
-  return dialog;
+  return prompt;
 };
 
 const Transition = forwardRef((props, ref) => {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export const DialogContainer = () => {
-  const { dialog, setDialog } = useContext(DialogContext);
+export const PromptContainer = () => {
+  const { prompt, setPrompt } = useContext(PromptContext);
+  const snackbar = useSnackbar();
+  const { form, validate, reset } = useForm(required());
+  const [inputValue, setInputValue] = useState('');
 
-  const closeDialog = () => {
-    setDialog(null);
+  const onInputValueChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
+  const closePrompt = () => {
+    setPrompt(null);
+    setInputValue('');
+    reset();
   };
 
   const confirm = () => {
-    closeDialog();
-    dialog.confirm();
+    const { isValid } = validate(inputValue);
+
+    if (!isValid) {
+      snackbar({ severity: 'error', message: 'Form validation failed' });
+      return;
+    }
+
+    closePrompt();
+    prompt.confirm(inputValue);
   };
 
   const cancel = (reason) => {
-    closeDialog();
-    dialog.cancel(reason);
+    closePrompt();
+    prompt.cancel(reason);
   };
 
   const actionClickHandler = (type) => () => {
@@ -118,20 +132,26 @@ export const DialogContainer = () => {
     cancel('unknownActionType');
   };
 
+  const onSubmit = (event) => {
+    event.preventDefault();
+    confirm();
+  };
+
   // TODO: Replace `sx` prop with CSS
 
   return (
     <Dialog
-      className="DialogContainer"
+      className="PromptContainer"
       fullWidth
+      disableRestoreFocus
       TransitionComponent={Transition}
-      open={Boolean(dialog)}
+      open={Boolean(prompt)}
       onClose={(event, reason) => {
         cancel(reason);
       }}
     >
       <DialogTitle>
-        {dialog?.title}
+        {prompt?.title}
 
         <IconButton
           onClick={() => {
@@ -148,10 +168,32 @@ export const DialogContainer = () => {
         </IconButton>
       </DialogTitle>
 
-      <DialogContent>{dialog?.content}</DialogContent>
+      <DialogContent>
+        <form noValidate className="form" onSubmit={onSubmit}>
+          <div className={clsx('field', { error: form?.errors.required })}>
+            {prompt?.inputLabel && (
+              <p className="label">{prompt?.inputLabel}</p>
+            )}
+
+            <input
+              type="text"
+              placeholder={prompt?.inputLabel}
+              value={inputValue}
+              onChange={onInputValueChange}
+              autoFocus
+            />
+
+            {form?.errors.required && (
+              <p role="alert" className="helper">
+                {prompt?.inputLabel} is required
+              </p>
+            )}
+          </div>
+        </form>
+      </DialogContent>
 
       <DialogActions>
-        {map(dialog?.actions || [], ({ type, label }) => {
+        {map(prompt?.actions || [], ({ type, label }) => {
           return (
             <button
               key={label}
@@ -159,11 +201,10 @@ export const DialogContainer = () => {
               className={clsx(
                 'button large',
                 type === 'confirm' && {
-                  blue: dialog?.severity === 'success',
-                  red: dialog?.severity === 'error',
+                  blue: prompt?.severity === 'success',
+                  red: prompt?.severity === 'error',
                 }
               )}
-              autoFocus={type === 'confirm'}
               onClick={actionClickHandler(type)}
             >
               {label}

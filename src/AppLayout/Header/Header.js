@@ -10,7 +10,6 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
-  ListSubheader,
   Menu,
   MenuItem,
 } from '@mui/material';
@@ -18,7 +17,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import HomeIcon from '@mui/icons-material/Home';
 import SchoolIcon from '@mui/icons-material/School';
-import DashboardIcon from '@mui/icons-material/Dashboard';
 import QuizIcon from '@mui/icons-material/Quiz';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -71,7 +69,7 @@ function Header() {
       </div>
 
       <div className="title">
-        <h1>Trivial Puessi</h1>
+        <h1>quiz.io</h1>
       </div>
 
       <div className="nav">
@@ -79,13 +77,13 @@ function Header() {
           Home
         </Link>
 
-        <Link to="quiz" className="link">
-          Quiz
+        <Link to="play" className="link">
+          Play
         </Link>
 
-        {user?.role === 'admin' && (
-          <Link to="admin" className="link">
-            Admin
+        {user && (
+          <Link to="create" className="link">
+            Create
           </Link>
         )}
       </div>
@@ -159,44 +157,29 @@ function Header() {
           </ListItem>
 
           <ListItem disablePadding>
-            <ListItemButton component={Link} to="quiz" onClick={closeAppMenu}>
+            <ListItemButton component={Link} to="play" onClick={closeAppMenu}>
               <ListItemIcon>
                 <SchoolIcon />
               </ListItemIcon>
-              <ListItemText primary="Quiz" />
+              <ListItemText primary="Play" />
             </ListItemButton>
           </ListItem>
-        </List>
 
-        {user?.role === 'admin' && (
-          <List subheader={<ListSubheader>Admin</ListSubheader>}>
+          {user && (
             <ListItem disablePadding>
               <ListItemButton
                 component={Link}
-                to="admin"
-                onClick={closeAppMenu}
-              >
-                <ListItemIcon>
-                  <DashboardIcon />
-                </ListItemIcon>
-                <ListItemText primary="Dashboard" />
-              </ListItemButton>
-            </ListItem>
-
-            <ListItem disablePadding>
-              <ListItemButton
-                component={Link}
-                to="admin/questions"
+                to="create"
                 onClick={closeAppMenu}
               >
                 <ListItemIcon>
                   <QuizIcon />
                 </ListItemIcon>
-                <ListItemText primary="Questions" />
+                <ListItemText primary="Create" />
               </ListItemButton>
             </ListItem>
-          </List>
-        )}
+          )}
+        </List>
       </Drawer>
     </div>
   );

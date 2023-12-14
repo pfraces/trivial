@@ -74,5 +74,9 @@ export const useForm = (schema) => {
     return validation;
   };
 
-  return { form, validate };
+  const reset = () => {
+    setForm(null);
+  };
+
+  return { form, validate, reset };
 };

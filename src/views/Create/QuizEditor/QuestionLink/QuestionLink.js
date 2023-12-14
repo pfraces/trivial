@@ -4,7 +4,7 @@ import './QuestionLink.css';
 function QuestionLink({ id, label }) {
   return (
     <div className="QuestionLink">
-      <Link to={id}>{label}</Link>
+      <Link to={`questions/${id}`}>{label}</Link>
     </div>
   );
 }

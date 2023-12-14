@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { clsx } from 'clsx';
+import clsx from 'clsx';
 import Option from './Option/Option';
 import './QuestionCard.css';
 
@@ -65,19 +65,19 @@ function QuestionCard({
                 }
               }}
             >
-              Seleccionar
+              Select
             </button>
           )}
 
           {status === statusMap.feedback && !isLast && (
             <button className="button large blue" onClick={onNext}>
-              Siguiente
+              Next
             </button>
           )}
 
           {status === statusMap.feedback && isLast && (
             <button className="button large blue" onClick={onDone}>
-              Finalizar
+              Done
             </button>
           )}
         </div>

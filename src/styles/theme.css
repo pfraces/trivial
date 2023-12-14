@@ -56,17 +56,6 @@ a:hover {
   background-color: var(--green);
 }
 
-.button.yellow {
-  border-color: var(--yellow);
-  color: var(--yellow);
-}
-
-.button.yellow:hover {
-  border-color: var(--yellow);
-  color: white;
-  background-color: var(--yellow);
-}
-
 .button.red {
   border-color: var(--red);
   color: var(--red);
@@ -86,28 +75,30 @@ a:hover {
   cursor: not-allowed;
 }
 
-.form .field {
+.field {
   margin-bottom: 10px;
 }
 
-.form .field .label {
+.field .label {
   margin-bottom: 3px;
+  font-weight: 600;
 }
 
-.form .field .helper {
+.field .helper {
   color: var(--red);
 }
 
-.Login .form .field input,
-.Signup .form .field input {
-  color: inherit;
-  margin: 2px 0;
-  padding: 5px;
-  width: 250px;
+.field input:placeholder-shown {
+  font-style: italic;
 }
 
-.form .field input:placeholder-shown {
-  font-style: italic;
+.field.error input[type='text'] {
+  border: 1px solid var(--red);
+  border-radius: 2px;
+}
+
+.field.error input[type='text']:focus {
+  outline-color: var(--red);
 }
 
 .card {
@@ -133,4 +124,10 @@ a:hover {
   flex: 1;
   font-size: 1.8rem;
   font-weight: 400;
+}
+
+.card-header h2 {
+  flex: 1;
+  font-size: 1.4rem;
+  font-weight: 600;
 }

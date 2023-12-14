@@ -1,4 +1,4 @@
-import { clsx } from 'clsx';
+import clsx from 'clsx';
 import './Option.css';
 
 function Option({ label, right, selected, onClick }) {

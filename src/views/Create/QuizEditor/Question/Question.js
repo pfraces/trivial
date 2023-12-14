@@ -1,8 +1,8 @@
 import { useMemo, useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import clsx from 'clsx';
 import { ref, push, set, remove, onValue } from 'firebase/database';
 import { db } from 'src/firebase/firebase';
-import { clsx } from 'clsx';
 import { useForm } from 'src/form/form';
 import { required } from 'src/form/rules';
 import { useSnackbar } from 'src/AppLayout/snackbar/snackbar';
@@ -22,7 +22,7 @@ const initQuestion = () => ({
 });
 
 function Question() {
-  const { id } = useParams();
+  const { quizId, questionId } = useParams();
   const navigate = useNavigate();
   const snackbar = useSnackbar();
   const dialog = useDialog();
@@ -34,12 +34,15 @@ function Question() {
   });
 
   const questionRef = useMemo(
-    () => (id === 'new' ? null : ref(db, `questions/${id}`)),
-    [id]
+    () =>
+      questionId === 'new'
+        ? null
+        : ref(db, `quizzes/${quizId}/questions/${questionId}`),
+    [quizId, questionId]
   );
 
   const [question, setQuestion] = useState(
-    id === 'new' ? initQuestion() : null
+    questionId === 'new' ? initQuestion() : null
   );
 
   const navigateBack = () => {
@@ -92,7 +95,7 @@ function Question() {
     let req;
 
     if (!questionRef) {
-      const newQuestionRef = push(ref(db, 'questions'));
+      const newQuestionRef = push(ref(db, `quizzes/${quizId}/questions`));
       req = set(newQuestionRef, { ...question, id: newQuestionRef.key });
     } else {
       req = set(questionRef, question);
@@ -116,7 +119,7 @@ function Question() {
     dialog({
       severity: 'error',
       title: 'Delete question?',
-      message: 'Data will be lost',
+      description: 'Data will be lost',
     })
       .then(() => remove(questionRef))
       .then(() => {
@@ -133,9 +136,11 @@ function Question() {
       return;
     }
 
-    onValue(questionRef, (data) => {
-      setQuestion(data.val());
+    const unsubscribe = onValue(questionRef, (snapshot) => {
+      setQuestion(snapshot.val());
     });
+
+    return unsubscribe;
   }, [questionRef]);
 
   if (!question) {
@@ -151,11 +156,7 @@ function Question() {
             <Breadcrumbs />
           </div>
 
-          <form
-            noValidate
-            className={clsx('form', { error: form && !form.isValid })}
-            onSubmit={onSubmit}
-          >
+          <form noValidate className="form" onSubmit={onSubmit}>
             <div
               className={clsx('field', { error: form?.errors.label.required })}
             >

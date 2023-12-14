@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { ref, get } from 'firebase/database';
 import { map, shuffle, take } from 'lodash';
 import { db } from 'src/firebase/firebase';
@@ -8,9 +8,11 @@ import QuestionCard from './QuestionCard/QuestionCard';
 import './Quiz.css';
 
 function Quiz() {
+  const { quizId } = useParams();
   const navigate = useNavigate();
   const dialog = useDialog();
   const [score, setScore] = useState(0);
+  const [quizName, setQuizName] = useState('');
   const [questions, setQuestions] = useState([]);
   const [questionIndex, setQuestionIndex] = useState(0);
 
@@ -22,14 +24,14 @@ function Quiz() {
     setQuestions([]);
     setQuestionIndex(0);
 
-    get(ref(db, 'questions')).then((snapshot) => {
+    get(ref(db, `quizzes/${quizId}`)).then((snapshot) => {
       const data = snapshot.val();
 
       if (data == null) {
         return;
       }
 
-      const questionsShuffled = shuffle(data);
+      const questionsShuffled = shuffle(data.questions);
       const questionsSubset = take(questionsShuffled, QUIZ_LENGTH);
 
       const questionsWithOptionsShuffled = map(questionsSubset, (question) => ({
@@ -37,11 +39,12 @@ function Quiz() {
         options: shuffle(question.options),
       }));
 
+      setQuizName(data.label);
       setQuestions(questionsWithOptionsShuffled);
     });
   };
 
-  useEffect(init, []);
+  useEffect(init, [quizId]);
 
   const onRight = () => {
     setScore((prev) => prev + 1);
@@ -53,12 +56,11 @@ function Quiz() {
 
   const onDone = () => {
     dialog({
-      severity: 'success',
-      title: '¡Enhorabuena!',
-      message: `Has obtenido ${score} puntos`,
+      title: 'Congratulations!',
+      description: `You've earned ${score} score points`,
       actions: [
-        { type: 'cancel', label: 'Salir' },
-        { type: 'confirm', label: 'Volver a jugar' },
+        { type: 'cancel', label: 'Exit' },
+        { type: 'confirm', label: 'Play again' },
       ],
     })
       .then(() => {
@@ -73,22 +75,23 @@ function Quiz() {
     return null;
   }
 
-  const { id, label, options } = questions[questionIndex];
+  const question = questions[questionIndex];
 
   return (
     <div className="Quiz">
       <div className="banner">
         <div className="page-container">
-          <div className="score">Puntuación: {score}</div>
+          <div className="label">{quizName}</div>
+          <div className="score">Score: {score}</div>
         </div>
       </div>
 
       <article className="page-container">
         <QuestionCard
-          key={id}
+          key={question.id}
           index={questionIndex}
-          label={label}
-          options={options}
+          label={question.label}
+          options={question.options}
           isLast={questionIndex === questions.length - 1}
           onRight={onRight}
           onNext={onNext}
