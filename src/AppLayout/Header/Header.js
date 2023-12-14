@@ -69,14 +69,12 @@ function Header() {
       </div>
 
       <div className="title">
-        <h1>quiz.io</h1>
+        <Link to="home">
+          <h1>quiz.io</h1>
+        </Link>
       </div>
 
       <div className="nav">
-        <Link to="home" className="link">
-          Home
-        </Link>
-
         <Link to="play" className="link">
           Play
         </Link>

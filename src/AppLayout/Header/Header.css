@@ -12,11 +12,15 @@
   display: none;
 }
 
-.Header h1 {
+.Header .title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.Header .title h1 {
   font-size: 1.8rem;
   font-weight: 600;
-  padding: 5px 0;
-  margin-right: 15px;
+  padding-top: 2px;
 }
 
 .Header .nav {
