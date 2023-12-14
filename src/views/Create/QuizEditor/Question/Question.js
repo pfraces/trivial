@@ -156,10 +156,16 @@ function Question() {
             <Breadcrumbs />
           </div>
 
+          <div className="card-header">
+            <h1>{questionRef ? 'Edit' : 'New'} question</h1>
+          </div>
+
           <form noValidate className="form" onSubmit={onSubmit}>
             <div
               className={clsx('field', { error: form?.errors.label.required })}
             >
+              <p className="label">Question</p>
+
               <input
                 type="text"
                 className="question-label"
@@ -173,6 +179,10 @@ function Question() {
                   Question title is required
                 </p>
               )}
+            </div>
+
+            <div className="card-header">
+              <h2>Options</h2>
             </div>
 
             <div className="options field">

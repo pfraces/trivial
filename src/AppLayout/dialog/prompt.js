@@ -13,7 +13,6 @@ import CloseIcon from '@mui/icons-material/Close';
 import { useForm } from 'src/form/form';
 import { required } from 'src/form/rules';
 import { useSnackbar } from 'src/AppLayout/snackbar/snackbar';
-import './PromptContainer.css';
 
 const PromptContext = createContext({});
 
