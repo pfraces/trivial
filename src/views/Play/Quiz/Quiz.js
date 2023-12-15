@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { ref, get } from 'firebase/database';
 import { map, shuffle, take } from 'lodash';
 import { db } from 'src/firebase/firebase';
-import { useDialog } from 'src/AppLayout/dialog/dialog';
+import { useDialog } from 'src/layout/dialog/dialog';
 import QuestionCard from './QuestionCard/QuestionCard';
 import './Quiz.css';
 

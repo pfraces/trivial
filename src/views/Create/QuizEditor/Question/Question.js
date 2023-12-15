@@ -5,9 +5,9 @@ import { ref, push, set, remove, onValue } from 'firebase/database';
 import { db } from 'src/firebase/firebase';
 import { useForm } from 'src/form/form';
 import { required } from 'src/form/rules';
-import { useSnackbar } from 'src/AppLayout/snackbar/snackbar';
-import { useDialog } from 'src/AppLayout/dialog/dialog';
-import Breadcrumbs from 'src/AppLayout/Breadcrumbs/Breadcrumbs';
+import { useSnackbar } from 'src/layout/snackbar/snackbar';
+import { useDialog } from 'src/layout/dialog/dialog';
+import Breadcrumbs from 'src/layout/Breadcrumbs/Breadcrumbs';
 import './Question.css';
 
 const initQuestion = () => ({

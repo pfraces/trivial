@@ -3,7 +3,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import useReactRouterBreadcrumbs from 'use-react-router-breadcrumbs';
 import { onValue, ref } from 'firebase/database';
 import { db } from 'src/firebase/firebase';
-import AppLayout from 'src/AppLayout/AppLayout';
+import AppLayout from 'src/layout/AppLayout/AppLayout';
 import Landing from 'src/views/Landing/Landing';
 import Signup from 'src/views/Signup/Signup';
 import Login from 'src/views/Login/Login';

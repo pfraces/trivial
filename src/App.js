@@ -1,8 +1,8 @@
 import { RouterProvider } from 'react-router-dom';
 import { AuthProvider } from './firebase/auth';
-import { SnackbarProvider } from './AppLayout/snackbar/snackbar';
-import { DialogProvider } from './AppLayout/dialog/dialog';
-import { PromptProvider } from './AppLayout/dialog/prompt';
+import { SnackbarProvider } from './layout/snackbar/snackbar';
+import { DialogProvider } from './layout/dialog/dialog';
+import { PromptProvider } from './layout/dialog/prompt';
 import { router } from './router/router';
 import './App.css';
 

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import clsx from 'clsx';
 import { useAuth } from 'src/firebase/auth';
-import { useSnackbar } from 'src/AppLayout/snackbar/snackbar';
+import { useSnackbar } from 'src/layout/snackbar/snackbar';
 import { useForm } from 'src/form/form';
 import { email, minLength, required } from 'src/form/rules';
 import './Login.css';

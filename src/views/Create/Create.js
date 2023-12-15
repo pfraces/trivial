@@ -3,8 +3,8 @@ import { ref, onValue, push, update } from 'firebase/database';
 import { map } from 'lodash';
 import { db } from 'src/firebase/firebase';
 import { useAuth } from 'src/firebase/auth';
-import { useSnackbar } from 'src/AppLayout/snackbar/snackbar';
-import { usePrompt } from 'src/AppLayout/dialog/prompt';
+import { useSnackbar } from 'src/layout/snackbar/snackbar';
+import { usePrompt } from 'src/layout/dialog/prompt';
 import QuizLink from './QuizLink/QuizLink';
 import './Create.css';
 
