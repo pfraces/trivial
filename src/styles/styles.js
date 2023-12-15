@@ -6,4 +6,3 @@ import './reset.css';
 import './layout.css';
 import './colors.css';
 import './theme.css';
-import './overrides.css';

@@ -1,24 +1,24 @@
-.app-menu-drawer {
+.NavigationDrawer {
   display: none;
 }
 
 @media (max-width: 600px) {
-  .app-menu-drawer {
+  .NavigationDrawer {
     display: initial;
   }
 }
 
-.app-menu-drawer .app-menu {
+.NavigationDrawer .menu {
   min-width: 240px;
 }
 
-.app-menu-drawer .app-menu .app-menu-header {
+.NavigationDrawer .menu .header {
   display: flex;
   align-items: center;
   height: 48px;
   padding: 0 10px;
 }
 
-.app-menu-drawer .app-menu a {
+.NavigationDrawer .menu a {
   color: inherit;
 }

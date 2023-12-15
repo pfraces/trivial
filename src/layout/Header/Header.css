@@ -8,10 +8,6 @@
   padding-right: calc(30px - 100vw + 100%);
 }
 
-.Header .app-menu-toggler {
-  display: none;
-}
-
 .Header .title a {
   color: inherit;
   text-decoration: none;
@@ -23,36 +19,23 @@
   padding-top: 2px;
 }
 
-.Header .nav {
+.Header .navigation-drawer-button {
+  display: none;
+}
+
+.Header .navigation-bar {
   display: flex;
 }
 
 @media (max-width: 600px) {
-  .Header .app-menu-toggler {
+  .Header .navigation-drawer-button {
     display: initial;
     padding-right: 6px;
   }
 
-  .Header .nav {
+  .Header .navigation-bar {
     display: none;
   }
-}
-
-.Header .link {
-  display: flex;
-  align-items: center;
-  color: inherit;
-  font-size: 1.3rem;
-}
-
-.Header .link:hover {
-  text-decoration: none;
-  border-top: 3px solid transparent;
-  border-bottom: 3px solid white;
-}
-
-.Header .nav .link {
-  margin-left: 30px;
 }
 
 .Header .widgets {
