@@ -22,7 +22,7 @@ export default function Create() {
     })
       .then((quizLabel) => {
         const quizRef = push(ref(db, 'quizzes'));
-        const quiz = { id: quizRef.key, label: quizLabel };
+        const quiz = { id: quizRef.key, label: quizLabel, owner: user.uid };
 
         return update(ref(db), {
           [`quizzes/${quiz.id}`]: quiz,

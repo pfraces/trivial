@@ -28,7 +28,6 @@ export const AuthProvider = ({ children }) => {
             return set(ref(db, `/users/${user.uid}`), {
               username,
               email,
-              role: 'user',
             });
           });
       }
