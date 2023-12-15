@@ -14,7 +14,7 @@ import { useForm } from 'src/form/form';
 import { required } from 'src/form/rules';
 import { useSnackbar } from 'src/layout/snackbar/snackbar';
 
-const PromptContext = createContext({});
+const PromptContext = createContext();
 
 export const PromptProvider = ({ children }) => {
   const [prompt, setPrompt] = useState(null);

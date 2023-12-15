@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 
-const DialogContext = createContext({});
+const DialogContext = createContext();
 
 export const DialogProvider = ({ children }) => {
   const [dialog, setDialog] = useState(null);

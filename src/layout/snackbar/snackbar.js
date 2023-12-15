@@ -1,7 +1,7 @@
 import { createContext, useContext, useState } from 'react';
 import { Alert, Snackbar } from '@mui/material';
 
-const SnackbarContext = createContext({});
+const SnackbarContext = createContext();
 
 export const SnackbarProvider = ({ children }) => {
   const [snackbar, setSnackbar] = useState(null);
