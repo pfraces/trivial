@@ -45,8 +45,8 @@ export default function Question() {
     questionId === 'new' ? initQuestion() : null
   );
 
-  const navigateBack = () => {
-    navigate(-1);
+  const navigateToParent = () => {
+    navigate('..');
   };
 
   const onQuestionLabelChange = (event) => {
@@ -104,7 +104,7 @@ export default function Question() {
     req
       .then(() => {
         snackbar({ message: 'Question saved' });
-        navigateBack();
+        navigateToParent();
       })
       .catch((err) => {
         snackbar({ severity: 'error', message: err.message });
@@ -112,7 +112,7 @@ export default function Question() {
   };
 
   const onCancel = () => {
-    navigateBack();
+    navigateToParent();
   };
 
   const onDelete = () => {
@@ -124,7 +124,7 @@ export default function Question() {
       .then(() => remove(questionRef))
       .then(() => {
         snackbar({ message: 'Question deleted' });
-        navigateBack();
+        navigateToParent();
       })
       .catch((err) => {
         snackbar({ severity: 'error', message: err.message });

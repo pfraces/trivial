@@ -24,8 +24,8 @@ export default function QuizEditor() {
   const [quizLabel, setQuizLabel] = useState('');
   const [quiz, setQuiz] = useState(null);
 
-  const navigateBack = () => {
-    navigate(-1);
+  const navigateToParent = () => {
+    navigate('..');
   };
 
   const updateQuizLabel = (label) =>
@@ -76,7 +76,7 @@ export default function QuizEditor() {
       .then(() => deleteQuiz())
       .then(() => {
         snackbar({ message: 'Quiz deleted' });
-        navigateBack();
+        navigateToParent();
       })
       .catch((err) => {
         snackbar({ severity: 'error', message: err.message });

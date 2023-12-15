@@ -43,11 +43,16 @@ const routes = [
     children: [
       {
         path: 'play',
-        element: <Play />,
-      },
-      {
-        path: 'play/:quizId',
-        element: <Quiz />,
+        children: [
+          {
+            index: true,
+            element: <Play />,
+          },
+          {
+            path: ':quizId',
+            element: <Quiz />,
+          },
+        ],
       },
       {
         element: <ProtectedRoute isAllowed={(user) => !user} />,
@@ -79,20 +84,30 @@ const routes = [
           },
           {
             path: 'create',
-            element: <Create />,
-            breadcrumb: 'Create',
-          },
-          {
-            path: 'create/:quizId',
-            element: <QuizEditor />,
-            breadcrumb: ({ match }) => (
-              <QuizLabelBreadcrumb quizId={match.params.quizId} />
-            ),
-          },
-          {
-            path: 'create/:quizId/questions/:questionId',
-            element: <Question />,
-            breadcrumb: 'Edit question',
+            children: [
+              {
+                index: true,
+                element: <Create />,
+                breadcrumb: 'Create',
+              },
+              {
+                path: ':quizId',
+                children: [
+                  {
+                    index: true,
+                    element: <QuizEditor />,
+                    breadcrumb: ({ match }) => (
+                      <QuizLabelBreadcrumb quizId={match.params.quizId} />
+                    ),
+                  },
+                  {
+                    path: 'questions/:questionId',
+                    element: <Question />,
+                    breadcrumb: 'Edit question',
+                  },
+                ],
+              },
+            ],
           },
         ],
       },
