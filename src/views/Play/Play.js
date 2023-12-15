@@ -17,7 +17,6 @@ export default function Play() {
       }
 
       setQuizzes(map(data));
-      console.log(data);
     });
 
     return unsubscribe;

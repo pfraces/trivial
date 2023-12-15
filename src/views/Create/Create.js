@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { ref, onValue, push, set } from 'firebase/database';
+import { ref, onValue, push, update } from 'firebase/database';
 import { map } from 'lodash';
 import { db } from 'src/firebase/firebase';
 import { useAuth } from 'src/firebase/auth';
@@ -10,7 +9,6 @@ import QuizLink from './QuizLink/QuizLink';
 import './Create.css';
 
 export default function Create() {
-  const navigate = useNavigate();
   const { user } = useAuth();
   const snackbar = useSnackbar();
   const prompt = usePrompt();
@@ -26,13 +24,13 @@ export default function Create() {
         const quizRef = push(ref(db, 'quizzes'));
         const quiz = { id: quizRef.key, label: quizLabel };
 
-        Promise.all([
-          set(ref(db, `users/${user.uid}/quizzes/${quiz.id}`), quiz),
-          set(quizRef, quiz),
-        ]).then(() => {
-          snackbar({ message: 'Quiz created' });
-          navigate(quiz.id);
+        return update(ref(db), {
+          [`quizzes/${quiz.id}`]: quiz,
+          [`users/${user.uid}/quizzes/${quiz.id}`]: quiz,
         });
+      })
+      .then(() => {
+        snackbar({ message: 'Quiz created' });
       })
       .catch((err) => {
         snackbar({ severity: 'error', message: err.message });

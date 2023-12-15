@@ -17,7 +17,6 @@ import Question from 'src/views/Create/QuizEditor/Question/Question';
 import ProtectedRoute from './ProtectedRoute';
 
 const QuizLabelBreadcrumb = ({ quizId }) => {
-  console.log({ quizId });
   const [quizLabel, setQuizLabel] = useState('Quiz');
 
   useEffect(() => {
