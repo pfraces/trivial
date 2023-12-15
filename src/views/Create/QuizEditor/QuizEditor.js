@@ -99,7 +99,6 @@ export default function QuizEditor() {
   }, [quizId]);
 
   if (!quiz) {
-    // TODO: Show loader
     return null;
   }
 

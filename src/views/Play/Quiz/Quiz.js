@@ -16,7 +16,6 @@ export default function Quiz() {
   const [questions, setQuestions] = useState([]);
   const [questionIndex, setQuestionIndex] = useState(0);
 
-  // TODO: Configurable quiz length
   const QUIZ_LENGTH = 10;
 
   const init = () => {

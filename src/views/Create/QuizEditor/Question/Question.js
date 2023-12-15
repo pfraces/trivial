@@ -144,7 +144,6 @@ export default function Question() {
   }, [questionRef]);
 
   if (!question) {
-    // TODO: Show loader
     return null;
   }
 
