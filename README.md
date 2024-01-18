@@ -10,7 +10,7 @@ Having `quiz.io` and `quiz-io.github.io` in the same folder, go to the
 ```sh
 npm run build
 cd ../quiz-io.github.io/
-rm -rf static
+rm -rf *
 cp -r ../quiz.io/build/. .
 ```
 

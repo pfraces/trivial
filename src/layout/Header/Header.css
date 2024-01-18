@@ -19,6 +19,11 @@
   padding-top: 2px;
 }
 
+.Header .title .logo {
+  margin-bottom: -6px;
+  margin-right: 2px;
+}
+
 .Header .navigation-drawer-button {
   display: none;
 }

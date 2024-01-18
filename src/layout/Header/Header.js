@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import QuizIcon from '@mui/icons-material/Quiz';
 import NavigationDrawerButton from 'src/layout/navigation/NavigationDrawerButton/NavigationDrawerButton';
 import NavigationBar from 'src/layout/navigation/NavigationBar/NavigationBar';
 import SessionWidget from 'src/layout/SessionWidget/SessionWidget';
@@ -13,7 +14,10 @@ export default function Header() {
 
       <div className="title">
         <Link to="home">
-          <h1>quiz.io</h1>
+          <h1>
+            <QuizIcon className="logo" />
+            quiz.io
+          </h1>
         </Link>
       </div>
 
