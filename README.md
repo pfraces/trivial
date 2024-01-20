@@ -2,16 +2,19 @@
 
 Quiz generator
 
-## Build
+## Build & Deploy to Github Pages
 
-Having `quiz.io` and `quiz-io.github.io` in the same folder, go to the
-`quiz.io` root and execute the following commands from a bash terminal:
+The deployment has been automated with Github Actions.
+
+On every push to `github.com/quiz-io/quiz.io` master branch, the sources are
+built and pushed to `github.com/quiz-io/quiz-io.github.io` master branch.
+
+On every push to `github.com/quiz-io/quiz-io.github.io` master branch, Github
+deploys the contents to the Github Pages at `quiz-io.github.io`.
+
+## Release
 
 ```sh
-npm run build
-cd ../quiz-io.github.io/
-rm -rf *
-cp -r ../quiz.io/build/. .
+npm version [major | minor | patch] -m "v%s"
+git push && git push --tags
 ```
-
-Once the new build is in place, commit and push the changes to production.
