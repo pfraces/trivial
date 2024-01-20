@@ -3,6 +3,13 @@ article {
   padding-bottom: 40px;
 }
 
+/* @media (max-width: calc(800px + (var(--viewport-padding-x) * 2))) { */
+@media (max-width: 840px) {
+  article {
+    padding-bottom: 0;
+  }
+}
+
 a {
   color: var(--darkblue);
   text-decoration: none;
@@ -115,6 +122,14 @@ a:hover {
   padding-bottom: 40px;
   border-radius: 5px;
   box-shadow: 0 3px 5px rgb(0 0 0 / 0.2);
+}
+
+/* @media (max-width: calc(800px + (var(--viewport-padding-x) * 2))) { */
+@media (max-width: 840px) {
+  .card {
+    margin: calc(var(--viewport-padding-x) * -1);
+    border-radius: 0;
+  }
 }
 
 .card-breadcrumbs {

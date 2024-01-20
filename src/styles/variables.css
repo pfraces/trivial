@@ -1,4 +1,8 @@
 :root {
+  /* layout */
+  --viewport-padding-x: 20px;
+
+  /* colors */
   --blue: #0079bf;
   --green: #519839;
   --yellow: #faa53d;

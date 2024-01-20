@@ -4,8 +4,8 @@
   height: 48px;
   color: white;
   padding: 0;
-  padding-left: 30px;
-  padding-right: calc(30px - 100vw + 100%);
+  padding-left: var(--viewport-padding-x);
+  padding-right: calc(var(--viewport-padding-x) - 100vw + 100%);
 }
 
 .Header .title a {

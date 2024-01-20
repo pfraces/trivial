@@ -5,9 +5,11 @@
   margin: 0 auto;
 }
 
-@media (max-width: 870px) {
+/* @media (max-width: calc(800px + (var(--viewport-padding-x) * 2))) { */
+@media (max-width: 840px) {
   .page-container {
-    max-width: calc(100vw - 60px);
+    /* max-width: calc(100vw - (var(--viewport-padding-x) * 2)); */
+    max-width: calc(100vw - 40px);
   }
 }
 
