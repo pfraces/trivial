@@ -3,6 +3,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import useReactRouterBreadcrumbs from 'use-react-router-breadcrumbs';
 import { onValue, ref } from 'firebase/database';
 import { db } from 'src/firebase/firebase';
+import ProtectedRoute from './ProtectedRoute';
 import AppLayout from 'src/layout/AppLayout/AppLayout';
 import Landing from 'src/views/Landing/Landing';
 import Signup from 'src/views/Signup/Signup';
@@ -14,7 +15,7 @@ import Quiz from 'src/views/Play/Quiz/Quiz';
 import Create from 'src/views/Create/Create';
 import QuizEditor from 'src/views/Create/QuizEditor/QuizEditor';
 import Question from 'src/views/Create/QuizEditor/Question/Question';
-import ProtectedRoute from './ProtectedRoute';
+import ResetPassword from 'src/views/ResetPassword/ResetPassword';
 
 const QuizLabelBreadcrumb = ({ quizId }) => {
   const [quizLabel, setQuizLabel] = useState('Quiz');
@@ -68,6 +69,10 @@ const routes = [
           {
             path: 'login',
             element: <Login />,
+          },
+          {
+            path: 'reset-password',
+            element: <ResetPassword />,
           },
         ],
       },

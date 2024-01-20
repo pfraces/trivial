@@ -6,6 +6,8 @@ import {
   signOut,
   updateProfile,
   sendEmailVerification,
+  sendPasswordResetEmail as fbSendPasswordResetEmail,
+  updatePassword as fbUpdatePassword,
 } from 'firebase/auth';
 import { ref, onValue, off, set } from 'firebase/database';
 import { db, auth } from './firebase';
@@ -13,7 +15,7 @@ import { db, auth } from './firebase';
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
 
   const login = ({ email, password }) => {
     return signInWithEmailAndPassword(auth, email, password);
@@ -30,7 +32,7 @@ export const AuthProvider = ({ children }) => {
               email,
             });
           });
-      }
+      },
     );
   };
 
@@ -38,10 +40,18 @@ export const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
+  const sendPasswordResetEmail = (email) => {
+    return fbSendPasswordResetEmail(auth, email);
+  };
+
+  const updatePassword = (newPassword) => {
+    return fbUpdatePassword(auth.currentUser, newPassword);
+  };
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (userAuth) => {
       if (!userAuth) {
-        setUser((user) => {
+        setCurrentUser((user) => {
           if (user) {
             off(ref(db, `/users/${user.uid}`));
           }
@@ -53,7 +63,7 @@ export const AuthProvider = ({ children }) => {
       }
 
       onValue(ref(db, `/users/${userAuth.uid}`), (snapshot) => {
-        setUser({ ...userAuth, ...snapshot.val() });
+        setCurrentUser({ ...userAuth, ...snapshot.val() });
       });
     });
 
@@ -61,7 +71,16 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, login, signup, logout }}>
+    <AuthContext.Provider
+      value={{
+        user: currentUser,
+        login,
+        signup,
+        logout,
+        sendPasswordResetEmail,
+        updatePassword,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
