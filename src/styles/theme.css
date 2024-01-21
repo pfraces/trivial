@@ -20,6 +20,7 @@ a:hover {
 }
 
 .button {
+  cursor: pointer;
   background-color: white;
   color: var(--primary);
   border: 1px solid var(--primary);

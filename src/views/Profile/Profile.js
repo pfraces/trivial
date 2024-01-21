@@ -65,7 +65,7 @@ export default function Profile() {
                 />
 
                 <button type="submit" className="button update-password">
-                  Update password
+                  Update
                 </button>
               </div>
 
