@@ -18,7 +18,7 @@ export const NavigationProvider = ({ children }) => {
       value={{
         navigationDrawerOpen,
         openNavigationDrawer,
-        closeNavigationDrawer,
+        closeNavigationDrawer
       }}
     >
       {children}

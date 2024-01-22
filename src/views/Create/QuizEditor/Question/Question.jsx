@@ -16,9 +16,9 @@ const initQuestion = () => ({
     { label: '', right: false },
     { label: '', right: false },
     { label: '', right: false },
-    { label: '', right: false },
+    { label: '', right: false }
   ],
-  rightAnswer: '',
+  rightAnswer: ''
 });
 
 export default function Question() {
@@ -30,7 +30,7 @@ export default function Question() {
   const { form, validate } = useForm({
     label: required(),
     options: { label: required() },
-    rightAnswer: required(),
+    rightAnswer: required()
   });
 
   const questionRef = useMemo(
@@ -52,7 +52,7 @@ export default function Question() {
   const onQuestionLabelChange = (event) => {
     setQuestion((question) => ({
       ...question,
-      label: event.target.value,
+      label: event.target.value
     }));
   };
 
@@ -61,9 +61,9 @@ export default function Question() {
       ...question,
       options: question.options.map((option, index) => ({
         ...option,
-        right: event.target.value === `${index}`,
+        right: event.target.value === `${index}`
       })),
-      rightAnswer: event.target.value,
+      rightAnswer: event.target.value
     }));
   };
 
@@ -77,9 +77,9 @@ export default function Question() {
 
         return {
           ...option,
-          label: event.target.value,
+          label: event.target.value
         };
-      }),
+      })
     }));
   };
 
@@ -119,7 +119,7 @@ export default function Question() {
     dialog({
       severity: 'error',
       title: 'Delete question?',
-      description: 'Data will be lost',
+      description: 'Data will be lost'
     })
       .then(() => remove(questionRef))
       .then(() => {
@@ -189,7 +189,7 @@ export default function Question() {
                 <div
                   key={index}
                   className={clsx('field', {
-                    error: form?.errors.options[index].label.required,
+                    error: form?.errors.options[index].label.required
                   })}
                 >
                   <div className="option">

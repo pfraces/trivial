@@ -35,7 +35,7 @@ export default function Quiz() {
 
       const questionsWithOptionsShuffled = map(questionsSubset, (question) => ({
         ...question,
-        options: shuffle(question.options),
+        options: shuffle(question.options)
       }));
 
       setQuizName(data.label);
@@ -59,8 +59,8 @@ export default function Quiz() {
       description: `You've earned ${score} score points`,
       actions: [
         { type: 'cancel', label: 'Exit' },
-        { type: 'confirm', label: 'Play again' },
-      ],
+        { type: 'confirm', label: 'Play again' }
+      ]
     })
       .then(() => {
         init();

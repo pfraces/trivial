@@ -18,7 +18,7 @@ export default function Create() {
   const onNewQuiz = () => {
     prompt({
       title: 'Create quiz',
-      inputLabel: 'Quiz name',
+      inputLabel: 'Quiz name'
     })
       .then((quizLabel) => {
         const quizRef = push(ref(db, 'quizzes'));
@@ -26,7 +26,7 @@ export default function Create() {
 
         return update(ref(db), {
           [`quizzes/${quiz.id}`]: quiz,
-          [`users/${user.uid}/quizzes/${quiz.id}`]: quiz,
+          [`users/${user.uid}/quizzes/${quiz.id}`]: quiz
         });
       })
       .then(() => {

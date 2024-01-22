@@ -41,7 +41,7 @@ const validateValue = (schema, value) => {
 
         return {
           isValid: acc.isValid && isValid,
-          errors: { ...acc.errors, [name]: !isValid },
+          errors: { ...acc.errors, [name]: !isValid }
         };
       },
       { isValid: true, errors: null }
@@ -55,7 +55,7 @@ const validateValue = (schema, value) => {
 
       return {
         isValid: acc.isValid && isValid,
-        errors: { ...acc.errors, [key]: errors },
+        errors: { ...acc.errors, [key]: errors }
       };
     },
     { isValid: true, errors: null }

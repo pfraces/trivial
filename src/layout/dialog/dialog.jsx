@@ -1,40 +1,40 @@
 import { createContext, useContext, useState } from 'react';
 import { isFunction } from 'lodash';
 
-const PromptContext = createContext();
+const DialogContext = createContext();
 
-export const PromptProvider = ({ children }) => {
-  const [prompt, setPrompt] = useState(null);
+export const DialogProvider = ({ children }) => {
+  const [dialog, setDialog] = useState(null);
 
   return (
-    <PromptContext.Provider value={{ prompt, setPrompt }}>
+    <DialogContext.Provider value={{ dialog, setDialog }}>
       {children}
-    </PromptContext.Provider>
+    </DialogContext.Provider>
   );
 };
 
-export const usePromptContext = () => useContext(PromptContext);
+export const useDialogContext = () => useContext(DialogContext);
 
-export const usePrompt = () => {
-  const { setPrompt } = usePromptContext();
+export const useDialog = () => {
+  const { setDialog } = useDialogContext();
 
   const defaultActions = [
     { type: 'cancel', label: 'Cancel' },
-    { type: 'confirm', label: 'Confirm' },
+    { type: 'confirm', label: 'Confirm' }
   ];
 
-  const prompt = ({
+  const dialog = ({
     severity = 'success',
     title,
-    inputLabel = '',
-    actions = defaultActions,
+    description = '',
+    actions = defaultActions
   }) => {
     let resolvePromiseInProgress = null;
     let rejectPromiseInProgress = null;
 
-    const confirm = (message) => {
+    const confirm = () => {
       if (isFunction(resolvePromiseInProgress)) {
-        resolvePromiseInProgress(message);
+        resolvePromiseInProgress();
       }
     };
 
@@ -54,17 +54,17 @@ export const usePrompt = () => {
       rejectPromiseInProgress = null;
     });
 
-    setPrompt({
+    setDialog({
       severity,
       title,
-      inputLabel,
+      description,
       actions,
       confirm,
-      cancel,
+      cancel
     });
 
     return promise;
   };
 
-  return prompt;
+  return dialog;
 };

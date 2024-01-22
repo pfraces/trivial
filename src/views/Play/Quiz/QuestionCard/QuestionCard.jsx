@@ -5,7 +5,7 @@ import './QuestionCard.css';
 
 const statusMap = {
   pending: 0,
-  feedback: 1,
+  feedback: 1
 };
 
 export default function QuestionCard({
@@ -15,7 +15,7 @@ export default function QuestionCard({
   isLast,
   onRight,
   onNext,
-  onDone,
+  onDone
 }) {
   const [answer, setAnswer] = useState();
   const [status, setStatus] = useState(statusMap.pending);
@@ -32,7 +32,7 @@ export default function QuestionCard({
       <div className="card-body">
         <div
           className={clsx('options', {
-            feedback: status === statusMap.feedback,
+            feedback: status === statusMap.feedback
           })}
         >
           {options.map((option, index) => (

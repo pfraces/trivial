@@ -7,7 +7,7 @@ import {
   updateProfile,
   sendEmailVerification,
   sendPasswordResetEmail as fbSendPasswordResetEmail,
-  updatePassword as fbUpdatePassword,
+  updatePassword as fbUpdatePassword
 } from 'firebase/auth';
 import { ref, onValue, off, set } from 'firebase/database';
 import { db, auth } from './firebase';
@@ -29,10 +29,10 @@ export const AuthProvider = ({ children }) => {
           .then(() => {
             return set(ref(db, `/users/${user.uid}`), {
               username,
-              email,
+              email
             });
           });
-      },
+      }
     );
   };
 
@@ -78,7 +78,7 @@ export const AuthProvider = ({ children }) => {
         signup,
         logout,
         sendPasswordResetEmail,
-        updatePassword,
+        updatePassword
       }}
     >
       {children}

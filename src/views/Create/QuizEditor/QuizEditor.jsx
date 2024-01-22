@@ -31,13 +31,13 @@ export default function QuizEditor() {
   const updateQuizLabel = (label) =>
     update(ref(db), {
       [`/quizzes/${quiz.id}/label`]: label,
-      [`users/${user.uid}/quizzes/${quiz.id}/label`]: label,
+      [`users/${user.uid}/quizzes/${quiz.id}/label`]: label
     });
 
   const deleteQuiz = () =>
     update(ref(db), {
       [`/quizzes/${quiz.id}`]: null,
-      [`/users/${user.uid}/quizzes/${quiz.id}`]: null,
+      [`/users/${user.uid}/quizzes/${quiz.id}`]: null
     });
 
   const onQuizLabelChange = (event) => {
@@ -71,7 +71,7 @@ export default function QuizEditor() {
     dialog({
       severity: 'error',
       title: 'Delete quiz?',
-      description: 'Data will be lost',
+      description: 'Data will be lost'
     })
       .then(() => deleteQuiz())
       .then(() => {

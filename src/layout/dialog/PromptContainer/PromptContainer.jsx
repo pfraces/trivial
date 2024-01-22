@@ -7,7 +7,7 @@ import {
   DialogContent,
   DialogTitle,
   IconButton,
-  Slide,
+  Slide
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { useForm } from 'src/form/form';
@@ -19,6 +19,8 @@ import './PromptContainer.css';
 const Transition = forwardRef((props, ref) => {
   return <Slide direction="up" ref={ref} {...props} />;
 });
+
+Transition.displayName = 'Transition';
 
 export const PromptContainer = () => {
   const { prompt, setPrompt } = usePromptContext();
@@ -130,7 +132,7 @@ export const PromptContainer = () => {
                 'button large',
                 type === 'confirm' && {
                   blue: prompt?.severity === 'success',
-                  red: prompt?.severity === 'error',
+                  red: prompt?.severity === 'error'
                 }
               )}
               onClick={actionClickHandler(type)}

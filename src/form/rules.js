@@ -2,7 +2,7 @@ const isDefined = (value) => value != null && value !== '';
 
 export const required = () => (value) => ({
   name: 'required',
-  isValid: isDefined(value),
+  isValid: isDefined(value)
 });
 
 export const createRule = (name, validator) => {
@@ -11,7 +11,7 @@ export const createRule = (name, validator) => {
 
     return (value) => ({
       name,
-      isValid: !isDefined(value) || validate(value),
+      isValid: !isDefined(value) || validate(value)
     });
   };
 };

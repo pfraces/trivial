@@ -47,45 +47,45 @@ const routes = [
         children: [
           {
             index: true,
-            element: <Play />,
+            element: <Play />
           },
           {
             path: ':quizId',
-            element: <Quiz />,
-          },
-        ],
+            element: <Quiz />
+          }
+        ]
       },
       {
         element: <ProtectedRoute isAllowed={(user) => !user} />,
         children: [
           {
             index: true,
-            element: <Landing />,
+            element: <Landing />
           },
           {
             path: 'signup',
-            element: <Signup />,
+            element: <Signup />
           },
           {
             path: 'login',
-            element: <Login />,
+            element: <Login />
           },
           {
             path: 'reset-password',
-            element: <ResetPassword />,
-          },
-        ],
+            element: <ResetPassword />
+          }
+        ]
       },
       {
         element: <ProtectedRoute isAllowed={(user) => user} />,
         children: [
           {
             path: 'home',
-            element: <Home />,
+            element: <Home />
           },
           {
             path: 'profile',
-            element: <Profile />,
+            element: <Profile />
           },
           {
             path: 'create',
@@ -93,7 +93,7 @@ const routes = [
               {
                 index: true,
                 element: <Create />,
-                breadcrumb: 'Create',
+                breadcrumb: 'Create'
               },
               {
                 path: ':quizId',
@@ -103,21 +103,21 @@ const routes = [
                     element: <QuizEditor />,
                     breadcrumb: ({ match }) => (
                       <QuizLabelBreadcrumb quizId={match.params.quizId} />
-                    ),
+                    )
                   },
                   {
                     path: 'questions/:questionId',
                     element: <Question />,
-                    breadcrumb: 'Edit question',
-                  },
-                ],
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  },
+                    breadcrumb: 'Edit question'
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 ];
 
 export const router = createBrowserRouter(routes);

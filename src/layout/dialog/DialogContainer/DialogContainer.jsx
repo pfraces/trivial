@@ -8,7 +8,7 @@ import {
   DialogContentText,
   DialogTitle,
   IconButton,
-  Slide,
+  Slide
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { useDialogContext } from '../dialog';
@@ -17,6 +17,8 @@ import './DialogContainer.css';
 const Transition = forwardRef((props, ref) => {
   return <Slide direction="up" ref={ref} {...props} />;
 });
+
+Transition.displayName = 'Transition';
 
 export const DialogContainer = () => {
   const { dialog, setDialog } = useDialogContext();
@@ -86,7 +88,7 @@ export const DialogContainer = () => {
                 'button large',
                 type === 'confirm' && {
                   blue: dialog?.severity === 'success',
-                  red: dialog?.severity === 'error',
+                  red: dialog?.severity === 'error'
                 }
               )}
               autoFocus={type === 'confirm'}

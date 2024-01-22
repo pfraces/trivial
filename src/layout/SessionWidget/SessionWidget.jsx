@@ -6,7 +6,7 @@ import {
   Menu,
   MenuItem,
   ListItemIcon,
-  Divider,
+  Divider
 } from '@mui/material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -60,7 +60,7 @@ export default function SessionWidget() {
             open={Boolean(sessionMenuAnchor)}
             onClose={closeSessionMenu}
             slotProps={{
-              paper: { className: 'session-menu' },
+              paper: { className: 'session-menu' }
             }}
           >
             <MenuItem onClick={onProfile}>

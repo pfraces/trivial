@@ -14,12 +14,12 @@ export default function Login() {
 
   const { form, validate } = useForm({
     email: [required(), email()],
-    password: [required(), minLength(6)],
+    password: [required(), minLength(6)]
   });
 
   const [user, setUser] = useState({
     email: '',
-    password: '',
+    password: ''
   });
 
   const onEmailChange = (event) => {
@@ -126,7 +126,7 @@ export default function Login() {
           </form>
 
           <div className="footer">
-            Don't have an account? <Link to="/signup">Sign up</Link>
+            {`Don't have an account?`} <Link to="/signup">Sign up</Link>
           </div>
         </div>
       </article>

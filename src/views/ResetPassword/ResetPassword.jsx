@@ -37,9 +37,9 @@ export default function ResetPassword() {
           title: 'Password reset email sent',
           description: [
             'Check your email for a link to reset your password. If it doesn’t',
-            'appear within a few minutes, check your spam folder.',
+            'appear within a few minutes, check your spam folder.'
           ].join(' '),
-          actions: [{ type: 'confirm', label: 'Return to login' }],
+          actions: [{ type: 'confirm', label: 'Return to login' }]
         }).catch(() => {});
       })
       .then(() => {

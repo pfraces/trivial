@@ -7,7 +7,7 @@ import {
   ListItem,
   ListItemButton,
   ListItemIcon,
-  ListItemText,
+  ListItemText
 } from '@mui/material';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import HomeIcon from '@mui/icons-material/Home';

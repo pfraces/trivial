@@ -15,13 +15,13 @@ export default function Signup() {
   const { form, validate } = useForm({
     username: required(),
     email: [required(), email()],
-    password: [required(), minLength(6)],
+    password: [required(), minLength(6)]
   });
 
   const [user, setUser] = useState({
     username: '',
     email: '',
-    password: '',
+    password: ''
   });
 
   const onUsernameChange = (event) => {

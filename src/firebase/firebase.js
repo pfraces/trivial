@@ -8,7 +8,7 @@ const firebaseConfig = {
   projectId: 'quiz-io-9b3c8',
   storageBucket: 'quiz-io-9b3c8.appspot.com',
   messagingSenderId: '609365470195',
-  appId: '1:609365470195:web:8ca2c5f6cc1701caf88086',
+  appId: '1:609365470195:web:8ca2c5f6cc1701caf88086'
 };
 
 const app = initializeApp(firebaseConfig);
