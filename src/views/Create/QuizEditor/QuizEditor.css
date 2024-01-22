@@ -1,7 +1,9 @@
-.QuizEditor .rename {
-  margin-left: 5px;
-}
+.QuizEditor {
+  .rename {
+    margin-left: 5px;
+  }
 
-.QuizEditor .QuestionLink + .QuestionLink {
-  margin-top: 10px;
+  .QuestionLink + .QuestionLink {
+    margin-top: 10px;
+  }
 }

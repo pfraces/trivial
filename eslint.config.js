@@ -8,7 +8,7 @@ export default [
   { ignores: ['dist'] },
   {
     files: ['**/*.js'],
-    ignores: ['src/'],
+    ignores: ['src/**'],
     languageOptions: {
       globals: {
         ...globals.node

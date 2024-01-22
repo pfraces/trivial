@@ -1,18 +1,20 @@
-.Login .password.field .label {
-  display: flex;
-  align-items: baseline;
-  width: 250px;
-}
+.Login {
+  .password.field .label {
+    display: flex;
+    align-items: baseline;
+    width: 250px;
 
-.Login .password.field .label .forgot-password {
-  font-size: 0.8rem;
-  margin-left: auto;
-}
+    .forgot-password {
+      font-size: 0.8rem;
+      margin-left: auto;
+    }
+  }
 
-.Login .actions {
-  margin-top: 10px;
-}
+  .actions {
+    margin-top: 10px;
+  }
 
-.Login .footer {
-  margin-top: 20px;
+  .footer {
+    margin-top: 20px;
+  }
 }

@@ -1,22 +1,22 @@
 article {
   padding-top: 20px;
   padding-bottom: 40px;
-}
 
-/* @media (max-width: calc(800px + (var(--viewport-padding-x) * 2))) { */
-@media (max-width: 840px) {
-  article {
-    padding-bottom: 0;
+  /* @media (max-width: calc(800px + (var(--viewport-padding-x) * 2))) { */
+  @media (max-width: 840px) {
+    & {
+      padding-bottom: 0;
+    }
   }
 }
 
 a {
   color: var(--darkblue);
   text-decoration: none;
-}
 
-a:hover {
-  text-decoration: underline;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .button {
@@ -28,92 +28,92 @@ a:hover {
   margin: 2px 0;
   padding: 5px;
   border-radius: 5px;
-}
 
-.button:hover {
-  border-color: var(--primary);
-  color: white;
-  background-color: var(--primary);
-}
+  &:hover {
+    border-color: var(--primary);
+    color: white;
+    background-color: var(--primary);
+  }
 
-.button.large {
-  height: 40px;
-  font-size: 1rem;
-  padding: 10px;
-}
+  &.large {
+    height: 40px;
+    font-size: 1rem;
+    padding: 10px;
+  }
 
-.button.blue {
-  border-color: var(--blue);
-  color: var(--blue);
-}
+  &.blue {
+    border-color: var(--blue);
+    color: var(--blue);
 
-.button.blue:hover {
-  border-color: var(--blue);
-  color: white;
-  background-color: var(--blue);
-}
+    &:hover {
+      border-color: var(--blue);
+      color: white;
+      background-color: var(--blue);
+    }
+  }
 
-.button.green {
-  border-color: var(--green);
-  color: var(--green);
-}
+  &.green {
+    border-color: var(--green);
+    color: var(--green);
 
-.button.green:hover {
-  border-color: var(--green);
-  color: white;
-  background-color: var(--green);
-}
+    &:hover {
+      border-color: var(--green);
+      color: white;
+      background-color: var(--green);
+    }
+  }
 
-.button.red {
-  border-color: var(--red);
-  color: var(--red);
-}
+  &.red {
+    border-color: var(--red);
+    color: var(--red);
 
-.button.red:hover {
-  border-color: var(--red);
-  color: white;
-  background-color: var(--red);
-}
+    &:hover {
+      border-color: var(--red);
+      color: white;
+      background-color: var(--red);
+    }
+  }
 
-.button[disabled],
-.button[disabled]:hover {
-  background-color: white !important;
-  color: var(--disabled) !important;
-  border-color: var(--disabled) !important;
-  cursor: not-allowed;
+  &[disabled],
+  &[disabled]:hover {
+    background-color: white !important;
+    color: var(--disabled) !important;
+    border-color: var(--disabled) !important;
+    cursor: not-allowed;
+  }
 }
 
 .field {
   margin-bottom: 10px;
-}
 
-.field .label {
-  margin-bottom: 3px;
-  font-weight: 600;
-}
+  .label {
+    margin-bottom: 3px;
+    font-weight: 600;
+  }
 
-.field .helper {
-  color: var(--red);
-}
+  .helper {
+    color: var(--red);
+  }
 
-.field input {
-  margin: 2px 0;
-  padding: 5px;
-  width: 250px;
-  border: 1px solid var(--primary);
-  border-radius: 3px;
-}
+  input {
+    margin: 2px 0;
+    padding: 5px;
+    width: 250px;
+    border: 1px solid var(--primary);
+    border-radius: 3px;
 
-.field input:placeholder-shown {
-  font-style: italic;
-}
+    &:placeholder-shown {
+      font-style: italic;
+    }
+  }
 
-.field.error input[type='text'] {
-  border-color: var(--red);
-}
+  &.error input[type='text'] {
+    border-color: var(--red);
 
-.field.error input[type='text']:focus {
-  outline-color: var(--red);
+    &:focus {
+      outline-color: var(--red);
+    }
+  }
 }
 
 .card {
@@ -122,35 +122,35 @@ a:hover {
   padding: 20px;
   padding-bottom: 40px;
   border-radius: 5px;
-  box-shadow: 0 3px 5px rgb(0 0 0 / 0.2);
-}
+  box-shadow: 0 3px 5px rgb(0 0 0 / 20%);
 
-/* @media (max-width: calc(800px + (var(--viewport-padding-x) * 2))) { */
-@media (max-width: 840px) {
-  .card {
-    margin: calc(var(--viewport-padding-x) * -1);
-    border-radius: 0;
+  /* @media (max-width: calc(800px + (var(--viewport-padding-x) * 2))) { */
+  @media (max-width: 840px) {
+    & {
+      margin: calc(var(--viewport-padding-x) * -1);
+      border-radius: 0;
+    }
   }
-}
 
-.card-breadcrumbs {
-  margin-bottom: 20px;
-}
+  .card-breadcrumbs {
+    margin-bottom: 20px;
+  }
 
-.card-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
+  .card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
 
-.card-header h1 {
-  flex: 1;
-  font-size: 1.8rem;
-  font-weight: 400;
-}
+    h1 {
+      flex: 1;
+      font-size: 1.8rem;
+      font-weight: 400;
+    }
 
-.card-header h2 {
-  flex: 1;
-  font-size: 1.4rem;
-  font-weight: 600;
+    h2 {
+      flex: 1;
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+  }
 }

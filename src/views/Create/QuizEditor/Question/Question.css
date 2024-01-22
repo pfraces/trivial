@@ -1,41 +1,43 @@
-.Question .field input.question-label {
-  width: 100%;
-}
+.Question {
+  .field input.question-label {
+    width: 100%;
+  }
 
-.Question .options {
-  display: flex;
-  flex-direction: column;
-  margin-top: 20px;
-}
+  .options {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
 
-.Question .options .option {
-  display: flex;
-  align-items: center;
-  margin: 2px 0;
-}
+    .option {
+      display: flex;
+      align-items: center;
+      margin: 2px 0;
 
-.Question .options .field {
-  margin: 0;
-}
+      input[type='radio'] {
+        width: 15px;
+        margin-right: 10px;
+      }
+    }
 
-.Question .options .option input[type='radio'] {
-  width: 15px;
-  margin-right: 10px;
-}
+    .field {
+      margin: 0;
 
-.Question .options .field .helper {
-  margin-left: 23px;
-}
+      .helper {
+        margin-left: 23px;
+      }
+    }
+  }
 
-.Question .actions {
-  display: flex;
-  margin-top: 20px;
-}
+  .actions {
+    display: flex;
+    margin-top: 20px;
 
-.Question .actions button + button {
-  margin-left: 10px;
-}
+    button + button {
+      margin-left: 10px;
+    }
 
-.Question .actions .red {
-  margin-left: auto;
+    .red {
+      margin-left: auto;
+    }
+  }
 }

@@ -1,3 +1,5 @@
-.Profile .update-password {
-  margin-left: 5px;
+.Profile {
+  .update-password {
+    margin-left: 5px;
+  }
 }

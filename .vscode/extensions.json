@@ -5,6 +5,7 @@
     "dbaeumer.vscode-eslint",
     "stylelint.vscode-stylelint",
     "htmlhint.vscode-htmlhint",
-    "davidanson.vscode-markdownlint"
+    "davidanson.vscode-markdownlint",
+    "vunguyentuan.vscode-postcss"
   ]
 }

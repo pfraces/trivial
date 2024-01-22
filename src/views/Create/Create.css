@@ -1,3 +1,5 @@
-.Create .QuizLink + .QuizLink {
-  margin-top: 10px;
+.Create {
+  .QuizLink + .QuizLink {
+    margin-top: 10px;
+  }
 }

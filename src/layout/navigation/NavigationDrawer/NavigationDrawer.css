@@ -1,24 +1,24 @@
 .NavigationDrawer {
   display: none;
-}
 
-@media (max-width: 600px) {
-  .NavigationDrawer {
-    display: initial;
+  @media (max-width: 600px) {
+    & {
+      display: initial;
+    }
   }
-}
 
-.NavigationDrawer .menu {
-  min-width: 240px;
-}
+  .menu {
+    min-width: 240px;
 
-.NavigationDrawer .menu .header {
-  display: flex;
-  align-items: center;
-  height: 48px;
-  padding: 0 10px;
-}
+    .header {
+      display: flex;
+      align-items: center;
+      height: 48px;
+      padding: 0 10px;
+    }
 
-.NavigationDrawer .menu a {
-  color: inherit;
+    a {
+      color: inherit;
+    }
+  }
 }

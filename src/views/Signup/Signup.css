@@ -1,7 +1,9 @@
-.Signup .actions {
-  margin-top: 10px;
-}
+.Signup {
+  .actions {
+    margin-top: 10px;
+  }
 
-.Signup .footer {
-  margin-top: 20px;
+  .footer {
+    margin-top: 20px;
+  }
 }

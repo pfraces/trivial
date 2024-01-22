@@ -1,12 +1,14 @@
-.SessionWidget .session-menu-toggler {
-  margin-right: -12px;
-}
+.SessionWidget {
+  .session-menu-toggler {
+    margin-right: -12px;
+  }
 
-.SessionWidget .avatar {
-  width: 24px;
-  height: 24px;
-  background-color: white;
-  color: var(--darkblue);
+  .avatar {
+    width: 24px;
+    height: 24px;
+    background-color: white;
+    color: var(--darkblue);
+  }
 }
 
 .MuiMenu-paper.session-menu {

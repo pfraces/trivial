@@ -1,61 +1,63 @@
-.QuestionCard .title {
-  display: flex;
-  align-items: baseline;
-  font-size: 1.4rem;
-}
+.QuestionCard {
+  .title {
+    display: flex;
+    align-items: baseline;
+    font-size: 1.4rem;
 
-.QuestionCard .title .index {
-  color: var(--disabled);
-  width: 50px;
-  text-align: right;
-  padding-right: 10px;
-  font-size: 1.2rem;
-}
+    .index {
+      color: var(--disabled);
+      width: 50px;
+      text-align: right;
+      padding-right: 10px;
+      font-size: 1.2rem;
+    }
+  }
 
-.QuestionCard .card-body {
-  margin-left: 50px;
-}
+  .card-body {
+    margin-left: 50px;
+  }
 
-/* Options */
+  .options {
+    display: flex;
+    flex-direction: column;
+    max-width: 150px;
 
-.QuestionCard .options {
-  display: flex;
-  flex-direction: column;
-  max-width: 150px;
-}
+    button.selected {
+      border-color: var(--blue);
+      color: white;
+      background-color: var(--blue);
+    }
 
-.QuestionCard .options:not(.feedback) button:not(.selected):hover {
-  border-color: var(--blue);
-  color: var(--blue);
-  background-color: white;
-}
+    &.feedback {
+      button {
+        border-color: var(--primary);
+        color: var(--primary);
+        background-color: white;
 
-.QuestionCard .options button.selected {
-  border-color: var(--blue);
-  color: white;
-  background-color: var(--blue);
-}
+        &.selected {
+          &.right {
+            border-color: var(--green);
+            color: white;
+            background-color: var(--green);
+          }
 
-.QuestionCard .options.feedback button {
-  border-color: var(--primary);
-  color: var(--primary);
-  background-color: white;
-}
+          &:not(.right) {
+            border-color: var(--red);
+            color: white;
+            background-color: var(--red);
+          }
+        }
+      }
+    }
 
-.QuestionCard .options.feedback button.selected.right {
-  border-color: var(--green);
-  color: white;
-  background-color: var(--green);
-}
+    &:not(.feedback) button:not(.selected):hover {
+      border-color: var(--blue);
+      color: var(--blue);
+      background-color: white;
+    }
+  }
 
-.QuestionCard .options.feedback button.selected:not(.right) {
-  border-color: var(--red);
-  color: white;
-  background-color: var(--red);
-}
-
-/* Actions */
-
-.QuestionCard .actions {
-  margin-top: 20px;
+  .actions {
+    margin-top: 20px;
+  }
 }

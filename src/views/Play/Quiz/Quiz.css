@@ -1,17 +1,19 @@
-.Quiz .banner {
-  background-color: #0079bf;
-  height: 48px;
-  color: white;
-  font-size: 1.4rem;
-}
+.Quiz {
+  .banner {
+    background-color: #0079bf;
+    height: 48px;
+    color: white;
+    font-size: 1.4rem;
 
-.Quiz .banner .page-container {
-  display: flex;
-  align-items: center;
-  height: 100%;
-}
+    .page-container {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
 
-.Quiz .banner .score {
-  margin-left: auto;
-  margin-right: 3px;
+    .score {
+      margin-left: auto;
+      margin-right: 3px;
+    }
+  }
 }
