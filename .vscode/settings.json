@@ -2,10 +2,9 @@
   "editor.rulers": [80],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": { "source.fixAll.eslint": true },
   "javascript.preferences.importModuleSpecifierEnding": "js",
-  "emmet.includeLanguages": {
-    "javascript": "javascriptreact"
-  },
+  "emmet.includeLanguages": { "javascript": "javascriptreact" },
   "eslint.experimental.useFlatConfig": true,
   "prettier.documentSelectors": ["**/*.svg"]
 }

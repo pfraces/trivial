@@ -7,6 +7,13 @@ export default [
   js.configs.recommended,
   { ignores: ['dist'] },
   {
+    files: ['**/*.{js,jsx}'],
+    rules: {
+      'no-console': 'error',
+      curly: 'error'
+    }
+  },
+  {
     files: ['**/*.js'],
     ignores: ['src/**'],
     languageOptions: {
@@ -21,13 +28,10 @@ export default [
       globals: {
         ...globals.browser
       }
-    },
-    rules: {
-      'no-console': 'error'
     }
   },
   {
-    files: ['src/**/*.jsx'],
+    files: ['**/*.jsx'],
     plugins: {
       react,
       'react-hooks': reactHooks
