@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
-import useReactRouterBreadcrumbs from 'use-react-router-breadcrumbs';
-import { onValue, ref } from 'firebase/database';
+import { get, onValue, ref } from 'firebase/database';
 import { db } from 'src/firebase/firebase';
 import ProtectedRoute from './ProtectedRoute';
 import AppLayout from 'src/layout/AppLayout/AppLayout';
@@ -17,8 +16,8 @@ import QuizEditor from 'src/views/Create/QuizEditor/QuizEditor';
 import Question from 'src/views/Create/QuizEditor/Question/Question';
 import ResetPassword from 'src/views/ResetPassword/ResetPassword';
 
-const QuizLabelBreadcrumb = ({ quizId }) => {
-  const [quizLabel, setQuizLabel] = useState('Quiz');
+const QuizLabelBreadcrumb = ({ label, quizId }) => {
+  const [quizLabel, setQuizLabel] = useState(label);
 
   useEffect(() => {
     const unsubscribe = onValue(ref(db, `quizzes/${quizId}`), (snapshot) => {
@@ -89,26 +88,36 @@ const routes = [
           },
           {
             path: 'create',
+            handle: { breadcrumb: 'Create' },
             children: [
               {
                 index: true,
-                element: <Create />,
-                breadcrumb: 'Create'
+                element: <Create />
               },
               {
                 path: ':quizId',
+                loader: ({ params }) => {
+                  return get(ref(db, `quizzes/${params.quizId}`)).then(
+                    (snapshot) => snapshot.val()
+                  );
+                },
+                handle: {
+                  breadcrumb: ({ data, params }) => (
+                    <QuizLabelBreadcrumb
+                      label={data.label}
+                      quizId={params.quizId}
+                    />
+                  )
+                },
                 children: [
                   {
                     index: true,
-                    element: <QuizEditor />,
-                    breadcrumb: ({ match }) => (
-                      <QuizLabelBreadcrumb quizId={match.params.quizId} />
-                    )
+                    element: <QuizEditor />
                   },
                   {
                     path: 'questions/:questionId',
                     element: <Question />,
-                    breadcrumb: 'Edit question'
+                    handle: { breadcrumb: 'Edit question' }
                   }
                 ]
               }
@@ -121,7 +130,3 @@ const routes = [
 ];
 
 export const router = createBrowserRouter(routes);
-
-export const useBreadcrumbs = () => {
-  return useReactRouterBreadcrumbs(routes, { disableDefaults: true });
-};

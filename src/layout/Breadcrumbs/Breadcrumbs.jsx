@@ -1,9 +1,19 @@
-import { Link } from 'react-router-dom';
-import { useBreadcrumbs } from 'src/router/router';
+import { useMatches, Link } from 'react-router-dom';
+import { isFunction } from 'lodash';
 import './Breadcrumbs.css';
 
 export default function Breadcrumbs() {
-  const breadcrumbs = useBreadcrumbs();
+  const matches = useMatches();
+
+  const breadcrumbs = matches
+    .filter((match) => match.handle?.breadcrumb)
+    .map((match) => {
+      const breadcrumb = isFunction(match.handle.breadcrumb)
+        ? match.handle.breadcrumb(match)
+        : match.handle.breadcrumb;
+
+      return { match, breadcrumb };
+    });
 
   return (
     <div className="Breadcrumbs">
