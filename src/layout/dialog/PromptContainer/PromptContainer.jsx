@@ -13,7 +13,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { useForm } from 'src/form/form';
 import { required } from 'src/form/rules';
 import { useSnackbar } from 'src/layout/snackbar/snackbar';
-import { usePromptContext } from '../prompt';
+import { usePromptContext } from 'src/layout/dialog/prompt';
 import './PromptContainer.css';
 
 const Transition = forwardRef((props, ref) => {

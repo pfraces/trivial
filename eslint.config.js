@@ -10,7 +10,19 @@ export default [
     files: ['**/*.{js,jsx}'],
     rules: {
       'no-console': 'error',
-      curly: 'error'
+      curly: 'error',
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            {
+              group: ['../*'],
+              message:
+                'Relative imports from parent directories are not allowed. Use path aliases from jsconfig.json instead.'
+            }
+          ]
+        }
+      ]
     }
   },
   {
