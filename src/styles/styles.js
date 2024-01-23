@@ -4,5 +4,6 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import './reset.css';
 import './custom-properties.css';
-import './layout.css';
+import './utils.css';
 import './theme.css';
+import './components/components.js';

@@ -1,0 +1,32 @@
+.field {
+  margin-bottom: 10px;
+
+  .label {
+    margin-bottom: 3px;
+    font-weight: 600;
+  }
+
+  .helper {
+    color: var(--red);
+  }
+
+  input {
+    margin: 2px 0;
+    padding: 5px;
+    width: 250px;
+    border: 1px solid var(--primary);
+    border-radius: 3px;
+
+    &:placeholder-shown {
+      font-style: italic;
+    }
+  }
+
+  &.error input[type='text'] {
+    border-color: var(--red);
+
+    &:focus {
+      outline-color: var(--red);
+    }
+  }
+}
