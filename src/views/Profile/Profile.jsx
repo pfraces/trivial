@@ -4,6 +4,7 @@ import { useAuth } from 'src/firebase/auth';
 import { useSnackbar } from 'src/layout/snackbar/snackbar';
 import { useForm } from 'src/form/form';
 import { minLength, required } from 'src/form/rules';
+import InputPassword from 'src/components/InputPassword/InputPassword.jsx';
 import './Profile.css';
 
 export default function Profile() {
@@ -55,8 +56,7 @@ export default function Profile() {
               <p className="label">New password</p>
 
               <div className="row">
-                <input
-                  type="password"
+                <InputPassword
                   name="password"
                   autoComplete="new-password"
                   placeholder="New password"

@@ -5,6 +5,7 @@ import { useAuth } from 'src/firebase/auth';
 import { useSnackbar } from 'src/layout/snackbar/snackbar';
 import { useForm } from 'src/form/form';
 import { email, minLength, required } from 'src/form/rules';
+import InputPassword from 'src/components/InputPassword/InputPassword.jsx';
 import './Login.css';
 
 export default function Login() {
@@ -96,8 +97,7 @@ export default function Login() {
                 </Link>
               </div>
 
-              <input
-                type="password"
+              <InputPassword
                 name="password"
                 autoComplete="current-password"
                 placeholder="Password"
