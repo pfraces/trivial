@@ -2,8 +2,7 @@ article {
   padding-top: 20px;
   padding-bottom: 40px;
 
-  /* @media (max-width: calc(800px + (var(--viewport-padding-x) * 2))) { */
-  @media (max-width: 840px) {
+  @media (max-width: calc(800px + ($viewport-padding-x * 2))) {
     & {
       padding-bottom: 0;
     }
@@ -124,8 +123,7 @@ a {
   border-radius: 5px;
   box-shadow: 0 3px 5px rgb(0 0 0 / 20%);
 
-  /* @media (max-width: calc(800px + (var(--viewport-padding-x) * 2))) { */
-  @media (max-width: 840px) {
+  @media (max-width: calc(800px + ($viewport-padding-x * 2))) {
     & {
       margin: calc(var(--viewport-padding-x) * -1);
       border-radius: 0;

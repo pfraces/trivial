@@ -4,11 +4,9 @@
   max-width: 800px;
   margin: 0 auto;
 
-  /* @media (max-width: calc(800px + (var(--viewport-padding-x) * 2))) { */
-  @media (max-width: 840px) {
+  @media (max-width: calc(800px + ($viewport-padding-x * 2))) {
     & {
-      /* max-width: calc(100vw - (var(--viewport-padding-x) * 2)); */
-      max-width: calc(100vw - 40px);
+      max-width: calc(100vw - (var(--viewport-padding-x) * 2));
     }
   }
 }

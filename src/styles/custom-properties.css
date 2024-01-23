@@ -1,6 +1,6 @@
 :root {
   /* layout */
-  --viewport-padding-x: 20px;
+  --viewport-padding-x: $viewport-padding-x;
 
   /* colors */
   --blue: #0079bf;
