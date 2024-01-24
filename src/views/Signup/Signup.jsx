@@ -5,7 +5,7 @@ import { useAuth } from 'src/firebase/auth';
 import { useSnackbar } from 'src/layout/snackbar/snackbar';
 import { useForm } from 'src/form/form';
 import { email, minLength, required } from 'src/form/rules';
-import InputPassword from 'src/components/InputPassword/InputPassword.jsx';
+import InputPassword from 'src/components/InputPassword/InputPassword';
 import './Signup.css';
 
 export default function Signup() {

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import { get, onValue, ref } from 'firebase/database';
 import { db } from 'src/firebase/firebase';
+import { initialAuthState } from 'src/firebase/auth';
 import ProtectedRoute from './ProtectedRoute';
 import AppLayout from 'src/layout/AppLayout/AppLayout';
 import Landing from 'src/views/Landing/Landing';
@@ -39,6 +40,7 @@ const QuizLabelBreadcrumb = ({ label, quizId }) => {
 const routes = [
   {
     path: '/',
+    loader: () => initialAuthState,
     element: <AppLayout />,
     children: [
       {

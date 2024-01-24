@@ -1,6 +1,7 @@
 :root {
   font-family: system-ui;
   text-rendering: optimizelegibility;
+  background-color: var(--app-background-color);
 }
 
 * {

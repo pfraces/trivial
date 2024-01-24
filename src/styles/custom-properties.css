@@ -2,12 +2,15 @@
   /* layout */
   --viewport-padding-x: $viewport-padding-x;
 
-  /* colors */
+  /* color palette */
   --blue: #0079bf;
   --green: #519839;
   --yellow: #faa53d;
   --red: #b04632;
   --darkblue: #005c91;
+
+  /* semantic colors */
   --primary: #666;
   --disabled: #999;
+  --app-background-color: #eee;
 }

@@ -4,7 +4,7 @@ import { useAuth } from 'src/firebase/auth';
 import { useSnackbar } from 'src/layout/snackbar/snackbar';
 import { useForm } from 'src/form/form';
 import { minLength, required } from 'src/form/rules';
-import InputPassword from 'src/components/InputPassword/InputPassword.jsx';
+import InputPassword from 'src/components/InputPassword/InputPassword';
 import './Profile.css';
 
 export default function Profile() {
