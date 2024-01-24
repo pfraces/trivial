@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import clsx from 'clsx';
 import { useAuth } from 'src/firebase/auth';
 import { useSnackbar } from 'src/layout/snackbar/snackbar';
+import { useDialog } from 'src/layout/dialog/dialog.jsx';
 import { useForm } from 'src/form/form';
 import { email, minLength, required } from 'src/form/rules';
 import InputPassword from 'src/components/InputPassword/InputPassword';
@@ -12,6 +13,8 @@ export default function Signup() {
   const navigate = useNavigate();
   const { signup } = useAuth();
   const snackbar = useSnackbar();
+  const dialog = useDialog();
+  const ignoreDialogCancellationError = () => {};
 
   const { form, validate } = useForm({
     username: required(),
@@ -48,8 +51,24 @@ export default function Signup() {
 
     signup(user)
       .then(() => {
-        snackbar({ message: 'Account created' });
-        navigate('/');
+        snackbar({ message: `Verification email sent to ${user.email}` });
+
+        return dialog({
+          title: 'Verify your email',
+          description: [
+            <>
+              We have sent a verification link to <strong>{user.email}</strong>.
+            </>,
+            <>Click on the link to complete the verification process.</>,
+            <>
+              <em>You might need to check your spam folder.</em>
+            </>
+          ],
+          actions: [{ type: 'confirm', label: 'Return to login' }]
+        }).catch(ignoreDialogCancellationError);
+      })
+      .then(() => {
+        navigate('/login');
       })
       .catch((err) => {
         snackbar({ severity: 'error', message: err.message });

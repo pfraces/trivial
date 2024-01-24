@@ -12,6 +12,7 @@ export default function ResetPassword() {
   const { sendPasswordResetEmail } = useAuth();
   const snackbar = useSnackbar();
   const dialog = useDialog();
+  const ignoreDialogCancellationError = () => {};
 
   const { form, validate } = useForm([required(), email()]);
   const [userEmail, setUserEmail] = useState('');
@@ -31,16 +32,21 @@ export default function ResetPassword() {
 
     sendPasswordResetEmail(userEmail)
       .then(() => {
-        snackbar({ message: 'Password reset email sent' });
+        snackbar({ message: `Password reset email sent to ${userEmail}` });
 
         return dialog({
-          title: 'Password reset email sent',
+          title: 'Reset your password',
           description: [
-            'Check your email for a link to reset your password. If it doesn’t',
-            'appear within a few minutes, check your spam folder.'
-          ].join(' '),
+            <>
+              We have sent a link to reset your password to{' '}
+              <strong>{userEmail}</strong>.
+            </>,
+            <>
+              <em>You might need to check your spam folder.</em>
+            </>
+          ],
           actions: [{ type: 'confirm', label: 'Return to login' }]
-        }).catch(() => {});
+        }).catch(ignoreDialogCancellationError);
       })
       .then(() => {
         navigate('/login');

@@ -12,13 +12,13 @@ import {
 import { ref, onValue, off, set } from 'firebase/database';
 import { db, auth } from './firebase';
 
-const AuthContext = createContext();
-
 let resolveInitialAuthState;
 
 export const initialAuthState = new Promise((resolve) => {
   resolveInitialAuthState = resolve;
 });
+
+const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -56,8 +56,8 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (userAuth) => {
-      if (!userAuth) {
-        resolveInitialAuthState();
+      if (!userAuth || !userAuth.emailVerified) {
+        resolveInitialAuthState(null);
 
         setCurrentUser((user) => {
           if (user) {
@@ -88,6 +88,7 @@ export const AuthProvider = ({ children }) => {
         signup,
         logout,
         sendPasswordResetEmail,
+        resendEmailVerification: sendEmailVerification,
         updatePassword,
         initialAuthState
       }}

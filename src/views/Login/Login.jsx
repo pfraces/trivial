@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import clsx from 'clsx';
 import { useAuth } from 'src/firebase/auth';
 import { useSnackbar } from 'src/layout/snackbar/snackbar';
+import { useDialog } from 'src/layout/dialog/dialog.jsx';
 import { useForm } from 'src/form/form';
 import { email, minLength, required } from 'src/form/rules';
 import InputPassword from 'src/components/InputPassword/InputPassword';
@@ -10,8 +11,10 @@ import './Login.css';
 
 export default function Login() {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login, resendEmailVerification } = useAuth();
   const snackbar = useSnackbar();
+  const dialog = useDialog();
+  const ignoreDialogCancellationError = () => {};
 
   const { form, validate } = useForm({
     email: [required(), email()],
@@ -41,7 +44,33 @@ export default function Login() {
     }
 
     login(user)
-      .then(() => {
+      .then(({ user }) => {
+        if (!user.emailVerified) {
+          snackbar({ severity: 'error', message: 'Email not verified' });
+
+          return dialog({
+            title: 'Verify your email',
+            description: [
+              <>
+                We have sent a verification link to{' '}
+                <strong>{user.email}</strong>.
+              </>,
+              <>Click on the link to complete the verification process.</>,
+              <>
+                <em>You might need to check your spam folder.</em>
+              </>
+            ],
+            actions: [
+              { type: 'cancel', label: 'Cancel' },
+              { type: 'confirm', label: 'Resend email verification' }
+            ]
+          }).then(() => {
+            return resendEmailVerification(user).then(() => {
+              snackbar({ message: `Verification email sent to ${user.email}` });
+            });
+          }, ignoreDialogCancellationError);
+        }
+
         snackbar({ message: 'Access granted' });
         navigate('/');
       })
