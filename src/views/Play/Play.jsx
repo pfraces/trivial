@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ref, onValue } from 'firebase/database';
 import { map } from 'lodash';
-import { db } from '@/firebase/firebase';
+import { db } from '@/firebase/firebase.js';
 import ListItemLink from '@/components/ListItemLink/ListItemLink.jsx';
 
 export default function Play() {

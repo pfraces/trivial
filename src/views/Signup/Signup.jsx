@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import clsx from 'clsx';
-import { useAuth } from '@/firebase/auth';
-import { useSnackbar } from '@/layout/snackbar/snackbar';
+import { useAuth } from '@/firebase/auth.jsx';
+import { useSnackbar } from '@/layout/snackbar/snackbar.jsx';
 import { useDialog } from '@/layout/dialog/dialog.jsx';
-import { useForm } from '@/form/form';
-import { email, minLength, required } from '@/form/rules';
-import InputPassword from '@/components/InputPassword/InputPassword';
+import { useForm } from '@/form/form.js';
+import { email, minLength, required } from '@/form/rules.js';
+import InputPassword from '@/components/InputPassword/InputPassword.jsx';
 import './Signup.css';
 
 export default function Signup() {

@@ -1,4 +1,6 @@
 import js from '@eslint/js';
+import importPlugin from 'eslint-plugin-import';
+import noRelativeImportPaths from 'eslint-plugin-no-relative-import-paths';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import globals from 'globals';
@@ -8,21 +10,29 @@ export default [
   { ignores: ['dist'] },
   {
     files: ['**/*.{js,jsx}'],
+    languageOptions: {
+      parserOptions: {
+        ecmaVersion: 'latest'
+      }
+    },
+    plugins: {
+      import: importPlugin
+    },
+    settings: {
+      'import/resolver': {
+        typescript: {
+          project: 'jsconfig.json'
+        }
+      },
+      'import/parsers': {
+        espree: ['.js', '.jsx']
+      }
+    },
     rules: {
+      ...importPlugin.configs.recommended.rules,
       'no-console': 'error',
       curly: 'error',
-      'no-restricted-imports': [
-        'error',
-        {
-          patterns: [
-            {
-              group: ['../*'],
-              message:
-                'Relative imports from parent directories are not allowed. Use path aliases from jsconfig.json instead.'
-            }
-          ]
-        }
-      ]
+      'import/extensions': ['error', 'ignorePackages']
     }
   },
   {
@@ -40,6 +50,19 @@ export default [
       globals: {
         ...globals.browser
       }
+    },
+    plugins: {
+      'no-relative-import-paths': noRelativeImportPaths
+    },
+    rules: {
+      'no-relative-import-paths/no-relative-import-paths': [
+        'error',
+        {
+          allowSameFolder: true,
+          rootDir: 'src',
+          prefix: '@'
+        }
+      ]
     }
   },
   {

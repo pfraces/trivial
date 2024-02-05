@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import clsx from 'clsx';
-import { useAuth } from '@/firebase/auth';
-import { useSnackbar } from '@/layout/snackbar/snackbar';
-import { useDialog } from '@/layout/dialog/dialog';
-import { useForm } from '@/form/form';
-import { email, required } from '@/form/rules';
+import { useAuth } from '@/firebase/auth.jsx';
+import { useSnackbar } from '@/layout/snackbar/snackbar.jsx';
+import { useDialog } from '@/layout/dialog/dialog.jsx';
+import { useForm } from '@/form/form.js';
+import { email, required } from '@/form/rules.js';
 
 export default function ResetPassword() {
   const navigate = useNavigate();

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import clsx from 'clsx';
-import Option from './Option/Option';
+import Option from './Option/Option.jsx';
 import './QuestionCard.css';
 
 const statusMap = {

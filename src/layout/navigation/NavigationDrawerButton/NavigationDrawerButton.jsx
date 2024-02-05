@@ -1,6 +1,6 @@
 import { IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import { useNavigationDrawer } from '@/layout/navigation/navigation';
+import { useNavigationDrawer } from '@/layout/navigation/navigation.jsx';
 
 export default function NavigationDrawerButton() {
   const { openNavigationDrawer } = useNavigationDrawer();

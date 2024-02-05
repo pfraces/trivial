@@ -10,10 +10,10 @@ import {
   Slide
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import { useForm } from '@/form/form';
-import { required } from '@/form/rules';
-import { useSnackbar } from '@/layout/snackbar/snackbar';
-import { usePromptContext } from '@/layout/dialog/prompt';
+import { useForm } from '@/form/form.js';
+import { required } from '@/form/rules.js';
+import { useSnackbar } from '@/layout/snackbar/snackbar.jsx';
+import { usePromptContext } from '@/layout/dialog/prompt.jsx';
 import './PromptContainer.css';
 
 const Transition = forwardRef((props, ref) => {

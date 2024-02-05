@@ -10,7 +10,7 @@ import {
   updatePassword as fbUpdatePassword
 } from 'firebase/auth';
 import { ref, onValue, off, set } from 'firebase/database';
-import { db, auth } from './firebase';
+import { db, auth } from './firebase.js';
 
 const AuthContext = createContext();
 

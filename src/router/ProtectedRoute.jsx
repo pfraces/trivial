@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from 'react-router-dom';
-import { useAuth } from '@/firebase/auth';
+import { useAuth } from '@/firebase/auth.jsx';
 
 export default function ProtectedRoute({
   isAllowed,

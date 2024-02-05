@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ref, get } from 'firebase/database';
 import { map, shuffle, take } from 'lodash';
-import { db } from '@/firebase/firebase';
-import { useDialog } from '@/layout/dialog/dialog';
-import QuestionCard from './QuestionCard/QuestionCard';
+import { db } from '@/firebase/firebase.js';
+import { useDialog } from '@/layout/dialog/dialog.jsx';
+import QuestionCard from './QuestionCard/QuestionCard.jsx';
 import './Quiz.css';
 
 export default function Quiz() {
