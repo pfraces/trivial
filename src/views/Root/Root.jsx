@@ -1,4 +1,4 @@
-import { useAuth } from 'src/firebase/auth.jsx';
+import { useAuth } from '@/firebase/auth.jsx';
 import Landing from './Landing/Landing.jsx';
 import Home from './Home/Home.jsx';
 

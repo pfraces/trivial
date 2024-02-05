@@ -10,7 +10,7 @@ import {
 } from '@mui/material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LogoutIcon from '@mui/icons-material/Logout';
-import { useAuth } from 'src/firebase/auth';
+import { useAuth } from '@/firebase/auth';
 import './SessionWidget.css';
 
 export default function SessionWidget() {

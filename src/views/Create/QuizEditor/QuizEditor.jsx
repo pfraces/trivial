@@ -3,14 +3,14 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { map } from 'lodash';
 import clsx from 'clsx';
 import { onValue, ref, update } from 'firebase/database';
-import { db } from 'src/firebase/firebase';
-import { useAuth } from 'src/firebase/auth';
-import { useForm } from 'src/form/form';
-import { required } from 'src/form/rules';
-import { useSnackbar } from 'src/layout/snackbar/snackbar';
-import { useDialog } from 'src/layout/dialog/dialog';
-import Breadcrumbs from 'src/layout/Breadcrumbs/Breadcrumbs';
-import ListItemLink from 'src/components/ListItemLink/ListItemLink.jsx';
+import { db } from '@/firebase/firebase';
+import { useAuth } from '@/firebase/auth';
+import { useForm } from '@/form/form';
+import { required } from '@/form/rules';
+import { useSnackbar } from '@/layout/snackbar/snackbar';
+import { useDialog } from '@/layout/dialog/dialog';
+import Breadcrumbs from '@/layout/Breadcrumbs/Breadcrumbs';
+import ListItemLink from '@/components/ListItemLink/ListItemLink.jsx';
 import './QuizEditor.css';
 
 export default function QuizEditor() {

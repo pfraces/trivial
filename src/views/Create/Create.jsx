@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { ref, onValue, push, update } from 'firebase/database';
 import { map } from 'lodash';
-import { db } from 'src/firebase/firebase';
-import { useAuth } from 'src/firebase/auth';
-import { useSnackbar } from 'src/layout/snackbar/snackbar';
-import { usePrompt } from 'src/layout/dialog/prompt';
-import ListItemLink from 'src/components/ListItemLink/ListItemLink.jsx';
+import { db } from '@/firebase/firebase';
+import { useAuth } from '@/firebase/auth';
+import { useSnackbar } from '@/layout/snackbar/snackbar';
+import { usePrompt } from '@/layout/dialog/prompt';
+import ListItemLink from '@/components/ListItemLink/ListItemLink.jsx';
 
 export default function Create() {
   const { user } = useAuth();

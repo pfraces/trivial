@@ -1,19 +1,19 @@
 import { useState, useEffect } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import { get, onValue, ref } from 'firebase/database';
-import { db } from 'src/firebase/firebase';
+import { db } from '@/firebase/firebase';
 import ProtectedRoute from './ProtectedRoute';
-import AppLayout from 'src/layout/AppLayout/AppLayout';
-import Root from 'src/views/Root/Root.jsx';
-import Signup from 'src/views/Signup/Signup';
-import Login from 'src/views/Login/Login';
-import Profile from 'src/views/Profile/Profile';
-import Play from 'src/views/Play/Play';
-import Quiz from 'src/views/Play/Quiz/Quiz';
-import Create from 'src/views/Create/Create';
-import QuizEditor from 'src/views/Create/QuizEditor/QuizEditor';
-import Question from 'src/views/Create/QuizEditor/Question/Question';
-import ResetPassword from 'src/views/ResetPassword/ResetPassword';
+import AppLayout from '@/layout/AppLayout/AppLayout';
+import Root from '@/views/Root/Root.jsx';
+import Signup from '@/views/Signup/Signup';
+import Login from '@/views/Login/Login';
+import Profile from '@/views/Profile/Profile';
+import Play from '@/views/Play/Play';
+import Quiz from '@/views/Play/Quiz/Quiz';
+import Create from '@/views/Create/Create';
+import QuizEditor from '@/views/Create/QuizEditor/QuizEditor';
+import Question from '@/views/Create/QuizEditor/Question/Question';
+import ResetPassword from '@/views/ResetPassword/ResetPassword';
 
 const QuizLabelBreadcrumb = ({ label, quizId }) => {
   const [quizLabel, setQuizLabel] = useState(label);

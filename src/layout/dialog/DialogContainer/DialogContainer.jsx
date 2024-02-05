@@ -11,7 +11,7 @@ import {
   Slide
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import { useDialogContext } from 'src/layout/dialog/dialog';
+import { useDialogContext } from '@/layout/dialog/dialog';
 import './DialogContainer.css';
 
 const Transition = forwardRef((props, ref) => {

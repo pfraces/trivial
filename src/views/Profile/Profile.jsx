@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import clsx from 'clsx';
-import { useAuth } from 'src/firebase/auth';
-import { useSnackbar } from 'src/layout/snackbar/snackbar';
-import { useForm } from 'src/form/form';
-import { minLength, required } from 'src/form/rules';
-import InputPassword from 'src/components/InputPassword/InputPassword';
+import { useAuth } from '@/firebase/auth';
+import { useSnackbar } from '@/layout/snackbar/snackbar';
+import { useForm } from '@/form/form';
+import { minLength, required } from '@/form/rules';
+import InputPassword from '@/components/InputPassword/InputPassword';
 import './Profile.css';
 
 export default function Profile() {

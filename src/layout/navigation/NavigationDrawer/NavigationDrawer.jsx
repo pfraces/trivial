@@ -13,8 +13,8 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import HomeIcon from '@mui/icons-material/Home';
 import SchoolIcon from '@mui/icons-material/School';
 import QuizIcon from '@mui/icons-material/Quiz';
-import { useAuth } from 'src/firebase/auth';
-import { useNavigationDrawer } from 'src/layout/navigation/navigation';
+import { useAuth } from '@/firebase/auth';
+import { useNavigationDrawer } from '@/layout/navigation/navigation';
 import './NavigationDrawer.css';
 
 export default function NavigationDrawer() {

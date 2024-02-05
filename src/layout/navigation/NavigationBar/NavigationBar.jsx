@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useAuth } from 'src/firebase/auth';
+import { useAuth } from '@/firebase/auth';
 import './NavigationBar.css';
 
 export default function NavigationBar() {

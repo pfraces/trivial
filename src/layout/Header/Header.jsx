@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import QuizIcon from '@mui/icons-material/Quiz';
-import NavigationDrawerButton from 'src/layout/navigation/NavigationDrawerButton/NavigationDrawerButton';
-import NavigationBar from 'src/layout/navigation/NavigationBar/NavigationBar';
-import SessionWidget from 'src/layout/SessionWidget/SessionWidget';
+import NavigationDrawerButton from '@/layout/navigation/NavigationDrawerButton/NavigationDrawerButton';
+import NavigationBar from '@/layout/navigation/NavigationBar/NavigationBar';
+import SessionWidget from '@/layout/SessionWidget/SessionWidget';
 import './Header.css';
 
 export default function Header() {
