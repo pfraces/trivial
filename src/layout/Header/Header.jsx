@@ -13,7 +13,7 @@ export default function Header() {
       </div>
 
       <div className="title">
-        <Link to="home">
+        <Link to="/">
           <h1>
             <QuizIcon className="logo" />
             quiz.io

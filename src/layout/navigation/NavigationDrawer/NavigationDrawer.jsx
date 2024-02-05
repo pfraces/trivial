@@ -41,7 +41,7 @@ export default function NavigationDrawer() {
         <ListItem disablePadding>
           <ListItemButton
             component={Link}
-            to="home"
+            to="/"
             onClick={closeNavigationDrawer}
           >
             <ListItemIcon>

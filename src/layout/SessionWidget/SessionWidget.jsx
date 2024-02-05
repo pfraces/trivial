@@ -16,7 +16,7 @@ import './SessionWidget.css';
 export default function SessionWidget() {
   const [sessionMenuAnchor, setSessionMenuAnchor] = useState(null);
   const navigate = useNavigate();
-  const { user, logout } = useAuth();
+  const { loading, user, logout } = useAuth();
 
   const onSessionMenuOpen = (event) => {
     setSessionMenuAnchor(event.currentTarget);
@@ -35,6 +35,10 @@ export default function SessionWidget() {
     closeSessionMenu();
     logout();
   };
+
+  if (loading) {
+    return null;
+  }
 
   return (
     <div className="SessionWidget">

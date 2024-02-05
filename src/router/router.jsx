@@ -2,13 +2,11 @@ import { useState, useEffect } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import { get, onValue, ref } from 'firebase/database';
 import { db } from 'src/firebase/firebase';
-import { initialAuthState } from 'src/firebase/auth';
 import ProtectedRoute from './ProtectedRoute';
 import AppLayout from 'src/layout/AppLayout/AppLayout';
-import Landing from 'src/views/Landing/Landing';
+import Root from 'src/views/Root/Root.jsx';
 import Signup from 'src/views/Signup/Signup';
 import Login from 'src/views/Login/Login';
-import Home from 'src/views/Home/Home';
 import Profile from 'src/views/Profile/Profile';
 import Play from 'src/views/Play/Play';
 import Quiz from 'src/views/Play/Quiz/Quiz';
@@ -40,9 +38,12 @@ const QuizLabelBreadcrumb = ({ label, quizId }) => {
 const routes = [
   {
     path: '/',
-    loader: () => initialAuthState,
     element: <AppLayout />,
     children: [
+      {
+        index: true,
+        element: <Root />
+      },
       {
         path: 'play',
         children: [
@@ -60,10 +61,6 @@ const routes = [
         element: <ProtectedRoute isAllowed={(user) => !user} />,
         children: [
           {
-            index: true,
-            element: <Landing />
-          },
-          {
             path: 'signup',
             element: <Signup />
           },
@@ -80,10 +77,6 @@ const routes = [
       {
         element: <ProtectedRoute isAllowed={(user) => user} />,
         children: [
-          {
-            path: 'home',
-            element: <Home />
-          },
           {
             path: 'profile',
             element: <Profile />

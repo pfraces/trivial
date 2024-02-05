@@ -12,22 +12,20 @@ import {
 import { ref, onValue, off, set } from 'firebase/database';
 import { db, auth } from './firebase';
 
-let resolveInitialAuthState;
-
-export const initialAuthState = new Promise((resolve) => {
-  resolveInitialAuthState = resolve;
-});
-
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const login = ({ email, password }) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   const signup = ({ username, email, password }) => {
+    setLoading(true);
+
     return createUserWithEmailAndPassword(auth, email, password).then(
       ({ user }) => {
         return updateProfile(user, { displayName: username })
@@ -43,6 +41,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
+    setLoading(true);
     return signOut(auth);
   };
 
@@ -57,8 +56,6 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (userAuth) => {
       if (!userAuth || !userAuth.emailVerified) {
-        resolveInitialAuthState(null);
-
         setCurrentUser((user) => {
           if (user) {
             off(ref(db, `/users/${user.uid}`));
@@ -67,13 +64,14 @@ export const AuthProvider = ({ children }) => {
           return null;
         });
 
+        setLoading(false);
         return;
       }
 
       onValue(ref(db, `/users/${userAuth.uid}`), (snapshot) => {
         const user = { ...userAuth, ...snapshot.val() };
-        resolveInitialAuthState(user);
         setCurrentUser(user);
+        setLoading(false);
       });
     });
 
@@ -84,13 +82,13 @@ export const AuthProvider = ({ children }) => {
     <AuthContext.Provider
       value={{
         user: currentUser,
+        loading,
         login,
         signup,
         logout,
         sendPasswordResetEmail,
         resendEmailVerification: sendEmailVerification,
-        updatePassword,
-        initialAuthState
+        updatePassword
       }}
     >
       {children}
