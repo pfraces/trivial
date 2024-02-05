@@ -2,8 +2,4 @@
   .rename {
     margin-left: 5px;
   }
-
-  .QuestionLink + .QuestionLink {
-    margin-top: 10px;
-  }
 }

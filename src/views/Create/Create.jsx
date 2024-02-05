@@ -5,8 +5,7 @@ import { db } from 'src/firebase/firebase';
 import { useAuth } from 'src/firebase/auth';
 import { useSnackbar } from 'src/layout/snackbar/snackbar';
 import { usePrompt } from 'src/layout/dialog/prompt';
-import QuizLink from './QuizLink/QuizLink';
-import './Create.css';
+import ListItemLink from 'src/components/ListItemLink/ListItemLink.jsx';
 
 export default function Create() {
   const { user } = useAuth();
@@ -73,7 +72,7 @@ export default function Create() {
           {!quizzes.length && <em>No quizzes found</em>}
 
           {map(quizzes, (quiz) => (
-            <QuizLink key={quiz.id} id={quiz.id} label={quiz.label} />
+            <ListItemLink key={quiz.id} to={quiz.id} label={quiz.label} />
           ))}
         </div>
       </article>

@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import { ref, onValue } from 'firebase/database';
 import { map } from 'lodash';
 import { db } from 'src/firebase/firebase';
-import QuizLink from './QuizLink/QuizLink';
-import './Play.css';
+import ListItemLink from 'src/components/ListItemLink/ListItemLink.jsx';
 
 export default function Play() {
   const [quizzes, setQuizzes] = useState([]);
@@ -33,7 +32,9 @@ export default function Play() {
           {!quizzes.length && <em>No quizzes found</em>}
 
           {map(quizzes, (quiz) => {
-            return <QuizLink key={quiz.id} id={quiz.id} label={quiz.label} />;
+            return (
+              <ListItemLink key={quiz.id} to={quiz.id} label={quiz.label} />
+            );
           })}
         </div>
       </article>

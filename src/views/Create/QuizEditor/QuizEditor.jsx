@@ -10,7 +10,7 @@ import { required } from 'src/form/rules';
 import { useSnackbar } from 'src/layout/snackbar/snackbar';
 import { useDialog } from 'src/layout/dialog/dialog';
 import Breadcrumbs from 'src/layout/Breadcrumbs/Breadcrumbs';
-import QuestionLink from './QuestionLink/QuestionLink';
+import ListItemLink from 'src/components/ListItemLink/ListItemLink.jsx';
 import './QuizEditor.css';
 
 export default function QuizEditor() {
@@ -164,9 +164,9 @@ export default function QuizEditor() {
 
           {map(quiz.questions, (question) => {
             return (
-              <QuestionLink
+              <ListItemLink
                 key={question.id}
-                id={question.id}
+                to={`questions/${question.id}`}
                 label={question.label}
               />
             );
