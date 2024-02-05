@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { createBrowserRouter } from 'react-router-dom';
+import { createHashRouter } from 'react-router-dom';
 import { get, onValue, ref } from 'firebase/database';
 import { db } from '@/firebase/firebase.js';
 import ProtectedRoute from './ProtectedRoute.jsx';
@@ -124,4 +124,4 @@ const routes = [
   }
 ];
 
-export const router = createBrowserRouter(routes);
+export const router = createHashRouter(routes);
