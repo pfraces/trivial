@@ -1,15 +1,31 @@
 {
   "short_name": "quiz.io",
-  "name": "Quiz generator",
+  "name": "quiz.io",
+  "description": "Quiz generator",
+  "id": "/",
   "icons": [
     {
       "src": "logo.svg",
       "type": "image/svg+xml",
-      "sizes": "192x192"
+      "sizes": "150x150"
     }
   ],
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#005c91",
-  "background_color": "#eeeeee"
+  "background_color": "#eeeeee",
+  "screenshots": [
+    {
+      "src": "screenshot-wide.png",
+      "sizes": "849x435",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "screenshot-narrow.png",
+      "sizes": "321x452",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ]
 }
