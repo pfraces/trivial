@@ -1,0 +1,7 @@
+.scope {
+  :global {
+    button {
+      width: 100%;
+    }
+  }
+}

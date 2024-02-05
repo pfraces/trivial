@@ -14,7 +14,7 @@ import { useForm } from '@/form/form.js';
 import { required } from '@/form/rules.js';
 import { useSnackbar } from '@/layout/snackbar/snackbar.jsx';
 import { usePromptContext } from '@/layout/dialog/prompt.jsx';
-import './PromptContainer.css';
+import { scope } from './PromptContainer.module.css';
 
 const Transition = forwardRef((props, ref) => {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -76,7 +76,7 @@ export const PromptContainer = () => {
 
   return (
     <Dialog
-      className="PromptContainer"
+      className={scope}
       fullWidth
       disableRestoreFocus
       TransitionComponent={Transition}

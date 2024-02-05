@@ -1,0 +1,26 @@
+.scope {
+  display: none;
+
+  @media (max-width: 600px) {
+    & {
+      display: initial;
+    }
+  }
+
+  :global {
+    .menu {
+      min-width: 240px;
+
+      .header {
+        display: flex;
+        align-items: center;
+        height: 48px;
+        padding: 0 10px;
+      }
+
+      a {
+        color: inherit;
+      }
+    }
+  }
+}

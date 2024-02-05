@@ -1,6 +1,6 @@
 import { useMatches, Link } from 'react-router-dom';
 import { isFunction } from 'lodash';
-import './Breadcrumbs.css';
+import { scope } from './Breadcrumbs.module.css';
 
 export default function Breadcrumbs() {
   const matches = useMatches();
@@ -16,7 +16,7 @@ export default function Breadcrumbs() {
     });
 
   return (
-    <div className="Breadcrumbs">
+    <div className={scope}>
       {breadcrumbs.map(({ match, breadcrumb }, index) => {
         return (
           <span key={match.pathname}>

@@ -3,11 +3,11 @@ import QuizIcon from '@mui/icons-material/Quiz';
 import NavigationDrawerButton from '@/layout/navigation/NavigationDrawerButton/NavigationDrawerButton.jsx';
 import NavigationBar from '@/layout/navigation/NavigationBar/NavigationBar.jsx';
 import SessionWidget from '@/layout/SessionWidget/SessionWidget.jsx';
-import './Header.css';
+import { scope } from './Header.module.css';
 
 export default function Header() {
   return (
-    <div className="Header">
+    <div className={scope}>
       <div className="navigation-drawer-button">
         <NavigationDrawerButton />
       </div>

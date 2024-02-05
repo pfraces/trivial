@@ -15,7 +15,7 @@ import SchoolIcon from '@mui/icons-material/School';
 import QuizIcon from '@mui/icons-material/Quiz';
 import { useAuth } from '@/firebase/auth.jsx';
 import { useNavigationDrawer } from '@/layout/navigation/navigation.jsx';
-import './NavigationDrawer.css';
+import { scope } from './NavigationDrawer.module.css';
 
 export default function NavigationDrawer() {
   const { user } = useAuth();
@@ -23,7 +23,7 @@ export default function NavigationDrawer() {
 
   return (
     <Drawer
-      className="NavigationDrawer"
+      className={scope}
       anchor="left"
       open={navigationDrawerOpen}
       onClose={closeNavigationDrawer}

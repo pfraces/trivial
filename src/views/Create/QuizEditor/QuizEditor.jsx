@@ -11,7 +11,7 @@ import { useSnackbar } from '@/layout/snackbar/snackbar.jsx';
 import { useDialog } from '@/layout/dialog/dialog.jsx';
 import Breadcrumbs from '@/layout/Breadcrumbs/Breadcrumbs.jsx';
 import ListItemLink from '@/components/ListItemLink/ListItemLink.jsx';
-import './QuizEditor.css';
+import { scope } from './QuizEditor.module.css';
 
 export default function QuizEditor() {
   const { quizId } = useParams();
@@ -103,7 +103,7 @@ export default function QuizEditor() {
   }
 
   return (
-    <div className="QuizEditor">
+    <div className={scope}>
       <article className="page-container">
         <div className="card">
           <div className="card-breadcrumbs">

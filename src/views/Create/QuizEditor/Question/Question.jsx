@@ -8,7 +8,7 @@ import { required } from '@/form/rules.js';
 import { useSnackbar } from '@/layout/snackbar/snackbar.jsx';
 import { useDialog } from '@/layout/dialog/dialog.jsx';
 import Breadcrumbs from '@/layout/Breadcrumbs/Breadcrumbs.jsx';
-import './Question.css';
+import { scope } from './Question.module.css';
 
 const initQuestion = () => ({
   label: '',
@@ -148,7 +148,7 @@ export default function Question() {
   }
 
   return (
-    <div className="Question">
+    <div className={scope}>
       <article className="page-container">
         <div className="card">
           <div className="card-breadcrumbs">

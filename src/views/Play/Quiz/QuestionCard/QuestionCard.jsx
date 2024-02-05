@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import clsx from 'clsx';
 import Option from './Option/Option.jsx';
-import './QuestionCard.css';
+import { scope } from './QuestionCard.module.css';
 
 const statusMap = {
   pending: 0,
@@ -21,7 +21,7 @@ export default function QuestionCard({
   const [status, setStatus] = useState(statusMap.pending);
 
   return (
-    <div className="QuestionCard card">
+    <div className={`${scope} card`}>
       <div className="card-header">
         <div className="title">
           <div className="index">#{index + 1}</div>

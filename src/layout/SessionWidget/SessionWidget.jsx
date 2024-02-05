@@ -11,7 +11,7 @@ import {
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useAuth } from '@/firebase/auth.jsx';
-import './SessionWidget.css';
+import { scope } from './SessionWidget.module.css';
 
 export default function SessionWidget() {
   const [sessionMenuAnchor, setSessionMenuAnchor] = useState(null);
@@ -41,7 +41,7 @@ export default function SessionWidget() {
   }
 
   return (
-    <div className="SessionWidget">
+    <div className={scope}>
       {!user && (
         <Link to="login" className="link nowrap">
           Log in

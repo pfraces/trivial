@@ -1,0 +1,45 @@
+.scope {
+  :global {
+    .field input.question-label {
+      width: 100%;
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+
+      .option {
+        display: flex;
+        align-items: center;
+        margin: 2px 0;
+
+        input[type='radio'] {
+          width: 15px;
+          margin-right: 10px;
+        }
+      }
+
+      .field {
+        margin: 0;
+
+        .helper {
+          margin-left: 23px;
+        }
+      }
+    }
+
+    .actions {
+      display: flex;
+      margin-top: 20px;
+
+      button + button {
+        margin-left: 10px;
+      }
+
+      .red {
+        margin-left: auto;
+      }
+    }
+  }
+}

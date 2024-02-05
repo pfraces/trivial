@@ -1,0 +1,7 @@
+.scope {
+  :global {
+    .rename {
+      margin-left: 5px;
+    }
+  }
+}

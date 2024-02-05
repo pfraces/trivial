@@ -7,7 +7,7 @@ import { useDialog } from '@/layout/dialog/dialog.jsx';
 import { useForm } from '@/form/form.js';
 import { email, minLength, required } from '@/form/rules.js';
 import InputPassword from '@/components/InputPassword/InputPassword.jsx';
-import './Signup.css';
+import { scope } from './Signup.module.css';
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -76,7 +76,7 @@ export default function Signup() {
   };
 
   return (
-    <div className="Signup">
+    <div className={scope}>
       <article className="page-container">
         <div className="card">
           <div className="card-header">

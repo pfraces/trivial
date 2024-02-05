@@ -5,7 +5,7 @@ import { useSnackbar } from '@/layout/snackbar/snackbar.jsx';
 import { useForm } from '@/form/form.js';
 import { minLength, required } from '@/form/rules.js';
 import InputPassword from '@/components/InputPassword/InputPassword.jsx';
-import './Profile.css';
+import { scope } from './Profile.module.css';
 
 export default function Profile() {
   const { updatePassword } = useAuth();
@@ -40,7 +40,7 @@ export default function Profile() {
   };
 
   return (
-    <div className="Profile">
+    <div className={scope}>
       <article className="page-container">
         <div className="card">
           <div className="card-header">

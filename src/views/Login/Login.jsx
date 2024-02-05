@@ -7,7 +7,7 @@ import { useDialog } from '@/layout/dialog/dialog.jsx';
 import { useForm } from '@/form/form.js';
 import { email, minLength, required } from '@/form/rules.js';
 import InputPassword from '@/components/InputPassword/InputPassword.jsx';
-import './Login.css';
+import { scope } from './Login.module.css';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -80,7 +80,7 @@ export default function Login() {
   };
 
   return (
-    <div className="Login">
+    <div className={scope}>
       <article className="page-container">
         <div className="card">
           <div className="card-header">

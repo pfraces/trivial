@@ -1,0 +1,65 @@
+.scope {
+  :global {
+    .title {
+      display: flex;
+      align-items: baseline;
+      font-size: 1.4rem;
+
+      .index {
+        color: var(--disabled);
+        width: 50px;
+        text-align: right;
+        padding-right: 10px;
+        font-size: 1.2rem;
+      }
+    }
+
+    .card-body {
+      margin-left: 50px;
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      max-width: 150px;
+
+      button.selected {
+        border-color: var(--blue);
+        color: white;
+        background-color: var(--blue);
+      }
+
+      &.feedback {
+        button {
+          border-color: var(--primary);
+          color: var(--primary);
+          background-color: white;
+
+          &.selected {
+            &.right {
+              border-color: var(--green);
+              color: white;
+              background-color: var(--green);
+            }
+
+            &:not(.right) {
+              border-color: var(--red);
+              color: white;
+              background-color: var(--red);
+            }
+          }
+        }
+      }
+
+      &:not(.feedback) button:not(.selected):hover {
+        border-color: var(--blue);
+        color: var(--blue);
+        background-color: white;
+      }
+    }
+
+    .actions {
+      margin-top: 20px;
+    }
+  }
+}

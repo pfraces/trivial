@@ -5,11 +5,11 @@ import { DialogProvider } from './layout/dialog/dialog.jsx';
 import { PromptProvider } from './layout/dialog/prompt.jsx';
 import { NavigationProvider } from './layout/navigation/navigation.jsx';
 import { router } from './router/router.jsx';
-import './App.css';
+import { scope } from './App.module.css';
 
 export default function App() {
   return (
-    <div className="App">
+    <div className={scope}>
       <AuthProvider>
         <SnackbarProvider>
           <DialogProvider>

@@ -1,0 +1,7 @@
+.scope {
+  :global {
+    .update-password {
+      margin-left: 5px;
+    }
+  }
+}

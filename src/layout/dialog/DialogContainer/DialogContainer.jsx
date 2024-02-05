@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { useDialogContext } from '@/layout/dialog/dialog.jsx';
-import './DialogContainer.css';
+import { scope } from './DialogContainer.module.css';
 
 const Transition = forwardRef((props, ref) => {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -54,7 +54,7 @@ export const DialogContainer = () => {
 
   return (
     <Dialog
-      className="DialogContainer"
+      className={scope}
       fullWidth
       TransitionComponent={Transition}
       open={Boolean(dialog)}

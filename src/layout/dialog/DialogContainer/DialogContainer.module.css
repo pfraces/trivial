@@ -1,0 +1,10 @@
+.scope {
+  :global {
+    .close-dialog-button {
+      position: absolute;
+      right: 8px;
+      top: 8px;
+      color: var(--primary);
+    }
+  }
+}

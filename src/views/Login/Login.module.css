@@ -1,0 +1,22 @@
+.scope {
+  :global {
+    .password.field .label {
+      display: flex;
+      align-items: baseline;
+      width: 250px;
+
+      .forgot-password {
+        font-size: 0.8rem;
+        margin-left: auto;
+      }
+    }
+
+    .actions {
+      margin-top: 10px;
+    }
+
+    .footer {
+      margin-top: 20px;
+    }
+  }
+}

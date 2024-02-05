@@ -5,7 +5,7 @@ import { map, shuffle, take } from 'lodash';
 import { db } from '@/firebase/firebase.js';
 import { useDialog } from '@/layout/dialog/dialog.jsx';
 import QuestionCard from './QuestionCard/QuestionCard.jsx';
-import './Quiz.css';
+import { scope } from './Quiz.module.css';
 
 export default function Quiz() {
   const { quizId } = useParams();
@@ -77,7 +77,7 @@ export default function Quiz() {
   const question = questions[questionIndex];
 
   return (
-    <div className="Quiz">
+    <div className={scope}>
       <div className="banner">
         <div className="page-container">
           <div className="label">{quizName}</div>
