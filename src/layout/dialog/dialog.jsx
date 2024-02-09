@@ -27,6 +27,7 @@ export const useDialog = () => {
     severity = 'success',
     title,
     description = '',
+    content = null,
     actions = defaultActions
   }) => {
     let resolvePromiseInProgress = null;
@@ -58,6 +59,7 @@ export const useDialog = () => {
       severity,
       title,
       description,
+      content,
       actions,
       confirm,
       cancel

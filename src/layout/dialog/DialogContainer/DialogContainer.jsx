@@ -22,7 +22,10 @@ Transition.displayName = 'Transition';
 
 export const DialogContainer = () => {
   const { dialog, setDialog } = useDialogContext();
-  const paragraphs = dialog ? [].concat(dialog.description) : [];
+
+  const content = dialog?.content || (
+    <DialogContentText gutterBottom>{dialog?.description}</DialogContentText>
+  );
 
   const closeDialog = () => {
     setDialog(null);
@@ -75,13 +78,7 @@ export const DialogContainer = () => {
         </IconButton>
       </DialogTitle>
 
-      <DialogContent>
-        {paragraphs.map((paragraph, index) => (
-          <DialogContentText key={index} gutterBottom>
-            {paragraph}
-          </DialogContentText>
-        ))}
-      </DialogContent>
+      <DialogContent>{content}</DialogContent>
 
       <DialogActions>
         {map(dialog?.actions || [], ({ type, label }) => {

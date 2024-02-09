@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import clsx from 'clsx';
+import { DialogContentText } from '@mui/material';
 import { useAuth } from '@/firebase/auth.jsx';
 import { useSnackbar } from '@/layout/snackbar/snackbar.jsx';
 import { useDialog } from '@/layout/dialog/dialog.jsx';
@@ -55,15 +56,22 @@ export default function Signup() {
 
         return dialog({
           title: 'Verify your email',
-          description: [
+          content: (
             <>
-              We have sent a verification link to <strong>{user.email}</strong>.
-            </>,
-            <>Click on the link to complete the verification process.</>,
-            <>
-              <em>You might need to check your spam folder.</em>
+              <DialogContentText gutterBottom>
+                We have sent a verification link to{' '}
+                <strong>{user.email}</strong>.
+              </DialogContentText>
+
+              <DialogContentText gutterBottom>
+                Click on the link to complete the verification process.
+              </DialogContentText>
+
+              <DialogContentText gutterBottom>
+                <em>You might need to check your spam folder.</em>
+              </DialogContentText>
             </>
-          ],
+          ),
           actions: [{ type: 'confirm', label: 'Return to login' }]
         }).catch(ignoreDialogCancellationError);
       })
